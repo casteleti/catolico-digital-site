@@ -14,10 +14,10 @@ export function FaqAccordion({ items }: { items: Question[] }) {
         const isOpen = open === index;
         return (
           <div className={`faq-item ${isOpen ? "faq-item--open" : ""}`} key={item.question}>
-            <button className="faq-trigger" type="button" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : index)}>
+            <button className="faq-trigger" id={`faq-trigger-${index}`} type="button" aria-expanded={isOpen} aria-controls={`faq-answer-${index}`} onClick={() => setOpen(isOpen ? null : index)}>
               <span>{item.question}</span>{isOpen ? <Minus aria-hidden="true" size={20} /> : <Plus aria-hidden="true" size={20} />}
             </button>
-            {isOpen && <p className="faq-answer">{item.answer}</p>}
+            <div className="faq-answer" id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-trigger-${index}`} hidden={!isOpen}>{item.answer}</div>
           </div>
         );
       })}

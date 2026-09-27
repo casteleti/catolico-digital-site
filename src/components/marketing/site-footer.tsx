@@ -14,6 +14,7 @@ export function SiteFooter() {
         </div>
         <div className="site-footer__links" aria-label="Links institucionais">
           <Link href="/contato">Contato</Link>
+          <Link href="/privacidade">Privacidade</Link>
           <span>© {new Date().getFullYear()} Católico Digital</span>
         </div>
       </Container>
