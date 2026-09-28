@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const stages = ["Descobrir", "Entender", "Ver", "Confiar", "Conhecer"];
-
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
@@ -19,6 +17,6 @@ export function ScrollProgress() {
     update();
     return () => { window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); if (frame) window.cancelAnimationFrame(frame); };
   }, []);
-  const activeStage = Math.min(stages.length - 1, Math.floor(progress * stages.length));
-  return <div className="scroll-progress" aria-label={`Progresso da página: ${stages[activeStage]}`}><span className="scroll-progress__line" style={{ transform: `scaleX(${progress})` }} />{stages.map((stage, index) => <span className={index <= activeStage ? "is-active" : ""} key={stage} title={stage}><i /></span>)}</div>;
+  const percentage = Math.round(progress * 100);
+  return <div className="scroll-progress" role="progressbar" aria-label="Progresso da página" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage} aria-valuetext={`${percentage}%`}><span className="scroll-progress__line" style={{ transform: `scaleX(${progress})` }} /></div>;
 }

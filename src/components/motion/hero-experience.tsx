@@ -6,7 +6,6 @@ import type { CSSProperties } from "react";
 const points = Array.from({ length: 18 }, (_, index) => ({
   angle: index * 20,
   distance: 112 + (index % 3) * 20,
-  delay: `${(index % 6) * 0.35}s`,
 }));
 
 export function HeroExperience() {
@@ -37,5 +36,5 @@ export function HeroExperience() {
     };
   }, []);
 
-  return <div ref={ref} className="hero-experience" aria-hidden="true"><div className="hero-experience__halo" /><div className="digital-rosette">{points.map((point) => <i key={`${point.angle}-${point.distance}`} style={({ "--angle": `${point.angle}deg`, "--distance": `${point.distance}px`, "--delay": point.delay } as CSSProperties)} />)}</div><div className="hero-experience__grid" /></div>;
+  return <div ref={ref} className="hero-experience" aria-hidden="true"><div className="hero-experience__halo" /><div className="digital-rosette">{points.map((point) => <i key={`${point.angle}-${point.distance}`} style={({ "--angle": `${point.angle}deg`, "--distance": `${point.distance}px` } as CSSProperties)} />)}</div><div className="hero-experience__grid" /></div>;
 }

@@ -1,29 +1,63 @@
 :root {
-  /* Marca: azul institucional, marfim humano e dourado usado com parcimônia. */
-  --color-brand-950: #102a43;
-  --color-brand-900: #15344f;
-  --color-brand-800: #183b5b;
-  --color-brand-700: #24577d;
-  --color-brand-600: #3f6f98;
-  --color-brand-100: #dce9f2;
-  --color-brand-50: #f2f6f9;
-  --color-gold-700: #9b773c;
-  --color-gold-600: #c8a35d;
-  --color-gold-100: #f3ead8;
-  --color-ivory-50: #fbfaf7;
-  --color-ivory-100: #f8f5ee;
-  --color-ink-900: #27343d;
-  --color-ink-700: #45535d;
-  --color-ink-500: #687782;
+  --brand-blue: #0a1f5c;
+  --brand-purple: #735290;
+  --brand-rose: #a35069;
+  --brand-wine: #762a43;
+  --brand-brown: #733f30;
+  --surface-page: #f5f5f5;
+  --surface: #ffffff;
+  --text-primary: #222222;
+  --text-secondary: #5c5c5c;
+  --border-subtle: rgb(34 34 34 / 8%);
+  --action-rose: #a35069;
+  --action-rose-hover: #762a43;
+  --text-hero: clamp(3.5rem, 4.5vw, 5rem);
+  --text-hero-tablet: clamp(3rem, 5.6vw, 3.625rem);
+  --text-hero-mobile: clamp(2.55rem, 11vw, 3.5rem);
+  --header-height: 5.25rem;
+  --header-height-scrolled: 4.75rem;
+  /*
+   * Marca Católico Digital (paleta oficial — mesma identidade do painel/login/onboarding).
+   * Fonte: catolico-digital/Docs/design/catolico-digital-direcao-ui-ux.md
+   * Auditoria de contraste: catolico-digital/Docs/design/01-decisoes-e-auditoria-de-identidade.md
+   *
+   * Mantidos os NOMES de variável antigos (--color-brand-*, --color-gold-*, --color-ivory-*, --color-ink-*)
+   * para não reescrever todo componente: só o VALOR muda. "gold" agora é o acento rosa-queimado da marca
+   * (--color-accent-onbrand é a variante clara para texto/linhas sobre o azul escuro, onde o rosa puro não
+   * teria contraste suficiente — ver auditoria).
+   */
+  --color-brand-950: #061749;
+  --color-brand-900: #081b52;
+  --color-brand-800: #0a1f5c; /* azul oficial */
+  --color-brand-700: #384e80;
+  --color-brand-600: #6679a0;
+  --color-brand-100: #dee2eb;
+  --color-brand-50: #f1f3f7;
+
+  --color-purple: #735290; /* acento: espiritualidade, categorias */
+  --color-rose: #a35069; /* acento: humano, comunidade */
+  --color-wine: #762a43; /* acento: solenidade, destaque editorial */
+  --color-brown: #733f30; /* acento: tradição, patrimônio (nunca CTA) */
+
+  --color-gold-700: #803e52; /* accent-700 (rosa escurecido) */
+  --color-gold-600: #a35069; /* accent-600 = --color-rose */
+  --color-gold-100: #f5e9ec; /* accent-100 */
+  --color-accent-onbrand: #d09daa; /* rosa claro: texto/linhas sobre --color-brand-800 (contraste 6,7:1) */
+
+  --color-ivory-50: #ffffff;
+  --color-ivory-100: #f5f5f5;
+  --color-ink-900: #222222;
+  --color-ink-700: #5c5c5c;
+  --color-ink-500: #6d6d6d;
   --color-white: #ffffff;
   --color-danger-700: #a33b3b;
   --color-success-700: #276749;
 
-  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-display: var(--font-fraunces), 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sans: var(--font-inter), 'Segoe UI', Arial, sans-serif;
 
-  --text-xs: .75rem;
-  --text-sm: .875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-md: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
@@ -31,9 +65,9 @@
   --text-3xl: 2rem;
   --text-4xl: clamp(2.75rem, 7vw, 5.75rem);
 
-  --space-1: .25rem;
-  --space-2: .5rem;
-  --space-3: .75rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
   --space-4: 1rem;
   --space-5: 1.25rem;
   --space-6: 1.5rem;
@@ -44,21 +78,24 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  --radius-sm: .5rem;
-  --radius-md: .75rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
   --radius-xl: 1.75rem;
   --radius-pill: 999px;
 
-  --shadow-card: 0 1rem 3rem rgb(16 42 67 / 8%);
-  --shadow-float: 0 2rem 5rem rgb(16 42 67 / 18%);
+  --shadow-card: 0 1rem 3rem rgb(10 31 92 / 8%);
+  --shadow-float: 0 2rem 5rem rgb(10 31 92 / 18%);
+  --shadow-cta: 0 8px 22px rgb(163 80 105 / 22%);
   --container: 75rem;
-  --focus-ring: 0 0 0 3px rgb(200 163 93 / 55%);
-  --motion-fast: 150ms;
-  --motion-normal: 250ms;
+  --focus-ring: 0 0 0 3px rgb(163 80 105 / 55%);
+  --motion-fast: 120ms;
+  --motion-normal: 180ms;
+  --motion-medium: 280ms;
   --motion-slow: 450ms;
-  --ease-standard: cubic-bezier(.2, .7, .2, 1);
-  --ease-enter: cubic-bezier(.16, 1, .3, 1);
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
   --z-base: 0;
   --z-dropdown: 20;
   --z-sticky: 30;

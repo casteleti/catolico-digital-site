@@ -10,10 +10,11 @@ export function SiteFooter() {
           <Link href="/" aria-label="Católico Digital — início">
             <BrandMark />
           </Link>
-          <p className="site-footer__note">Tecnologia humana para organizações católicas.</p>
+          <p className="site-footer__note">Plataforma digital para paróquias.</p>
         </div>
         <div className="site-footer__links" aria-label="Links institucionais">
           <Link href="/contato">Contato</Link>
+          <Link href="/privacidade">Privacidade</Link>
           <span>© {new Date().getFullYear()} Católico Digital</span>
         </div>
       </Container>
