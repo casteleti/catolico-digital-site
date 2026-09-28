@@ -9,6 +9,13 @@
   --text-primary: #222222;
   --text-secondary: #5c5c5c;
   --border-subtle: rgb(34 34 34 / 8%);
+  --action-rose: #a35069;
+  --action-rose-hover: #762a43;
+  --text-hero: clamp(3.5rem, 4.5vw, 5rem);
+  --text-hero-tablet: clamp(3rem, 5.6vw, 3.625rem);
+  --text-hero-mobile: clamp(2.55rem, 11vw, 3.5rem);
+  --header-height: 5.25rem;
+  --header-height-scrolled: 4.75rem;
   /*
    * Marca Católico Digital (paleta oficial — mesma identidade do painel/login/onboarding).
    * Fonte: catolico-digital/Docs/design/catolico-digital-direcao-ui-ux.md
@@ -79,6 +86,7 @@
 
   --shadow-card: 0 1rem 3rem rgb(10 31 92 / 8%);
   --shadow-float: 0 2rem 5rem rgb(10 31 92 / 18%);
+  --shadow-cta: 0 8px 22px rgb(163 80 105 / 22%);
   --container: 75rem;
   --focus-ring: 0 0 0 3px rgb(163 80 105 / 55%);
   --motion-fast: 120ms;
@@ -87,6 +95,7 @@
   --motion-slow: 450ms;
   --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
   --z-base: 0;
   --z-dropdown: 20;
   --z-sticky: 30;
