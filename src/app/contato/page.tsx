@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CTA, ONBOARDING_URL } from "@/content/links";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -16,7 +17,7 @@ export default function ContatoPage() {
           Conheça os recursos do Católico Digital e confira as informações disponíveis sobre o lançamento.
         </p>
         <div className="contact-actions">
-          <Link className="button button--gold" href="/#quero-conhecer">Conhecer a solução</Link>
+          <a className="button button--gold" href={ONBOARDING_URL}>{CTA.primary}</a>
           <Link className="text-link text-link--light" href="/">Voltar para o início <span aria-hidden="true">→</span></Link>
         </div>
       </section>
