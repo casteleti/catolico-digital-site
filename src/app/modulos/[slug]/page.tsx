@@ -38,9 +38,9 @@ export default async function ModuloPage({ params }: Params) {
           <p className="eyebrow eyebrow--light"><Link href="/modulos">Módulos</Link> · {group.label}</p>
           <div className="page-hero__title">
             <span className="page-hero__icon"><ModuleIcon name={m.icon} size={28} /></span>
-            <h1 id="module-title">{m.promise}</h1>
+            <h1 id="module-title">{m.headline ?? m.promise}</h1>
           </div>
-          <p className="hero-copy hero-copy--light">{m.name}: {m.pain}</p>
+          <p className="hero-copy hero-copy--light">{m.lead ?? `${m.name}: ${m.pain}`}</p>
           <div className="hero__actions">
             <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
             {m.status === "em-preparacao" ? <span className="status-pill">Em preparação</span> : null}
@@ -50,7 +50,7 @@ export default async function ModuloPage({ params }: Params) {
 
       <section className="section section--white" aria-labelledby="does-title">
         <Container className="module-layout">
-          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2><p>Tudo o que está aqui existe no sistema. O que ainda está em construção aparece marcado como “em preparação”.</p></div>
+          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2>{m.lead ? <p>{m.pain}</p> : null}<p>Tudo o que está aqui existe no sistema. O que ainda está em construção aparece marcado como “em preparação”.</p></div>
           <ul className="does-list">
             {m.does.map((item) => (
               <li key={item}><Check aria-hidden="true" size={18} /><span>{item}</span></li>

@@ -20,8 +20,12 @@ export type ParishModule = {
   group: ModuleGroupKey;
   icon: string;
   status: ModuleStatus;
-  /** Uma frase, na voz da paróquia: o que o módulo resolve. */
+  /** Uma frase, na voz da paróquia: o que o módulo resolve (cards, tabela, menu e descrição para o Google). */
   promise: string;
+  /** Título do topo da página do módulo, na voz de quem procura a paróquia. Sem ele, usa `promise`. */
+  headline?: string;
+  /** Texto do topo da página do módulo. Sem ele, usa a cena da dor. */
+  lead?: string;
   /** A dor, contada em uma cena curta. */
   pain: string;
   /** O que o módulo faz, de verdade, hoje. */
@@ -56,6 +60,8 @@ export const MODULES: ParishModule[] = [
     icon: "clock",
     status: "pronto",
     promise: "O horário certo em todo lugar, inclusive no Natal.",
+    headline: "Que horas é a missa? A resposta precisa ser uma só.",
+    lead: "Na rotina ou nas solenidades e celebrações especiais, mantenha os horários atualizados no site da paróquia. Um lugar certo para os fiéis consultarem e se organizarem para participar.",
     pain: "O Instagram diz 18h30, o site diz 19h e o cartaz da porta diz outra coisa. Na véspera de Natal, ninguém sabe se a Missa do Galo é às 20h ou às 22h.",
     does: [
       "Cada missa cadastrada uma vez: dia, horário, comunidade, celebrante, observações.",
@@ -73,6 +79,8 @@ export const MODULES: ParishModule[] = [
     icon: "heart",
     status: "pronto",
     promise: "Quem quer se confessar sabe o dia, a hora e se precisa marcar.",
+    headline: "Quando tem confissão? Precisa marcar? Como me preparar?",
+    lead: "Horários, orientações sobre agendamento e preparação para o sacramento em um só lugar. Acolha também as dúvidas de quem deseja se confessar.",
     pain: "“Tem confissão hoje?” é uma das perguntas mais repetidas ao telefone da secretaria.",
     does: [
       "Horários de confissão por dia, local e sacerdote, com a observação “exige agendamento” quando for o caso.",
@@ -90,6 +98,8 @@ export const MODULES: ParishModule[] = [
     status: "pronto",
     featured: true,
     promise: "A catequese da sua paróquia, sem fila em fevereiro.",
+    headline: "Como, quando e onde inscrever meu filho na catequese?",
+    lead: "Prazos, locais, documentos necessários e orientações para inscrição em um só lugar. As famílias sabem o que fazer, e a secretaria recebe menos dúvidas repetidas.",
     pain: "Quarenta mães na fila da secretaria, ficha de papel, certidão que some, planilha de turma que só a coordenadora entende e um grupo de WhatsApp com duzentos pais.",
     does: [
       "Inscrição pelo celular dos pais, uma pergunta por tela: pela idade o sistema sugere o ano e mostra os horários com vagas.",
@@ -112,6 +122,8 @@ export const MODULES: ParishModule[] = [
     status: "pronto",
     featured: true,
     promise: "Cada pedido de sacramento chega completo, com os documentos.",
+    headline: "Queremos nos casar. Quero batizar meu filho. Por onde começar?",
+    lead: "Documentos, prazos e orientações para o matrimônio e o batismo em um só lugar. Casais, pais e padrinhos encontram os próximos passos, mesmo fora do horário da secretaria.",
     pain: "Sexta, 17h50: o casal liga para saber o que precisa para casar em maio. A secretaria já fechou. Na segunda, ligam de novo.",
     does: [
       "Uma página para cada sacramento: quem pode pedir, documentos, preparação, datas, dúvidas e contato.",
@@ -131,6 +143,8 @@ export const MODULES: ParishModule[] = [
     status: "pronto",
     featured: true,
     promise: "Cem grupos, um só lugar. Cada coordenador cuida da sua equipe.",
+    headline: "Como organizar minha pastoral e manter a equipe informada?",
+    lead: "Reúna as informações da pastoral em um só lugar e facilite a rotina de quem coordena. Menos informações espalhadas, mais clareza para organizar a equipe e dar continuidade ao trabalho.",
     pain: "O João coordena o Ministério de Música e a MESCE: duas planilhas, três grupos de WhatsApp e uma lista de papel que só ele entende. Quando ele mudar de cidade, a lista vai junto.",
     does: [
       "Catálogo de cerca de 100 grupos em quatro abas: pastorais, movimentos, ministérios e serviços, conselhos e equipes.",
@@ -165,6 +179,8 @@ export const MODULES: ParishModule[] = [
     icon: "bell",
     status: "pronto",
     promise: "O aviso some sozinho na data certa. A agenda nunca fica velha.",
+    headline: "O que acontece na paróquia nesta semana?",
+    lead: "Reúna os avisos e a programação em um só lugar. Defina até quando cada aviso deve aparecer e mantenha a comunidade informada sobre as próximas celebrações, encontros e eventos.",
     pain: "A festa junina acabou em junho e continua na página inicial em setembro, porque ninguém lembrou de tirar.",
     does: [
       "Avisos com validade: somem do site na data e ficam no histórico.",
@@ -215,6 +231,8 @@ export const MODULES: ParishModule[] = [
     status: "pronto",
     featured: true,
     promise: "Quem quer partilhar acha a chave certa em segundos.",
+    headline: "Como posso contribuir com o dízimo da minha paróquia?",
+    lead: "Disponibilize a chave Pix e as orientações para a contribuição no site. Quem deseja partilhar encontra as informações com facilidade, e a pastoral do dízimo ganha mais um canal de contato com os fiéis.",
     pain: "Domingo, fim da missa. Metade da igreja não carrega dinheiro. Alguém procura a chave PIX numa foto antiga do boletim, digita errado, desiste.",
     does: [
       "Página do dízimo com o texto da paróquia sobre partilha e corresponsabilidade.",

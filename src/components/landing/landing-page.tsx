@@ -97,8 +97,8 @@ export function LandingPage() {
         <Container className="hero__grid">
           <div className="hero__content">
             <p className="eyebrow eyebrow--light">Plataforma para paróquias</p>
-            <h1 id="hero-title">A paróquia cuida das pessoas. <em className="hl">O Católico Digital cuida do resto.</em></h1>
-            <p className="hero-copy hero-copy--light">Missas, catequese, sacramentos, pastorais, dízimo e avisos num lugar só. A secretaria atualiza uma vez, o site mostra certo em todo lugar e o fiel encontra no celular.</p>
+            <h1 id="hero-title">A paróquia cuida das pessoas. <em className="hl">O Católico Digital ajuda a aproximá-las.</em></h1>
+            <p className="hero-copy hero-copy--light">Horários de missas, catequese, sacramentos e avisos em um só lugar. Sua equipe atualiza com facilidade, e os fiéis encontram o que precisam pelo celular.</p>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
               <Link className="text-link text-link--light" href="#modulos">Ver os {MODULES.length} módulos <span aria-hidden="true">→</span></Link>

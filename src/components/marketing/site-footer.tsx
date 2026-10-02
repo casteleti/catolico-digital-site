@@ -14,7 +14,7 @@ export function SiteFooter() {
             <Link href="/" aria-label="Católico Digital — início">
               <BrandMark on="azul" width={280} />
             </Link>
-            <p className="site-footer__note">A paróquia cuida das pessoas. O Católico Digital cuida do resto.</p>
+            <p className="site-footer__note">A paróquia cuida das pessoas. O Católico Digital ajuda a aproximá-las.</p>
           </div>
           <nav className="site-footer__map" aria-label="Mapa do site">
             {MODULE_GROUPS.map((group) => (
