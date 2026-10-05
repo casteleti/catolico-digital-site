@@ -49,4 +49,7 @@ Registro de regras e armadilhas já encontradas. Cada item importante descoberto
 Acrescentar um item na seção certa, com a data, o que aconteceu e a regra para evitar. Se a regra puder ser checada por script ou lint, preferir automatizar em vez de só documentar.
 
 ## Layout
-- **Home tem rolagem horizontal no celular (aberto, 2026-10-05):** a 390 px, `scrollWidth` é 417. Os culpados são elementos decorativos do herói (`.hero-pattern`, `.hero-glow`, `.marquee__track`). Isso faz elementos `position: fixed` (aviso de cookies, botão do WhatsApp) saírem alinhados à largura errada. Corrigir com `overflow-x: clip` na seção do herói ou no `body`.
+- **Rolagem horizontal no celular (corrigida em 2026-10-05):** a Home tinha `scrollWidth` 417 em 390 px. Causas: (1) a rosácea decorativa de `.purpose-band__aside` passava da tela (`overflow-x: clip` em `.purpose-band`); (2) a regra de uma coluna de `.schedule-update-demo` ficava **antes** da regra-base no CSS e perdia a disputa; (3) em 320 px, o título das dúvidas, com palavras coladas por `&nbsp;`, não cabia em 32 px.
+- **Regra de CSS:** uma regra dentro de `@media` precisa vir **depois** da regra-base do mesmo seletor, porque a especificidade é igual e vence a última. Em grids, usar `minmax(0, 1fr)` em vez de `1fr`, que deixa o conteúdo alargar a coluna.
+- **Texto colado por `&nbsp;`** não quebra linha. Em títulos grandes, conferir em 320 px.
+- **Como checar:** em larguras 320, 360, 390 e 430 px, `document.documentElement.scrollWidth` deve ser igual à largura da tela em todas as rotas. Sem isso, elementos `position: fixed` (aviso de cookies, botão do WhatsApp) saem desalinhados.

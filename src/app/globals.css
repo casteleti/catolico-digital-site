@@ -314,11 +314,10 @@ blockquote { margin: 2rem 0 0; padding-left: 1rem; border-left: 2px solid var(--
   .floating-card--celebration { left: -.5rem; bottom: 1rem; }
   .floating-card--news { right: -.5rem; }
   .icon-grid--six, .icon-grid--five, .icon-grid--four { grid-template-columns: 1fr; }
-  .solution-layout, .purpose-layout, .difference-layout, .audience-layout, .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .solution-layout, .purpose-layout, .difference-layout, .audience-layout, .faq-layout { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
   .solution-mockup { transform: none; }
   .steps-grid { grid-template-columns: 1fr; margin-top: 2.5rem; }
   .product-tabs__panel { grid-template-columns: 1fr; gap: 2rem; }
-  .schedule-update-demo { grid-template-columns: minmax(0, 1fr); }
   .check-list { grid-template-columns: 1fr; }
   .launch-benefits { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
@@ -398,6 +397,7 @@ h3, .faq-trigger, .button, .site-nav { font-family: var(--font-sans); }
 .schedule-update-demo__page p { margin: 0; color: var(--color-ink-700); font-size: var(--text-sm); line-height: 1.5; overflow-wrap: anywhere; }
 .schedule-update-demo__page.is-updated { animation: schedule-updated 700ms var(--ease-emphasized) both; }
 .schedule-update-demo__page:last-of-type { grid-column: 1 / -1; }
+@media (max-width: 760px) { .schedule-update-demo { grid-template-columns: minmax(0, 1fr); } } /* depois da regra-base: antes ela vencia a media query e a demo estourava a largura no celular */
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @keyframes schedule-updated { 50% { border-color: var(--color-gold-600); background: var(--color-gold-100); } }
 .checkbox-label a { color: var(--color-brand-800); font-weight: 600; text-underline-offset: .16em; }
@@ -478,7 +478,7 @@ button:disabled:hover { transform: none; }
 .audience-secondary { grid-column: 2; padding: 1.2rem 1.4rem; border-left: 2px solid var(--color-brand-100); }
 .audience-secondary h3 { margin-bottom: .75rem; color: var(--color-ink-700); font-size: var(--text-sm); }
 .audience-layout > .button { grid-column: 2; }
-.purpose-band { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.purpose-band { overflow-x: clip; padding-block: clamp(2.5rem, 5vw, 4rem); }
 .purpose-band__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(16rem, .8fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); }
 .purpose-band h2 { max-width: 18ch; margin-bottom: .8rem; }
 .purpose-band__inner > div > p:last-child { max-width: 44rem; margin: 0; color: var(--color-ink-700); line-height: 1.6; }
@@ -1107,3 +1107,4 @@ p, li, blockquote, .icon-card p, .routine__step p { text-wrap: pretty; }
 .legal-page ul { max-width: 42rem; margin: 0 0 1.25rem; padding-left: 1.25rem; color: rgb(255 255 255 / 78%); font-size: var(--text-lg); line-height: 1.75; }
 .legal-page li + li { margin-top: .5rem; }
 .legal-page li strong { color: var(--color-white); }
+@media (max-width: 22.5rem) { #faq-title { font-size: 1.75rem; } } /* 320 px: "costumam perguntar." (colado por nbsp) não cabia em 32 px e alargava a página */
