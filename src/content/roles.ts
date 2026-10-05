@@ -72,7 +72,7 @@ export const ROLES: RolePage[] = [
     image: { name: "coordenadores-equipe", alt: "A coordenadora no notebook, com as pessoas da equipe ligadas ao grupo em volta\u00A0dela.", width: 1200, height: 1200 },
     icon: "users",
     menu: "Para os Coordenadores",
-    title: "Sua equipe organizada, com o seu próprio\u00A0acesso.",
+    title: "Sua pastoral organizada, com o seu próprio\u00A0acesso.",
     quote: "“A escala está num áudio de três semanas\u00A0atrás.”",
     lead: "Cada grupo da paróquia tem a sua página no site e a sua equipe no painel. O\u00A0coordenador cuida da dele com um login só, sem depender da\u00A0secretaria.",
     gains: [
