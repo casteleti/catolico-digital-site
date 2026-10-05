@@ -32,6 +32,15 @@ Registro de regras e armadilhas já encontradas. Cada item importante descoberto
 - **Contraste:** texto branco com alfa baixo sobre o azul escuro falha. O mínimo é 4,5:1. O texto legal do rodapé estava a 45% (4,3:1) e foi para 58%. Cuidado com novos `rgb(255 255 255 / N%)` abaixo de 55% em texto pequeno.
 - JavaScript do próprio site é pequeno. Os blocos grandes são do framework (`react-dom` e o roteador do Next). Não há JS legado nem CSS não usado relevante.
 
+## Segurança (headers HTTP e CSP)
+- **Onde está:** headers fixos (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) em `next.config.ts`; `X-Powered-By` desligado com `poweredByHeader: false`; Content-Security-Policy com nonce por requisição em `src/proxy.ts` (no Next 16 o antigo `middleware.ts` se chama `proxy.ts`).
+- **A CSP torna todas as páginas dinâmicas.** O nonce só existe por requisição, então o `layout.tsx` lê `headers()` e nenhuma página é mais HTML estático. Medido localmente: nota e TTFB iguais (cerca de 45 ms), mas as páginas saem com `Cache-Control: no-store` e não podem ser servidas por cache de CDN. Alternativa se isso virar problema: SRI experimental do Next (`experimental.sri`) com CSP por hash, que mantém o site estático.
+- **Tag ou domínio externo novo quebra se não estiver na CSP.** O navegador bloqueia em silêncio. Acrescentar o domínio na diretiva certa em `src/proxy.ts` (`script-src` usa `'strict-dynamic'`, então scripts de terceiros só carregam se a tag for inserida por um script com nonce; `img-src` e `connect-src` exigem o domínio) e registrar em `Docs/24`. Testar com a tag ativa e olhar o console por `Content Security Policy`.
+- **Estilos:** `style-src` usa nonce, mas atributos `style="..."` (largura do logo, cor por área, barras de progresso) não aceitam nonce, por isso existe `style-src-attr 'unsafe-inline'`. Não é risco de script. Evitar `<style>` inline novo sem passar pelo Next.
+- **HSTS com `includeSubDomains; preload`:** vale por 1 ano para **todos** os subdomínios de `catolico.digital`, incluindo `app.catolico.digital`. Todos precisam servir HTTPS válido sempre. O header sozinho não coloca o domínio na lista de preload do navegador. Isso só acontece se alguém submeter o domínio em hstspreload.org, e desfazer leva meses. Não submeter sem decisão explícita.
+- **`upgrade-insecure-requests`** é omitido em `localhost` para o `next start` local continuar funcionando.
+- **Verificar no ar:** `curl -sI https://catolico.digital` (cinco headers fixos, CSP e sem `x-powered-by`) e depois securityheaders.com. Se Cloudflare ou Traefik/Coolify também definirem headers, conferir se não há duplicidade.
+
 ## Texto e conteúdo
 - Antes de trocar um texto, buscar todas as ocorrências (`grep`). O mesmo termo pode aparecer na Home, nos módulos e nas páginas por papel, e nem sempre deve mudar junto.
 - Conferir os IDs e números copiados de painéis. Em 2026-10-05 o ID do GA4 veio sem o último caractere (`G-Y7FQ36B3F` em vez de `G-Y7FQ36B3FV`).

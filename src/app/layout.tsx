@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { headers } from "next/headers";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { WhatsAppButton } from "@/components/marketing/whatsapp-button";
@@ -30,7 +31,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // Ler o cabeçalho deixa a página dinâmica, o que o nonce da CSP (src/proxy.ts) exige.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     <html lang="pt-BR" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
@@ -39,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SiteFooter />
         <WhatsAppButton />
-        <CookieConsent />
+        <CookieConsent nonce={nonce} />
       </body>
     </html>
   );

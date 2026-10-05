@@ -12,6 +12,7 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 ## Consentimento (vale para todas as tags)
 - **Componente:** `src/components/marketing/cookie-consent.tsx` (aviso e porteiro das tags), `src/lib/consent.ts` (leitura, gravação e versão) e `cookie-preferences-button.tsx` (link "Preferências de cookies" no rodapé).
 - **Como funciona:** a escolha fica no `localStorage` (`cd-consent`), sem cookie e sem servidor. Nenhuma tag de medição ou publicidade é carregada antes do aceite da categoria: GA4 em "Medição", Meta Pixel em "Publicidade". "Aceitar todos" e "Rejeitar não necessários" têm o mesmo destaque. Retirar o aceite apaga os cookies `_ga*`, `_gid`, `_gat*`, `_fbp`, `_fbc` e recarrega a página.
+- **CSP:** os domínios liberados para GA4 e Meta estão em `src/proxy.ts`. Tag nova precisa de domínio novo lá, senão o navegador bloqueia (ver `Docs/25`, seção Segurança).
 - **Tag nova?** Entra no `CookieConsent` dentro da categoria certa e ganha uma linha em `/privacidade#cookies`. Se mudar o texto ou as categorias, subir `CONSENT_VERSION` em `src/lib/consent.ts`, o que faz todos verem o aviso de novo.
 - **Efeito no analytics:** quem rejeita ou ignora o aviso não é contado no GA4 nem no Meta. É o custo do consentimento prévio.
 - **Texto jurídico:** a seção de cookies em `/privacidade` é provisória e precisa de revisão jurídica, como o resto da página.

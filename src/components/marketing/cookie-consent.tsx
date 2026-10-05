@@ -19,7 +19,7 @@ import {
  * Aviso de cookies e porteiro das tags: GA4 só com o aceite de "medição", Meta Pixel só com o de "publicidade".
  * "Aceitar" e "Rejeitar" têm o mesmo destaque (sem dark pattern). O rodapé reabre o aviso.
  */
-export function CookieConsent() {
+export function CookieConsent({ nonce }: { nonce?: string }) {
   const raw = useSyncExternalStore(subscribeConsent, readConsentRaw, () => CONSENT_SERVER_SNAPSHOT);
   const consent = parseConsent(raw);
   const ready = raw !== CONSENT_SERVER_SNAPSHOT;
@@ -57,8 +57,8 @@ export function CookieConsent() {
 
   return (
     <>
-      {consent?.analytics ? <GoogleAnalytics /> : null}
-      {consent?.marketing ? <MetaPixel /> : null}
+      {consent?.analytics ? <GoogleAnalytics nonce={nonce} /> : null}
+      {consent?.marketing ? <MetaPixel nonce={nonce} /> : null}
       {visible ? (
         <section className="cookie-banner" aria-labelledby="cookie-title">
           <h2 id="cookie-title" ref={titleRef} tabIndex={-1}>Cookies e privacidade</h2>
