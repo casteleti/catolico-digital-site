@@ -4,6 +4,7 @@ import { FaqAccordion } from "@/components/landing/faq-accordion";
 import { ScheduleUpdateDemo } from "@/components/landing/schedule-update-demo";
 import { Reveal } from "@/components/motion/reveal";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { Illustration } from "@/components/site/illustration";
 import { HeroShowcase } from "@/components/site/hero-showcase";
 import { LiturgyToday } from "@/components/site/liturgy-today";
 import { ModuleIcon } from "@/components/site/module-icon";
@@ -150,7 +151,7 @@ export function LandingPage() {
 
       <section className="section section--white" id="como-e-diferente" aria-labelledby="idea-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde aparece.</p></Reveal>
+          <div className="idea-intro"><Reveal className="section-heading idea-intro__copy"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde aparece.</p></Reveal><Reveal className="idea-intro__art" delay={100}><Illustration alt="Uma informação da paróquia é atualizada uma vez e aparece certa em quatro páginas do site." height={900} name="sincronizacao-clara" width={1200} /></Reveal></div>
           <Reveal delay={120}><ScheduleUpdateDemo /><p className="schedule-update-demo__caption">Você não precisa pensar em quais páginas mexer. Só&nbsp;no que mudou.</p></Reveal>
         </Container>
       </section>

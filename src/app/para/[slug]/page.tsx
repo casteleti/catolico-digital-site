@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Illustration } from "@/components/site/illustration";
 import { ModuleIcon } from "@/components/site/module-icon";
 import { Container } from "@/components/ui/container";
 import { CTA, ONBOARDING_URL } from "@/content/links";
@@ -32,14 +33,17 @@ export default async function ParaPage({ params }: Params) {
     <main id="main-content">
       <section className="hero hero--brand page-hero" aria-labelledby="role-title">
         <div className="hero-pattern" aria-hidden="true" />
-        <Container>
-          <p className="eyebrow eyebrow--light">{role.menu}</p>
-          <blockquote className="page-hero__quote">{role.quote}</blockquote>
-          <h1 id="role-title">{role.title}</h1>
-          <p className="hero-copy hero-copy--light">{role.lead}</p>
-          <div className="hero__actions">
-            <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
+        <Container className="role-hero">
+          <div>
+            <p className="eyebrow eyebrow--light">{role.menu}</p>
+            <blockquote className="page-hero__quote">{role.quote}</blockquote>
+            <h1 id="role-title">{role.title}</h1>
+            <p className="hero-copy hero-copy--light">{role.lead}</p>
+            <div className="hero__actions">
+              <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
+            </div>
           </div>
+          <Illustration className="role-hero__art" {...role.image} priority />
         </Container>
       </section>
 
@@ -53,6 +57,19 @@ export default async function ParaPage({ params }: Params) {
           </div>
         </Container>
       </section>
+
+      {role.slug === "pascom" ? (
+        <section className="section section--night sync-band" aria-labelledby="sync-title">
+          <Container className="sync-band__grid">
+            <div className="section-heading section-heading--light">
+              <p className="eyebrow eyebrow--light">Uma vez só</p>
+              <h2 id="sync-title">Mudou o horário? A&nbsp;PASCOM corrige num lugar.</h2>
+              <p>A informação é cadastrada uma vez. Quando&nbsp;muda, a página da missa, a da comunidade e a página inicial mostram o novo horário ao mesmo tempo, sem caçar o que ficou para trás.</p>
+            </div>
+            <Illustration alt="Uma informação da paróquia é atualizada uma vez e aparece certa em quatro páginas: missas, terço, velas e confissões." className="sync-band__art" height={900} name="sincronizacao-escura" width={1200} />
+          </Container>
+        </section>
+      ) : null}
 
       <section className="section section--ivory" aria-labelledby="role-modules-title">
         <Container>

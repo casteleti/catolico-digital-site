@@ -14,11 +14,14 @@ export type RolePage = {
   gains: Array<[string, string]>;
   /** Módulos que mais importam para ela, por slug. */
   modules: string[];
+  /** Ilustração do topo (public/ilustracoes/<name>-600|1200.webp). */
+  image: { name: string; alt: string; width: number; height: number };
 };
 
 export const ROLES: RolePage[] = [
   {
     slug: "paroco",
+    image: { name: "paroco-gestao-colaborativa", alt: "O pároco no notebook com duas pessoas da equipe, cada uma com o seu acesso ao painel.", width: 1200, height: 1200 },
     icon: "church",
     menu: "Para o pároco",
     title: "O site é da paróquia, não de quem cuida dele hoje.",
@@ -34,6 +37,7 @@ export const ROLES: RolePage[] = [
   },
   {
     slug: "secretaria",
+    image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho pelo celular enquanto a secretária confere a inscrição no notebook.", width: 1200, height: 1200 },
     icon: "inbox",
     menu: "Para a secretaria",
     title: "Menos telefone, menos papel, menos fila.",
@@ -49,6 +53,7 @@ export const ROLES: RolePage[] = [
   },
   {
     slug: "catequese",
+    image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho na catequese pelo celular enquanto a secretaria confere a inscrição.", width: 1200, height: 1200 },
     icon: "book",
     menu: "Para a coordenação da catequese",
     title: "Turmas, chamada e famílias num lugar só.",
@@ -64,6 +69,7 @@ export const ROLES: RolePage[] = [
   },
   {
     slug: "pastorais",
+    image: { name: "coordenadores-equipe", alt: "A coordenadora no notebook, com as pessoas da equipe ligadas ao grupo em volta dela.", width: 1200, height: 1200 },
     icon: "users",
     menu: "Para quem coordena uma pastoral",
     title: "Sua equipe organizada, com o seu próprio acesso.",
@@ -79,6 +85,7 @@ export const ROLES: RolePage[] = [
   },
   {
     slug: "pascom",
+    image: { name: "pascom-selo", alt: "Selo da PASCOM: cruz sobre um globo conectado e o nome PASCOM Brasil.", width: 1200, height: 1200 },
     icon: "megaphone",
     menu: "Para a PASCOM",
     title: "Informação digitada uma vez, certa no site inteiro.",
