@@ -19,6 +19,7 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 - **Domínio real do site:** `https://catolico.digital`
 
 ### Pontos de atenção
+- **Desempenho:** as tags carregam com `lazyOnload` desde 2026-10-05, para reduzir o impacto no PageSpeed. Medição e motivo em `Docs/25` (seção Performance).
 - **Divergência de URL:** o fluxo está cadastrado com `catolicodigital.org`, mas o site responde em `catolico.digital`. O `.org` não responde (sem HTTP nem redirect). O ideal é trocar a URL do fluxo em Admin > Fluxos de dados. Enquanto isso, a ferramenta de detecção do Google não encontra a tag se for testada no `.org`. A coleta de dados em si não depende dessa URL.
 - **Divergência de ID:** ao copiar os dados do fluxo, o ID apareceu como `G-Y7FQ36B3F`, sem o `V` final. O ID correto é `G-Y7FQ36B3FV`, o mesmo do snippet do Google e do código. Confirmar no GA4 se houver dúvida.
 

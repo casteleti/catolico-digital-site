@@ -23,6 +23,15 @@ Registro de regras e armadilhas já encontradas. Cada item importante descoberto
 - Nunca enviar e-mail, telefone, nome ou mensagem em eventos ou parâmetros de tags.
 - **Pendente:** banner de consentimento e texto em `/privacidade`. GA4 e Meta Pixel hoje coletam sem consentimento.
 
+## Performance (PageSpeed / Lighthouse)
+- **Tags de terceiros são o maior custo de desempenho.** Medição local em 2026-10-05 (Lighthouse mobile, mesma máquina): sem GA4 e Meta Pixel a Home fazia 82; com os dois, 43. TBT foi de ~400 ms para ~1.800 ms. A auditoria do PageSpeed que mostrava 88 provavelmente foi feita antes de o Meta Pixel entrar. **Toda tag nova precisa de uma medição antes e depois.**
+- Mitigação aplicada: `strategy="lazyOnload"` nas duas tags (Home 43 → 64). Para voltar perto de 82 é preciso tirar as tags da janela de medição (carregar só após interação ou após consentimento). Isso tem custo para o analytics e está pendente de decisão. Ver `Docs/24`.
+- **Como medir:** `npm run build`, `npm run start` e Lighthouse mobile na porta local. Comparar sempre na mesma máquina, porque a nota local é mais baixa que a do PSI. Para isolar tags: `--blocked-url-patterns="*googletagmanager*" --blocked-url-patterns="*facebook*"`. A nota "Práticas recomendadas" cai para 77 só em `localhost` com as tags ligadas (HTTP e cookies de terceiros) e volta a 100 em produção.
+- **Imagem fora da primeira tela:** usar `loading="lazy"`. O React 19 gera `<link rel="preload" as="image">` para toda `<img>` sem `lazy`. O logo do rodapé estava sendo pré-carregado junto com o do cabeçalho (`BrandMark` agora tem a prop `lazy`).
+- **Cache:** `/_next/static` já vem com `immutable`. Arquivos de `public/` não têm hash: `next.config.ts` aplica 30 dias em `/brand`, favicon e logo. **Ao trocar um arquivo de `public/brand`, renomear o arquivo**, senão o navegador mantém o antigo por até 30 dias.
+- **Contraste:** texto branco com alfa baixo sobre o azul escuro falha. O mínimo é 4,5:1. O texto legal do rodapé estava a 45% (4,3:1) e foi para 58%. Cuidado com novos `rgb(255 255 255 / N%)` abaixo de 55% em texto pequeno.
+- JavaScript do próprio site é pequeno. Os blocos grandes são do framework (`react-dom` e o roteador do Next). Não há JS legado nem CSS não usado relevante.
+
 ## Texto e conteúdo
 - Antes de trocar um texto, buscar todas as ocorrências (`grep`). O mesmo termo pode aparecer na Home, nos módulos e nas páginas por papel, e nem sempre deve mudar junto.
 - Conferir os IDs e números copiados de painéis. Em 2026-10-05 o ID do GA4 veio sem o último caractere (`G-Y7FQ36B3F` em vez de `G-Y7FQ36B3FV`).
