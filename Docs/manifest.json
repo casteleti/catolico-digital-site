@@ -25,7 +25,8 @@
     "20_CONTEUDO_SCHEMA_TEMPLATES.md",
     "21_REFERENCIAS_OFICIAIS.md",
     "22_CHECKLIST_GO_LIVE.md",
-    "23_PLANO_STACK_IDEAL.md"
+    "23_PLANO_STACK_IDEAL.md",
+    "24_TAGS_PIXELS_INVENTARIO.md"
   ],
   "implementation_order": [
     "00_README.md",
@@ -50,6 +51,7 @@
     "19_PROTOCOLO_CODEX.md",
     "20_CONTEUDO_SCHEMA_TEMPLATES.md",
     "22_CHECKLIST_GO_LIVE.md",
-    "23_PLANO_STACK_IDEAL.md"
+    "23_PLANO_STACK_IDEAL.md",
+    "24_TAGS_PIXELS_INVENTARIO.md"
   ]
 }

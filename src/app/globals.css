@@ -1011,3 +1011,9 @@ a.icon-card { color: inherit; text-decoration: none; }
 :root { --footer-sky-top: #0b1e58; }
 .final-cta { background: linear-gradient(180deg, transparent 55%, var(--footer-sky-top) 100%), radial-gradient(ellipse 56rem 32rem at 50% 46%, rgb(163 80 105 / 7%), transparent 72%), linear-gradient(125deg, var(--color-brand-800), var(--color-brand-950)); }
 .footer-skyline { background: linear-gradient(180deg, var(--footer-sky-top) 0%, #1a2a6c 34%, #3b2d6e 58%, #7a3566 84%, #b24a6e 100%); }
+
+.whatsapp-float { position: fixed; z-index: var(--z-sticky); right: max(1rem, env(safe-area-inset-right)); bottom: max(1.25rem, env(safe-area-inset-bottom)); display: grid; place-items: center; width: 3.75rem; height: 3.75rem; border-radius: 50%; background: #25d366; color: #fff; box-shadow: 0 8px 24px rgb(6 23 73 / 28%); transition: transform var(--motion-medium) var(--ease-standard), background-color var(--motion-medium) var(--ease-standard); }
+.whatsapp-float:hover { background: #1ebe5b; transform: scale(1.06); }
+.whatsapp-float:focus-visible { outline: 3px solid var(--color-brand-800); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .whatsapp-float { transition: none; } .whatsapp-float:hover { transform: none; } }
+@media print { .whatsapp-float { display: none; } }
