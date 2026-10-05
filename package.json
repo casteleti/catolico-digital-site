@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint && node scripts/colar-inicio-de-frase.mjs --check",
+    "tipografia": "node scripts/colar-inicio-de-frase.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

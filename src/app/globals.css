@@ -948,3 +948,59 @@ a.icon-card { color: inherit; text-decoration: none; }
 @media (max-width: 1100px) { .areas-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .areas-overview { grid-template-columns: 1fr; } .area-card__lead { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) { .area-card, .area-card::before { transition: none; } .area-card:hover { transform: none; } }
+
+/* ---------- Contato (05/10/2026) ---------- */
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; gap: clamp(2rem, 5vw, 5rem); }
+.contact-form { margin-top: 0; }
+.contact-form__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-aside { position: sticky; top: calc(var(--header-height) + 1.5rem); padding: clamp(1.5rem, 3vw, 2.25rem); border: 1px solid var(--color-brand-100); border-radius: var(--radius-lg); background: var(--color-ivory-100); }
+.contact-aside h2 { margin: 0 0 .75rem; font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.15; }
+.contact-aside p:not(.eyebrow) { color: var(--color-ink-700); font-size: var(--text-sm); line-height: 1.6; }
+.form-alert { margin: 1rem 0 0; padding: .8rem 1rem; border-radius: var(--radius-sm); background: var(--color-gold-100); color: var(--color-gold-700); font-size: var(--text-sm); }
+@media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } .contact-aside { position: static; } }
+
+/* ---------- Horizonte do rodapé (05/10/2026): céu do azul ao rosa da marca, silhueta no azul do rodapé ---------- */
+.site-footer { padding-top: 0; }
+.site-footer > .footer-skyline + * { padding-top: var(--space-10); }
+.footer-skyline { position: relative; background: linear-gradient(180deg, var(--color-brand-800) 0%, #1a2a6c 34%, #3b2d6e 58%, #7a3566 84%, #b24a6e 100%); }
+.footer-skyline__art { display: block; width: 100%; height: max(130px, calc(100vw * 240 / 1440)); margin-bottom: -1px; }
+.footer-skyline__far { fill: #1b1f5c; }
+.footer-skyline__near { fill: #061749; }
+
+/* ---------- Rodapé enxuto (05/10/2026): menos itens, letra menor, Instagram ---------- */
+.site-footer > .footer-skyline + * { padding-top: var(--space-8); padding-bottom: var(--space-6); }
+.site-footer .site-footer__top { grid-template-columns: minmax(14rem, 1fr) minmax(0, 1.5fr); gap: 2rem 4rem; padding-bottom: var(--space-6); }
+.site-footer__brand { display: grid; align-content: start; gap: .9rem; }
+.site-footer__brand .brand-mark__logo { width: 190px !important; }
+.site-footer .site-footer__note { max-width: 22rem; margin: 0; color: rgb(255 255 255 / 62%); font-size: .8rem; line-height: 1.55; }
+.site-footer__social { display: inline-flex; align-items: center; gap: .5rem; justify-self: start; padding: .45rem .8rem .45rem .6rem; border: 1px solid rgb(255 255 255 / 16%); border-radius: var(--radius-pill); color: var(--color-white); font-size: .78rem; font-weight: 600; text-decoration: none; transition: border-color var(--motion-fast) var(--ease-standard), background-color var(--motion-fast) var(--ease-standard); }
+.site-footer__social svg { color: var(--color-accent-onbrand); }
+.site-footer__social:hover { border-color: var(--color-pink); background: rgb(196 24 118 / 18%); }
+.site-footer .site-footer__map { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.site-footer .site-footer__map > div { gap: .35rem; }
+.site-footer .site-footer__map a { color: rgb(255 255 255 / 62%); font-size: .78rem; }
+.site-footer .site-footer__map a:hover { color: var(--color-white); }
+.site-footer .site-footer__title { margin: 0 0 .3rem; color: rgb(255 255 255 / 90%); font-size: .68rem; letter-spacing: .14em; }
+.site-footer__legal { margin: 0; color: rgb(255 255 255 / 45%); font-size: .72rem; }
+@media (max-width: 1000px) { .site-footer .site-footer__top { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .site-footer .site-footer__map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Menu flutuante (05/10/2026): ao rolar, a barra vira uma "ilha" estreita, de vidro, que desce do topo ---------- */
+.site-header--scrolled { --current-header-height: 3.5rem; border-bottom-color: transparent; background: transparent; box-shadow: none; backdrop-filter: none; pointer-events: none; }
+.site-header--scrolled::before { opacity: 0; }
+.site-header--scrolled .site-header__inner { width: min(calc(100% - 1.5rem), 64rem); margin-top: .65rem; padding-inline: 1.1rem .45rem; border: 1px solid rgb(10 31 92 / 10%); border-radius: var(--radius-pill); background: rgb(255 255 255 / 82%); box-shadow: 0 12px 32px rgb(6 23 73 / 14%), inset 0 1px 0 rgb(255 255 255 / 70%); backdrop-filter: blur(18px) saturate(1.4); pointer-events: auto; animation: header-island 420ms var(--ease-enter) both; }
+.site-header--scrolled .brand-mark__logo { width: 132px !important; }
+.site-header--scrolled .nav-cta { min-height: 40px; padding: .5rem 1rem; border-radius: var(--radius-pill); }
+.site-header--scrolled .site-nav { font-size: .875rem; }
+@keyframes header-island { from { opacity: 0; transform: translateY(-140%) scaleX(.9); } to { opacity: 1; transform: none; } }
+@media (min-width: 1121px) {
+  .site-header--scrolled .site-nav__link, .site-header--scrolled .site-nav__trigger { padding-inline: clamp(.7rem, 1vw, 1rem); }
+  .site-header--scrolled .site-nav__link::before, .site-header--scrolled .site-nav__trigger::before { inset: .45rem 0; border-radius: var(--radius-pill); transform: scale(.85); transform-origin: center; }
+  .site-header--scrolled .site-nav > .nav-cta { margin-left: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .site-header--scrolled .site-header__inner { animation: none; } }
+.contact-aside__social { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--color-brand-100); }
+.contact-aside__social .eyebrow { margin-bottom: .75rem; }
+.contact-aside__social a { display: inline-flex; align-items: center; gap: .6rem; color: var(--color-brand-800); font-size: var(--text-sm); text-decoration: none; }
+.contact-aside__social a svg { color: var(--color-pink); }
+.contact-aside__social a:hover strong { color: var(--color-pink); }

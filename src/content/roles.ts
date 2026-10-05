@@ -23,7 +23,7 @@ export const ROLES: RolePage[] = [
     menu: "Para o pároco",
     title: "O site é da paróquia, não de quem cuida dele hoje.",
     quote: "“Cheguei na paróquia e ninguém sabe a senha do site.”",
-    lead: "Padres são transferidos, secretárias mudam, voluntários trocam de pastoral. A estrutura fica, cada pessoa tem o seu acesso e tudo o que muda deixa rastro.",
+    lead: "Padres são transferidos, secretárias mudam, voluntários trocam de pastoral. A\u00A0estrutura fica, cada pessoa tem o seu acesso e tudo o que muda deixa rastro.",
     gains: [
       ["Visão de tudo, sem virar administrador de tecnologia", "Catequese, sacramentos, pastorais e dízimo num painel só, em palavras da paróquia."],
       ["Quem mudou o quê", "Histórico de cada alteração, com a pessoa, a data e o valor anterior."],
@@ -38,12 +38,12 @@ export const ROLES: RolePage[] = [
     menu: "Para a secretaria",
     title: "Menos telefone, menos papel, menos fila.",
     quote: "“Em fevereiro a fila da catequese dobra a esquina.”",
-    lead: "As perguntas repetidas do telefone ficam respondidas no site. A inscrição chega pelo celular dos pais, com os documentos. O horário muda uma vez e sai certo em todo lugar.",
+    lead: "As perguntas repetidas do telefone ficam respondidas no site. A\u00A0inscrição chega pelo celular dos pais, com os documentos. O\u00A0horário muda uma vez e sai certo em todo lugar.",
     gains: [
       ["Inscrição da catequese sem fila", "Os pais inscrevem pelo celular; a secretaria confere, confirma e define a turma."],
       ["Documentos que não somem", "Certidões por foto, guardadas em local privado, com conferência e pedido de refazer."],
       ["Pedidos de sacramento completos", "Cada pedido com os documentos e a situação, numa caixa só."],
-      ["Mudou o horário? Uma vez só", "Missa, confissão e adoração cadastradas uma vez, com exceções de data."],
+      ["Mudou o horário? Uma\u00A0vez só", "Missa, confissão e adoração cadastradas uma vez, com exceções de data."],
     ],
     modules: ["catequese", "sacramentos", "missas-e-horarios", "avisos-e-agenda"],
   },
@@ -53,9 +53,9 @@ export const ROLES: RolePage[] = [
     menu: "Para a coordenação da catequese",
     title: "Turmas, chamada e famílias num lugar só.",
     quote: "“Planilha de turma, caderno de chamada e um grupo de WhatsApp com duzentos pais.”",
-    lead: "O caminho da catequese vem pronto e a paróquia ajusta: anos, idades, turmas e calendário pela Páscoa. O catequista faz a chamada no celular e fala com cada família pelo WhatsApp.",
+    lead: "O caminho da catequese vem pronto e a paróquia ajusta: anos, idades, turmas e calendário pela Páscoa. O\u00A0catequista faz a chamada no celular e fala com cada família pelo WhatsApp.",
     gains: [
-      ["Turmas numa grade da semana", "Ano, dia, horário, local, vagas e catequistas. Lotou, lista de espera."],
+      ["Turmas numa grade da semana", "Ano, dia, horário, local, vagas e catequistas. Lotou,\u00A0lista de espera."],
       ["Chamada no celular", "Presente, falta ou falta justificada; a porcentagem de presença acompanha."],
       ["Calendário que se calcula", "1ª Confissão, 1ª Eucaristia e Crisma pela data da Páscoa de cada ano."],
       ["O que precisa de atenção", "Turma sem catequista, criança fora da idade, inscrição parada, presença baixa."],
@@ -68,7 +68,7 @@ export const ROLES: RolePage[] = [
     menu: "Para quem coordena uma pastoral",
     title: "Sua equipe organizada, com o seu próprio acesso.",
     quote: "“Minha equipe está numa lista de papel que só eu entendo.”",
-    lead: "Cada grupo da paróquia tem a sua página no site e a sua equipe no painel. O coordenador cuida da dele com um login só, sem depender da secretaria.",
+    lead: "Cada grupo da paróquia tem a sua página no site e a sua equipe no painel. O\u00A0coordenador cuida da dele com um login só, sem depender da secretaria.",
     gains: [
       ["Ativar o grupo em um clique", "Catálogo com cerca de cem pastorais, movimentos, ministérios e equipes."],
       ["A equipe, com nome e contato", "Função, desde quando serve, observações, com o consentimento registrado."],
@@ -83,7 +83,7 @@ export const ROLES: RolePage[] = [
     menu: "Para a PASCOM",
     title: "Informação digitada uma vez, certa no site inteiro.",
     quote: "“Mudou o horário e o site ficou errado três semanas.”",
-    lead: "Aviso com validade, agenda com recorrência, notícia com data para publicar e fotos leves. O Instagram e o WhatsApp continuam; o site é onde a informação oficial mora.",
+    lead: "Aviso com validade, agenda com recorrência, notícia com data para publicar e fotos leves. O\u00A0Instagram e o WhatsApp continuam; o site é onde a informação oficial mora.",
     gains: [
       ["Aviso que some na data", "Nada de festa junina na página inicial em setembro."],
       ["Agenda com recorrência de verdade", "“Toda terça, 20h”, “primeira quinta do mês”, com exceções pontuais."],

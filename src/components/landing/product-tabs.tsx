@@ -84,7 +84,7 @@ export function ProductTabs() {
             <div className="product-tabs__mockup product-tabs__mockup--admin admin-preview" aria-hidden="true"><div className="mockup-toolbar"><span /><span /><span /></div><div className="admin-preview__content"><span /><span /><span /><span /></div></div>
             <div className="product-tabs__copy profile-copy">
               <h3>Feito para quem cuida da paróquia, não para quem entende de tecnologia.</h3>
-              <ul className="admin-feature-list"><li><strong>Palavras do dia a dia.</strong> Missa, aviso, pastoral. Nada de termos técnicos.</li><li><strong>Tudo em um só painel.</strong> Horários, avisos, pastorais e eventos organizados no mesmo lugar.</li></ul>
+              <ul className="admin-feature-list"><li><strong>Palavras do dia a dia.</strong> Missa, aviso, pastoral. Nada&nbsp;de termos técnicos.</li><li><strong>Tudo em um só painel.</strong> Horários, avisos, pastorais e eventos organizados no mesmo lugar.</li></ul>
             </div>
           </>
         )}

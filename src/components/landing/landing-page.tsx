@@ -1,4 +1,4 @@
-import { Check, ClipboardCheck, FileCheck2, Globe, HeartHandshake, Lock, RefreshCcw, ShieldCheck, UsersRound } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import { FaqAccordion } from "@/components/landing/faq-accordion";
 import { ScheduleUpdateDemo } from "@/components/landing/schedule-update-demo";
@@ -13,7 +13,6 @@ import { CTA, ONBOARDING_URL } from "@/content/links";
 import { AREAS } from "@/content/areas";
 
 const AREA_ITEMS = AREAS.flatMap((a) => a.items);
-import { ROLES } from "@/content/roles";
 
 /**
  * Os cinco recursos da primeira dobra, na ordem em que o Renato pediu (05/10/2026). Cada um traz a pergunta que
@@ -33,7 +32,7 @@ const verbs: Array<{
     verb: "Sacramentos",
     href: "/vida-paroquial#sacramentos",
     title: "Imagine a facilidade de oferecer o formulário e todas as instruções de cada sacramento.",
-    story: "A página de cada sacramento diz o que levar, quando procurar e como se preparar. O pedido chega com os documentos, e a secretaria vê tudo numa caixa só, com a situação de cada um.",
+    story: "A página de cada sacramento diz o que levar, quando procurar e como se preparar. O\u00A0pedido chega com os documentos, e a secretaria vê tudo numa caixa só, com a situação de cada um.",
     points: ["Observação em destaque: “procure com seis meses de antecedência”", "Documentos por foto ou PDF, guardados em local privado", "Cada pedido com situação e histórico de quem abriu"],
     ask: "O que preciso levar para o batismo do meu filho?",
     screen: "request",
@@ -42,7 +41,7 @@ const verbs: Array<{
     verb: "Catequese",
     href: "/vida-paroquial#catequese",
     title: "Inscrição online nas turmas de catequese, gestão dos catequistas e muito mais.",
-    story: "Os pais inscrevem pelo celular, uma pergunta por vez. Pela idade, o sistema sugere o ano; a turma mostra as vagas; a certidão vai por foto. Cada catequista entra com o próprio login, vê a sua turma e faz a chamada.",
+    story: "Os pais inscrevem pelo celular, uma pergunta por vez. Pela\u00A0idade, o sistema sugere o ano; a turma mostra as vagas; a certidão vai por foto. Cada\u00A0catequista entra com o próprio login, vê a sua turma e faz a chamada.",
     points: ["Rematrícula reconhecida pelo celular do responsável", "Lista de espera sozinha quando a turma lota", "Chamada no celular do catequista"],
     ask: "Tem vaga na catequese para minha filha de 9 anos?",
     screen: "enrollment",
@@ -51,7 +50,7 @@ const verbs: Array<{
     verb: "Dízimo",
     href: "/administracao#dizimo",
     title: "Cadastre a chave PIX uma vez e ofereça essa facilidade a quem deseja contribuir.",
-    story: "A paróquia informa a chave, o QR Code, o nome de quem recebe e o banco. O fiel copia a chave ou lê o QR Code no fim da missa, e o dinheiro vai direto para a conta da paróquia.",
+    story: "A paróquia informa a chave, o QR Code, o nome de quem recebe e o banco. O\u00A0fiel copia a chave ou lê o QR Code no fim da missa, e o dinheiro vai direto para a conta da paróquia.",
     points: ["QR Code e “copia e cola”", "Sem intermediário e sem taxa", "Só a administração altera a chave, com registro"],
     ask: "Qual é a chave PIX da paróquia?",
     screen: "pix",
@@ -60,7 +59,7 @@ const verbs: Array<{
     verb: "Agenda semanal",
     href: "/comunicacao#agenda-semanal",
     title: "A semana da paróquia sempre em dia, e cada aviso sai do ar na data certa.",
-    story: "A secretaria cadastra cada evento uma vez, do jeito que ele se repete, e o site monta a programação sozinho. O aviso da quermesse sai da página inicial no dia seguinte à festa, sem ninguém precisar lembrar.",
+    story: "A secretaria cadastra cada evento uma vez, do jeito que ele se repete, e o site monta a programação sozinho. O\u00A0aviso da quermesse sai da página inicial no dia seguinte à festa, sem ninguém precisar lembrar.",
     points: ["Eventos que se repetem: “toda terça, 20h”, “primeira quinta do mês”", "Avisos com data para sair do ar", "Novena, retiro, formação, festa do padroeiro"],
     ask: "O que tem na paróquia esta semana?",
     screen: "agenda",
@@ -69,7 +68,7 @@ const verbs: Array<{
     verb: "Pastorais e Ministérios",
     href: "/vida-paroquial#pastorais-e-ministerios",
     title: "Cada pastoral com a sua equipe organizada, e cada coordenador com o próprio acesso.",
-    story: "Cem grupos prontos para ativar. O coordenador do Canto cadastra os músicos; a coordenadora da MESCE, os ministros. Um login só, mesmo para quem coordena dois grupos e ainda dá catequese.",
+    story: "Cem grupos prontos para ativar. O\u00A0coordenador do Canto cadastra os músicos; a coordenadora da MESCE, os ministros. Um\u00A0login só, mesmo para quem coordena dois grupos e ainda dá catequese.",
     points: ["Página pública do grupo: o que faz e como participar", "Equipe com nome, função e contato", "Acesso restrito à própria equipe"],
     ask: "Como faço para entrar no Ministério de Música?",
     screen: "teams",
@@ -78,23 +77,16 @@ const verbs: Array<{
 
 type Screen = "enrollment" | "request" | "teams" | "pix" | "agenda";
 
-const securityCards: Array<[typeof Lock, string, string]> = [
-  [Lock, "Dado de fé é dado sensível.", "Inscrição na catequese ou pedido de sacramento revela convicção religiosa. Só é guardado com autorização expressa, e o texto aceito fica registrado."],
-  [FileCheck2, "Documentos em local privado.", "Certidões e fotos enviadas pelas famílias não têm endereço público: só a equipe autorizada abre, pelo painel."],
-  [ClipboardCheck, "Cada acesso fica registrado.", "Quem abriu a ficha, quem baixou o documento, quem mudou o horário. Com data e valor anterior."],
-  [ShieldCheck, "Uma paróquia nunca vê a outra.", "Os dados de cada paróquia ficam isolados no banco, por construção, não por combinação."],
-];
-
 const faq: Array<[string, string]> = [
-  ["O Católico Digital é só um site?", "Não. O site é a parte que o fiel vê. Por trás dele, a vida da paróquia fica organizada num lugar só: horários, catequese, sacramentos, pastorais, dízimo e avisos. Quando algo muda, muda uma vez."],
-  ["A secretaria precisa entender de tecnologia?", "Não. O painel fala a língua da paróquia: missa, aviso, turma, catequizando, pastoral. Foi feito para quem atende o telefone e cuida do balcão."],
-  ["Como funciona a inscrição da catequese?", "Os pais inscrevem pelo celular, uma pergunta por tela. Pela data de nascimento o sistema sugere o ano, mostra os horários com vaga e entrega o número da inscrição. Os documentos vão por foto, pelo link da família. Quem não tem celular é inscrito pela secretaria no balcão."],
-  ["E o dízimo? Vocês processam pagamento?", "Não, e isso é de propósito. A paróquia cadastra a chave PIX, o QR Code, o nome de quem recebe e o banco na página do dízimo. O dinheiro vai direto para a conta da paróquia, sem intermediário e sem taxa."],
-  ["O catequista e o coordenador de pastoral precisam de outro sistema?", "Não. Cada um entra com o próprio login e vê só o que coordena: a turma, a equipe. Quem coordena duas coisas vê as duas no mesmo lugar."],
-  ["Funciona com matriz e várias capelas?", "Sim. Cada comunidade tem endereço, horários e eventos próprios, na mesma estrutura. A paróquia pequena usa só a matriz."],
-  ["Nossa paróquia já tem site. Dá para trocar?", "Sim. O Católico Digital toma o lugar do site atual e organiza o que hoje está espalhado. A transição é combinada com cada paróquia."],
-  ["O Católico Digital substitui o Instagram e o WhatsApp?", "Não. Eles continuam espalhando a mensagem. O Católico Digital é onde a informação oficial mora, e para onde esses canais apontam."],
-  ["Podemos usar o nosso domínio?", "A estrutura prevê domínio próprio. Os detalhes são definidos na implantação."],
+  ["O Católico Digital é só um site?", "Não. O\u00A0site é a parte que o fiel vê. Por\u00A0trás dele, a vida da paróquia fica organizada num lugar só: horários, catequese, sacramentos, pastorais, dízimo e avisos. Quando\u00A0algo muda, muda uma vez."],
+  ["A secretaria precisa entender de tecnologia?", "Não. O\u00A0painel fala a língua da paróquia: missa, aviso, turma, catequizando, pastoral. Foi\u00A0feito para quem atende o telefone e cuida do balcão."],
+  ["Como funciona a inscrição da catequese?", "Os pais inscrevem pelo celular, uma pergunta por tela. Pela\u00A0data de nascimento o sistema sugere o ano, mostra os horários com vaga e entrega o número da inscrição. Os\u00A0documentos vão por foto, pelo link da família. Quem\u00A0não tem celular é inscrito pela secretaria no balcão."],
+  ["E o dízimo? Vocês\u00A0processam pagamento?", "Não, e isso é de propósito. A\u00A0paróquia cadastra a chave PIX, o QR Code, o nome de quem recebe e o banco na página do dízimo. O\u00A0dinheiro vai direto para a conta da paróquia, sem intermediário e sem taxa."],
+  ["O catequista e o coordenador de pastoral precisam de outro sistema?", "Não. Cada\u00A0um entra com o próprio login e vê só o que coordena: a turma, a equipe. Quem\u00A0coordena duas coisas vê as duas no mesmo lugar."],
+  ["Funciona com matriz e várias capelas?", "Sim. Cada\u00A0comunidade tem endereço, horários e eventos próprios, na mesma estrutura. A\u00A0paróquia pequena usa só a matriz."],
+  ["Nossa paróquia já tem site. Dá\u00A0para trocar?", "Sim. O\u00A0Católico Digital toma o lugar do site atual e organiza o que hoje está espalhado. A\u00A0transição é combinada com cada paróquia."],
+  ["O Católico Digital substitui o Instagram e o WhatsApp?", "Não. Eles\u00A0continuam espalhando a mensagem. O\u00A0Católico Digital é onde a informação oficial mora, e para onde esses canais apontam."],
+  ["Podemos usar o nosso domínio?", "A estrutura prevê domínio próprio. Os\u00A0detalhes são definidos na implantação."],
   ["Quanto custa?", "Os valores são apresentados na conversa com cada paróquia, de acordo com a estrutura e os módulos que fizerem sentido."],
 ];
 
@@ -111,7 +103,7 @@ export function LandingPage() {
           <div className="hero__content">
             <p className="eyebrow eyebrow--light">Plataforma para paróquias</p>
             <h1 id="hero-title">Organize sua paróquia: <em className="hl">horários de missa, dízimo, inscrições nos sacramentos e gestão das pastorais.</em></h1>
-            <p className="hero-copy hero-copy--light">Uma estrutura criada por católicos que vivem o dia a dia de uma comunidade. Facilidade e produtividade para quem serve: pároco, secretaria e coordenadores.</p>
+            <p className="hero-copy hero-copy--light">Uma estrutura criada por católicos que vivem o dia a dia de uma comunidade. Facilidade&nbsp;e produtividade para quem serve: pároco, secretaria e coordenadores.</p>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>Quero montar o site em 5 minutos</span><span className="button__arrow" aria-hidden="true">→</span></a>
               <Link className="text-link text-link--light" href="#modulos">Conhecer todos os recursos <span aria-hidden="true">→</span></Link>
@@ -158,73 +150,23 @@ export function LandingPage() {
 
       <section className="section section--white" id="como-e-diferente" aria-labelledby="idea-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O site cuida das páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui, cada informação da paróquia é cadastrada uma vez. Quando muda, muda em todo lugar onde aparece.</p></Reveal>
-          <Reveal delay={120}><ScheduleUpdateDemo /><p className="schedule-update-demo__caption">Você não precisa pensar em quais páginas mexer. Só no que mudou.</p></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde aparece.</p></Reveal>
+          <Reveal delay={120}><ScheduleUpdateDemo /><p className="schedule-update-demo__caption">Você não precisa pensar em quais páginas mexer. Só&nbsp;no que mudou.</p></Reveal>
         </Container>
       </section>
 
       <section className="section section--cool section--spots" id="modulos" aria-labelledby="modules-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">Os recursos</p><h2 id="modules-title">Quatro áreas, dezesseis recursos para a vida da paróquia.</h2><p>Celebrações, vida paroquial, comunicação e administração. Cada área tem uma página que explica o que cada recurso faz, com exemplos de verdade.</p></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">Os recursos</p><h2 id="modules-title">Quatro áreas, dezesseis recursos para a vida da paróquia.</h2><p>Celebrações, vida paroquial, comunicação e administração. Cada&nbsp;área tem uma página que explica o que cada recurso faz, com exemplos de verdade.</p></Reveal>
           <Reveal delay={120}><AreasOverview /></Reveal>
-          <Reveal className="feature-callout feature-callout--stacked" delay={80}><div><h3>Use só o que fizer sentido.</h3><p>Cada recurso liga e desliga sem apagar nada. A paróquia pequena começa com missas, avisos e contato; a grande liga a catequese, as pastorais e as capelas.</p></div></Reveal>
-        </Container>
-      </section>
-
-      <section className="section section--brand section--roles" id="para-quem" aria-labelledby="roles-title">
-        <Container>
-          <Reveal className="section-heading section-heading--light"><p className="eyebrow eyebrow--light">Para quem</p><h2 id="roles-title">A mesma plataforma, contada para quem vive a paróquia.</h2></Reveal>
-          <div className="role-grid">
-            {ROLES.map((role, i) => (
-              <Reveal delay={i * 80} key={role.slug}>
-                <Link className="role-card" href={`/para/${role.slug}`}>
-                  <span className="role-card__icon"><ModuleIcon name={role.icon} size={20} /></span>
-                  <span className="role-card__menu">{role.menu}</span>
-                  <blockquote className="role-card__quote">{role.quote}</blockquote>
-                  <p>{role.title}</p>
-                  <span className="role-card__go">Ver o que muda <span aria-hidden="true">→</span></span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section section--white" id="como-funciona" aria-labelledby="steps-title">
-        <Container>
-          <Reveal className="narrow-center"><p className="eyebrow">Simples desde o começo</p><h2 id="steps-title">Sua paróquia no digital sem virar um projeto de tecnologia.</h2></Reveal>
-          <div className="steps-grid">
-            {[
-              [UsersRound, "Conhecemos a paróquia.", "Conversamos com o pároco e a secretaria: horários, comunidades, pastorais, catequese e a identidade da paróquia."],
-              [HeartHandshake, "Montamos juntos.", "Tudo cadastrado uma vez, com o brasão, as cores e as fotos de vocês. A catequese e as pastorais já vêm pré-montadas."],
-              [Globe, "Publicamos.", "Revisamos com vocês e colocamos no ar, pronto para o celular."],
-              [RefreshCcw, "Vocês cuidam.", "Mudou algo? A secretaria altera uma vez, pelo painel. O catequista e o coordenador cuidam do que é deles."],
-            ].map(([Icon, title, copy], i) => {
-              const StepIcon = Icon as typeof UsersRound;
-              return (
-                <Reveal as="article" className="step" delay={i * 110} key={title as string}><span className="step__number">0{i + 1}</span><span className="step__icon"><StepIcon aria-hidden="true" size={23} /></span><h3>{title as string}</h3><p>{copy as string}</p></Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section section--cool" id="seguranca" aria-labelledby="security-title">
-        <Container>
-          <Reveal className="section-heading"><p className="eyebrow">Responsabilidade com os fiéis</p><h2 id="security-title">Quem confia os dados da família à paróquia merece cuidado.</h2><p>Crianças da catequese, noivos, enfermos: a paróquia guarda informações delicadas. O sistema trata isso como a LGPD manda, sem juridiquês para a secretaria.</p></Reveal>
-          <div className="icon-grid icon-grid--four">
-            {securityCards.map(([Icon, title, copy], i) => (
-              <Reveal as="article" className="icon-card" delay={i * 90} key={title}><span className="icon-card__icon"><Icon aria-hidden="true" size={22} strokeWidth={1.7} /></span><h3>{title}</h3><p>{copy}</p></Reveal>
-            ))}
-          </div>
-          <Reveal delay={200}><Link className="text-link" href="/privacidade">Leia a política de privacidade <span aria-hidden="true">→</span></Link></Reveal>
+          <Reveal className="feature-callout feature-callout--stacked" delay={80}><div><h3>Use só o que fizer sentido.</h3><p>Cada recurso liga e desliga sem apagar nada. A&nbsp;paróquia pequena começa com missas, avisos e contato; a grande liga a catequese, as pastorais e as capelas.</p></div></Reveal>
         </Container>
       </section>
 
       <section className="purpose-band section section--white" id="proposito" aria-labelledby="purpose-title">
         <Container className="purpose-band__inner">
-          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar não é perder a proximidade.</h2><p>O Católico Digital organiza o que pode ser organizado: informação, inscrição, comunicação. O encontro, o acolhimento e a catequese continuam sendo das pessoas.</p></Reveal>
-          <Reveal className="purpose-band__aside" delay={150}><span className="rosette rosette--large" aria-hidden="true" /><blockquote>A tecnologia fica nos bastidores. A comunidade continua no centro.</blockquote></Reveal>
+          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar não é perder a proximidade.</h2><p>O Católico Digital organiza o que pode ser organizado: informação, inscrição, comunicação. O&nbsp;encontro, o acolhimento e a catequese continuam sendo das pessoas.</p></Reveal>
+          <Reveal className="purpose-band__aside" delay={150}><span className="rosette rosette--large" aria-hidden="true" /><blockquote>A tecnologia fica nos bastidores. A&nbsp;comunidade continua no centro.</blockquote></Reveal>
         </Container>
       </section>
 
@@ -233,8 +175,8 @@ export function LandingPage() {
         <Container className="onboarding-band">
           <Reveal>
             <p className="eyebrow eyebrow--light">Experimente agora</p>
-            <h2 id="start-title">Monte o site da sua paróquia em 5 minutos. E veja no celular, na hora.</h2>
-            <p className="onboarding-band__lead">São nove perguntas sobre a paróquia, nada de tecnologia. A cada resposta, o site aparece ao lado. Quando gostar, você guarda com o seu e-mail; nada vai ao ar sem você mandar.</p>
+            <h2 id="start-title">Monte o site da sua paróquia em 5 minutos. E&nbsp;veja no celular, na hora.</h2>
+            <p className="onboarding-band__lead">São nove perguntas sobre a paróquia, nada de tecnologia. A&nbsp;cada resposta, o site aparece ao lado. Quando&nbsp;gostar, você guarda com o seu e-mail; nada vai ao ar sem você mandar.</p>
             <ul className="onboarding-band__checks">
               <li><Check aria-hidden="true" size={18} /> Não precisa criar conta nem senha para começar</li>
               <li><Check aria-hidden="true" size={18} /> Pode pular o que não souber e voltar depois</li>
@@ -270,7 +212,7 @@ export function LandingPage() {
 
       <section className="final-cta section section--night" id="chamada-final" aria-labelledby="final-title">
         <div className="final-cta__pattern" aria-hidden="true" />
-        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Sua paróquia já faz tudo isso. Só não num lugar só.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div><LiturgyToday /></Reveal></Container>
+        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Sua paróquia já faz tudo isso. Só&nbsp;não num lugar só.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div><LiturgyToday /></Reveal></Container>
       </section>
     </main>
   );
@@ -318,7 +260,7 @@ function VerbScreen({ kind }: { kind: Screen }) {
         <p className="vscreen__kicker">Minhas equipes · João</p>
         <div className="vscreen__row"><ModuleIcon name="users" size={16} /><span>Ministério de Música</span><b>14 pessoas</b></div>
         <div className="vscreen__row"><ModuleIcon name="users" size={16} /><span>MESCE</span><b>9 pessoas</b></div>
-        <div className="vscreen__row"><ModuleIcon name="book" size={16} /><span>Turma Euc. 1 · sábado, 9h</span><b>18 crianças</b></div>
+        <div className="vscreen__row"><ModuleIcon name="book" size={16} /><span>Turma Euc. 1&nbsp;· sábado, 9h</span><b>18 crianças</b></div>
         <div className="vscreen__chips"><span className="is-on">Um login só</span><span>Só o que você coordena</span></div>
       </div>
     );

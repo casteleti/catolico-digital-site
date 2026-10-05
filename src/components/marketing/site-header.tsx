@@ -224,7 +224,7 @@ function MegaPanel({ item, open, onNavigate }: { item: Extract<NavItem, { kind: 
             {hovered ? (
               <p className="mega__preview-text" key={hovered.link.label}><strong>{hovered.link.label}</strong>{hovered.link.description}</p>
             ) : (
-              <p className="mega__preview-text mega__preview-text--idle">Passe o mouse num recurso para ver o que ele resolve. Cada área tem uma página com os detalhes.</p>
+              <p className="mega__preview-text mega__preview-text--idle">Passe o mouse num recurso para ver o que ele resolve. Cada&nbsp;área tem uma página com os detalhes.</p>
             )}
             {item.footer ? (
               <Link className="mega__preview-all" href={item.footer.href} onClick={onNavigate}>{item.footer.label} <span aria-hidden="true">→</span></Link>

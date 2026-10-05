@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacidadePage() {
-  return <main className="section section--white legal-page" id="main-content"><div className="container"><p className="eyebrow">Informações legais</p><h1>Política de Privacidade</h1><p>Esta página receberá a política final revisada juridicamente antes do lançamento. O formulário e os serviços do Católico Digital devem coletar somente os dados necessários para cada finalidade.</p><Link className="text-link" href="/">Voltar para o início <span aria-hidden="true">→</span></Link></div></main>;
+  return <main className="section section--white legal-page" id="main-content"><div className="container"><p className="eyebrow">Informações legais</p><h1>Política de Privacidade</h1><p>Esta página receberá a política final revisada juridicamente antes do lançamento. O&nbsp;formulário e os serviços do Católico Digital devem coletar somente os dados necessários para cada finalidade.</p><Link className="text-link" href="/">Voltar para o início <span aria-hidden="true">→</span></Link></div></main>;
 }

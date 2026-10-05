@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     default: "Católico Digital · Plataforma digital para paróquias",
     template: "%s | Católico Digital",
   },
-  description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples de atualizar, fácil para o fiel encontrar.",
+  description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples\u00A0de atualizar, fácil para o fiel encontrar.",
   openGraph: {
     title: "Católico Digital · Plataforma digital para paróquias",
-    description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples de atualizar, fácil para o fiel encontrar.",
+    description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples\u00A0de atualizar, fácil para o fiel encontrar.",
     type: "website",
     locale: "pt_BR",
     siteName: "Católico Digital",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Católico Digital · Plataforma digital para paróquias",
-    description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples de atualizar, fácil para o fiel encontrar.",
+    description: "Horários, comunidades, sacramentos, pastorais e avisos em um só lugar, publicados no site da paróquia. Simples\u00A0de atualizar, fácil para o fiel encontrar.",
   },
 };
 

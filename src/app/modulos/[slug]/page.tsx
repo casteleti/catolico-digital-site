@@ -50,7 +50,7 @@ export default async function ModuloPage({ params }: Params) {
 
       <section className="section section--white" aria-labelledby="does-title">
         <Container className="module-layout">
-          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2>{m.lead ? <p>{m.pain}</p> : null}<p>Tudo o que está aqui existe no sistema. O que ainda está em construção aparece marcado como “em preparação”.</p></div>
+          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2>{m.lead ? <p>{m.pain}</p> : null}<p>Tudo o que está aqui existe no sistema. O&nbsp;que ainda está em construção aparece marcado como “em preparação”.</p></div>
           <ul className="does-list">
             {m.does.map((item) => (
               <li key={item}><Check aria-hidden="true" size={18} /><span>{item}</span></li>

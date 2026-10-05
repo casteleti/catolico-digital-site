@@ -29,7 +29,7 @@ export const NAVIGATION: NavItem[] = [
   {
     kind: "menu",
     label: "Para quem",
-    href: "/#para-quem",
+    href: "/para/paroco",
     variant: "cards",
     groups: [
       {
@@ -45,9 +45,9 @@ export const NAVIGATION: NavItem[] = [
       },
     ],
   },
-  { kind: "link", label: "Como funciona", href: "/#como-funciona" },
-  { kind: "link", label: "Segurança", href: "/#seguranca" },
+  { kind: "link", label: "Como funciona", href: "/#como-e-diferente" },
   { kind: "link", label: "Dúvidas", href: "/#duvidas" },
+  { kind: "link", label: "Contato", href: "/contato" },
 ];
 
 export const PRIMARY_CTA: NavLink = { label: CTA.nav, href: ONBOARDING_URL };

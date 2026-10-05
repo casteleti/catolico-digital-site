@@ -11,6 +11,9 @@ export const CTA = {
   /** Botão principal do herói e das páginas internas. */
   primary: "Montar o site da minha paróquia",
   /** A promessa curta que acompanha o botão. */
-  note: "Leva 5 minutos. Sem conta, sem senha, sem cartão. Nada vai ao ar sem você mandar.",
+  note: "Leva 5 minutos. Sem\u00A0conta, sem senha, sem cartão. Nada\u00A0vai ao ar sem você mandar.",
   talk: "Prefiro conversar antes",
 } as const;
+
+/** Instagram oficial do Católico Digital (rodapé e Contato). */
+export const INSTAGRAM = { url: "https://www.instagram.com/catolicodigitalorg/", handle: "@catolicodigitalorg" } as const;

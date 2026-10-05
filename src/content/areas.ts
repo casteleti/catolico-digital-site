@@ -52,15 +52,15 @@ export const AREAS: Area[] = [
     lead: "Missas, orações e confissões, com o horário certo.",
     headline: "Missas, orações e confissões com o horário certo, sempre.",
     intro:
-      "O que o fiel mais procura é quando e onde. Cada horário é cadastrado uma vez e aparece certo no site, inclusive nas solenidades e nos dias especiais.",
+      "O que o fiel mais procura é quando e onde. Cada\u00A0horário é cadastrado uma vez e aparece certo no site, inclusive nas solenidades e nos dias especiais.",
     items: [
       {
         id: "horarios-de-missas",
         label: "Horários de Missas",
         icon: "clock",
         menu: "O horário certo de cada missa, inclusive no Natal e nas solenidades.",
-        headline: "Que horas é a missa? A resposta precisa ser uma só.",
-        text: "Cada missa é cadastrada uma vez: dia, horário, comunidade, celebrante e observações. Quando o horário muda num dia especial, o site mostra o horário certo daquele dia, sem ninguém editar página por página.",
+        headline: "Que horas é a missa? A\u00A0resposta precisa ser uma só.",
+        text: "Cada missa é cadastrada uma vez: dia, horário, comunidade, celebrante e observações. Quando\u00A0o horário muda num dia especial, o site mostra o horário certo daquele dia, sem ninguém editar página por página.",
         points: [
           "Exceções de data: “24/12 às 20h em vez de 19h”",
           "Missa da capela com endereço e “Como chegar”",
@@ -84,7 +84,7 @@ export const AREAS: Area[] = [
         icon: "flame",
         menu: "A adoração ao Santíssimo e o terço da comunidade, com dia, hora e local.",
         headline: "A adoração e o terço da comunidade, com dia e hora certos.",
-        text: "A adoração ao Santíssimo entra com a periodicidade real, como “primeira quinta do mês”. O terço semanal e os outros momentos de oração entram na agenda como eventos que se repetem, e o fiel confere tudo pelo celular.",
+        text: "A adoração ao Santíssimo entra com a periodicidade real, como “primeira quinta do mês”. O\u00A0terço semanal e os outros momentos de oração entram na agenda como eventos que se repetem, e o fiel confere tudo pelo celular.",
         points: [
           "Periodicidade real: “primeira quinta do mês”",
           "Terço semanal como evento que se repete: “toda terça, 20h”",
@@ -107,7 +107,7 @@ export const AREAS: Area[] = [
         icon: "calendar-range",
         menu: "Cada dia da novena ou do tríduo na agenda, e fora do ar quando terminar.",
         headline: "Cada dia da novena na agenda, e fora do ar quando terminar.",
-        text: "A novena do padroeiro ou o tríduo da festa entram na agenda com as datas e os horários. O site mostra o que vem pela frente e tira da página inicial o que já passou, sem ninguém precisar lembrar.",
+        text: "A novena do padroeiro ou o tríduo da festa entram na agenda com as datas e os horários. O\u00A0site mostra o que vem pela frente e tira da página inicial o que já passou, sem ninguém precisar lembrar.",
         points: [
           "Novena é um tipo de evento da agenda",
           "Destaque na página inicial, se a paróquia quiser",
@@ -127,8 +127,8 @@ export const AREAS: Area[] = [
         label: "Horários de Confissões",
         icon: "heart",
         menu: "Quem quer se confessar sabe o dia, a hora e se precisa marcar.",
-        headline: "Quando tem confissão? Precisa marcar?",
-        text: "Os horários de confissão ficam por dia, local e sacerdote. Quando for preciso agendar, o aviso aparece junto, e a secretaria para de responder a mesma pergunta ao telefone.",
+        headline: "Quando tem confissão? Precisa\u00A0marcar?",
+        text: "Os horários de confissão ficam por dia, local e sacerdote. Quando\u00A0for preciso agendar, o aviso aparece junto, e a secretaria para de responder a mesma pergunta ao telefone.",
         points: [
           "Dia, local e sacerdote em cada horário",
           "Aviso “exige agendamento” quando for o caso",
@@ -153,7 +153,7 @@ export const AREAS: Area[] = [
     lead: "Comunidades, pastorais, catequese e sacramentos.",
     headline: "Comunidades, pastorais, catequese e sacramentos num lugar só.",
     intro:
-      "A vida da paróquia acontece em muitos grupos. Cada um ganha o seu espaço no site, e cada responsável, o seu próprio acesso.",
+      "A vida da paróquia acontece em muitos grupos. Cada\u00A0um ganha o seu espaço no site, e cada responsável, o seu próprio acesso.",
     items: [
       {
         id: "comunidades-e-capelas",
@@ -161,7 +161,7 @@ export const AREAS: Area[] = [
         icon: "map",
         menu: "Uma paróquia, várias comunidades, cada uma com seus horários.",
         headline: "Uma paróquia, várias comunidades, cada uma com seus horários.",
-        text: "Cada comunidade ganha nome, endereço, foto, horários próprios e o botão “Como chegar”. Missas e eventos pertencem à comunidade e aparecem na página dela e na da paróquia.",
+        text: "Cada comunidade ganha nome, endereço, foto, horários próprios e o botão “Como chegar”. Missas\u00A0e eventos pertencem à comunidade e aparecem na página dela e na da paróquia.",
         points: [
           "Endereço, foto e “Como chegar” em cada capela",
           "Missas e eventos na página da comunidade e na da paróquia",
@@ -173,7 +173,7 @@ export const AREAS: Area[] = [
           rows: [
             { icon: "church", text: "Matriz São José", tag: "Centro" },
             { icon: "map", text: "Capela São Benedito", tag: "Vila Nova" },
-            { icon: "map", text: "Capela N. Sra. Aparecida", tag: "Jardim" },
+            { icon: "map", text: "Capela N. Sra.\u00A0Aparecida", tag: "Jardim" },
           ],
           chips: ["Como chegar", "Horários próprios"],
         },
@@ -183,9 +183,9 @@ export const AREAS: Area[] = [
         id: "pastorais-e-ministerios",
         label: "Gestão de Pastorais e Ministérios",
         icon: "users",
-        menu: "Cem grupos, um só lugar. Cada coordenador cuida da sua equipe.",
+        menu: "Cem grupos, um só lugar. Cada\u00A0coordenador cuida da sua equipe.",
         headline: "Cada pastoral com a sua equipe, e cada coordenador com o próprio acesso.",
-        text: "A paróquia ativa os grupos que tem num catálogo de cerca de cem pastorais, movimentos e ministérios. Informa o coordenador e o e-mail, e o convite de acesso sai junto. Cada coordenador vê e edita só a própria equipe.",
+        text: "A paróquia ativa os grupos que tem num catálogo de cerca de cem pastorais, movimentos e ministérios. Informa\u00A0o coordenador e o e-mail, e o convite de acesso sai junto. Cada\u00A0coordenador vê e edita só a própria equipe.",
         points: [
           "Equipe com nome, contato, função e desde quando serve",
           "Página pública: o que faz, quando se reúne, como participar",
@@ -197,7 +197,7 @@ export const AREAS: Area[] = [
           rows: [
             { icon: "users", text: "Ministério de Música", tag: "14 pessoas" },
             { icon: "users", text: "MESCE", tag: "9 pessoas" },
-            { icon: "book", text: "Turma Euc. 1 · sábado, 9h", tag: "18 crianças" },
+            { icon: "book", text: "Turma Euc. 1\u00A0· sábado, 9h", tag: "18 crianças" },
           ],
           chips: ["Um login só", "Só o que você coordena"],
         },
@@ -209,7 +209,7 @@ export const AREAS: Area[] = [
         icon: "book",
         menu: "A catequese da sua paróquia, sem fila em fevereiro.",
         headline: "Como, quando e onde inscrever meu filho na catequese?",
-        text: "Os pais inscrevem pelo celular, uma pergunta por tela. Pela idade, o sistema sugere o ano e mostra os horários com vaga. As turmas ficam numa grade da semana, e o catequista faz a chamada no celular.",
+        text: "Os pais inscrevem pelo celular, uma pergunta por tela. Pela\u00A0idade, o sistema sugere o ano e mostra os horários com vaga. As\u00A0turmas ficam numa grade da semana, e o catequista faz a chamada no celular.",
         points: [
           "Rematrícula reconhecida pelo celular do responsável",
           "Lista de espera quando a turma lota",
@@ -232,8 +232,8 @@ export const AREAS: Area[] = [
         label: "Sacramentos",
         icon: "church",
         menu: "Cada pedido de sacramento chega completo, com os documentos.",
-        headline: "Queremos nos casar. Quero batizar meu filho. Por onde começar?",
-        text: "Cada sacramento ganha uma página com quem pode pedir, documentos, preparação, datas e contato. O pedido chega pelo site, com a autorização de dados, ou pelo botão do WhatsApp, como a paróquia preferir.",
+        headline: "Queremos nos casar. Quero\u00A0batizar meu filho. Por\u00A0onde começar?",
+        text: "Cada sacramento ganha uma página com quem pode pedir, documentos, preparação, datas e contato. O\u00A0pedido chega pelo site, com a autorização de dados, ou pelo botão do WhatsApp, como a paróquia preferir.",
         points: [
           "Observação em destaque: “procure com seis meses de antecedência”",
           "Documentos por foto ou PDF, guardados em local privado",
@@ -260,15 +260,15 @@ export const AREAS: Area[] = [
     lead: "Agenda, reuniões, notícias e campanhas.",
     headline: "A paróquia informada, sem depender do grupo de WhatsApp.",
     intro:
-      "Agenda, reuniões, notícias e campanhas com data para entrar e para sair do ar. O WhatsApp e o Instagram continuam espalhando; o site é onde a informação oficial mora.",
+      "Agenda, reuniões, notícias e campanhas com data para entrar e para sair do ar. O\u00A0WhatsApp e o Instagram continuam espalhando; o site é onde a informação oficial mora.",
     items: [
       {
         id: "agenda-semanal",
         label: "Agenda Semanal",
         icon: "bell",
-        menu: "O aviso some sozinho na data certa. A agenda nunca fica velha.",
+        menu: "O aviso some sozinho na data certa. A\u00A0agenda nunca fica velha.",
         headline: "O que acontece na paróquia nesta semana?",
-        text: "A secretaria cadastra cada evento uma vez, do jeito que ele se repete, e o site monta a programação sozinho. O aviso da quermesse sai da página inicial no dia seguinte à festa, sem ninguém precisar lembrar.",
+        text: "A secretaria cadastra cada evento uma vez, do jeito que ele se repete, e o site monta a programação sozinho. O\u00A0aviso da quermesse sai da página inicial no dia seguinte à festa, sem ninguém precisar lembrar.",
         points: [
           "Eventos que se repetem: “toda terça, 20h”, “primeira quinta do mês”",
           "Avisos com data para sair do ar",
@@ -291,8 +291,8 @@ export const AREAS: Area[] = [
         label: "Reuniões",
         icon: "users",
         menu: "As reuniões das pastorais e dos conselhos na agenda, com dia, hora e local.",
-        headline: "A reunião é hoje? Onde vai ser?",
-        text: "Reunião é um tipo de evento da agenda. A reunião da pastoral ou do conselho entra uma vez, com a recorrência real, e quem participa confere no celular quando e onde vai ser, inclusive quando muda de lugar numa semana.",
+        headline: "A reunião é hoje? Onde\u00A0vai ser?",
+        text: "Reunião é um tipo de evento da agenda. A\u00A0reunião da pastoral ou do conselho entra uma vez, com a recorrência real, e quem participa confere no celular quando e onde vai ser, inclusive quando muda de lugar numa semana.",
         points: [
           "Recorrência real: “toda segunda, 20h”",
           "Exceção pontual sem refazer o cadastro",
@@ -315,7 +315,7 @@ export const AREAS: Area[] = [
         icon: "newspaper",
         menu: "A notícia da paróquia, escrita pela paróquia, com data para publicar.",
         headline: "A notícia da paróquia, escrita pela paróquia, com data para publicar.",
-        text: "A PASCOM escreve com título, resumo, autor e categoria, e agenda a publicação. Cada notícia ganha endereço próprio, bom para o Google e para compartilhar, em vez de sumir no grupo do WhatsApp em dois dias.",
+        text: "A PASCOM escreve com título, resumo, autor e categoria, e agenda a publicação. Cada\u00A0notícia ganha endereço próprio, bom para o Google e para compartilhar, em vez de sumir no grupo do WhatsApp em dois dias.",
         points: [
           "Rascunho, agendado, publicado, arquivado: nada some por engano",
           "Endereço próprio para cada notícia",
@@ -336,7 +336,7 @@ export const AREAS: Area[] = [
         icon: "megaphone",
         menu: "Uma seção própria no site para a campanha da reforma ou a festa do padroeiro.",
         headline: "A campanha da paróquia com uma seção própria no site.",
-        text: "Para a campanha da reforma ou a festa do padroeiro, a paróquia monta uma seção por blocos: texto, cards, lista, vídeo e documentos. Escolhe em que lugar da página inicial ela aparece e tira quando a campanha acabar.",
+        text: "Para a campanha da reforma ou a festa do padroeiro, a paróquia monta uma seção por blocos: texto, cards, lista, vídeo e documentos. Escolhe\u00A0em que lugar da página inicial ela aparece e tira quando a campanha acabar.",
         points: [
           "Blocos de texto, cards, lista, vídeo e documentos",
           "A paróquia escolhe a ordem da página inicial",
@@ -362,7 +362,7 @@ export const AREAS: Area[] = [
     lead: "Dízimo, coordenadores, inscrições e o site.",
     headline: "O dízimo, a equipe, as inscrições e o site nas mãos da paróquia.",
     intro:
-      "Ferramentas para quem cuida da paróquia por trás do balcão, sem precisar entender de tecnologia. Cada pessoa com o seu acesso, e tudo registrado.",
+      "Ferramentas para quem cuida da paróquia por trás do balcão, sem precisar entender de tecnologia. Cada\u00A0pessoa com o seu acesso, e tudo registrado.",
     items: [
       {
         id: "dizimo",
@@ -370,7 +370,7 @@ export const AREAS: Area[] = [
         icon: "hand-heart",
         menu: "Quem quer partilhar acha a chave certa em segundos.",
         headline: "Como posso contribuir com o dízimo da minha paróquia?",
-        text: "A paróquia informa a chave PIX, o QR Code, o nome de quem recebe e o banco. O fiel copia a chave ou lê o QR Code no fim da missa, e o dinheiro vai direto para a conta da paróquia.",
+        text: "A paróquia informa a chave PIX, o QR Code, o nome de quem recebe e o banco. O\u00A0fiel copia a chave ou lê o QR Code no fim da missa, e o dinheiro vai direto para a conta da paróquia.",
         points: ["QR Code e “copia e cola”", "Sem intermediário e sem taxa", "Só a administração altera a chave, com registro"],
         ask: "Qual é a chave PIX da paróquia?",
         screen: {
@@ -388,13 +388,13 @@ export const AREAS: Area[] = [
         icon: "shield",
         menu: "Cada coordenador convidado por e-mail, vendo só a própria equipe ou turma.",
         headline: "Cada coordenador com o seu acesso, e tudo registrado.",
-        text: "O coordenador recebe o convite por e-mail e entra com o próprio login. Vê e edita só a própria equipe ou turma. Quando sai, o acesso é revogado na hora, e o histórico mostra quem mudou o quê.",
+        text: "O coordenador recebe o convite por e-mail e entra com o próprio login. Vê\u00A0e edita só a própria equipe ou turma. Quando\u00A0sai, o acesso é revogado na hora, e o histórico mostra quem mudou o quê.",
         points: [
           "Papéis prontos: administração, secretaria, comunicação, pároco e coordenação",
           "Convite por e-mail; acesso revogado na hora",
           "Histórico de alterações com o valor anterior",
         ],
-        ask: "O padre novo chegou. Como ele entra no site?",
+        ask: "O padre novo chegou. Como\u00A0ele entra no site?",
         screen: {
           kicker: "Equipe da paróquia",
           rows: [
@@ -412,7 +412,7 @@ export const AREAS: Area[] = [
         icon: "book",
         menu: "Os pais inscrevem pelo celular; a secretaria confere e confirma.",
         headline: "As inscrições chegam prontas para a secretaria conferir.",
-        text: "A inscrição feita pelos pais chega com os dados, a turma escolhida e os documentos por foto, pelo link que só a família tem. A secretaria confere, pede para refazer o que veio ilegível ou anexa o papel entregue no balcão.",
+        text: "A inscrição feita pelos pais chega com os dados, a turma escolhida e os documentos por foto, pelo link que só a família tem. A\u00A0secretaria confere, pede para refazer o que veio ilegível ou anexa o papel entregue no balcão.",
         points: [
           "Documentos por foto, pelo link da família",
           "Inscrição no balcão para quem não tem celular",
@@ -436,13 +436,13 @@ export const AREAS: Area[] = [
         icon: "globe",
         menu: "A secretaria muda uma vez e o site mostra certo em todo lugar.",
         headline: "A secretaria muda uma vez, e o site mostra certo em todo lugar.",
-        text: "Cada informação da paróquia é cadastrada uma vez. Quando o horário muda, muda na página da missa, na da comunidade e na página inicial ao mesmo tempo. O painel fala a língua da paróquia: missa, aviso, turma, pastoral.",
+        text: "Cada informação da paróquia é cadastrada uma vez. Quando\u00A0o horário muda, muda na página da missa, na da comunidade e na página inicial ao mesmo tempo. O\u00A0painel fala a língua da paróquia: missa, aviso, turma, pastoral.",
         points: [
           "Seis temas de cor, brasão e fotos da paróquia",
           "Página inicial montável: quais seções e em que ordem",
           "Rápido no celular e achado no Google",
         ],
-        ask: "Mudou o horário da missa. Quem atualiza o site?",
+        ask: "Mudou o horário da missa. Quem\u00A0atualiza o site?",
         screen: {
           kicker: "Painel · Missas",
           title: "Domingo: 19h → 19h30",
