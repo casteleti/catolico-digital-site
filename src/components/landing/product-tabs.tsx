@@ -74,17 +74,17 @@ export function ProductTabs() {
               </div>
             </div>
             <div className="product-tabs__copy profile-copy">
-              <h3>Quem abre o site da paróquia quase sempre procura uma resposta rápida.</h3>
+              <h3>Quem abre o site da paróquia quase sempre procura uma resposta&nbsp;rápida.</h3>
               <ul className="profile-check-list"><li><Check aria-hidden="true" size={18} /> A próxima missa logo na primeira tela</li><li><Check aria-hidden="true" size={18} /> Como chegar à igreja ou à capela</li><li><Check aria-hidden="true" size={18} /> Falar com a secretaria pelo WhatsApp</li><li><Check aria-hidden="true" size={18} /> O que levar para o batismo</li></ul>
-              <p className="profile-copy__note">E quem procura &quot;missa domingo&quot; com o nome da cidade no Google encontra páginas organizadas, com horários e endereço fáceis de entender.</p>
+              <p className="profile-copy__note">E quem procura &quot;missa domingo&quot; com o nome da cidade no Google encontra páginas organizadas, com horários e endereço fáceis de&nbsp;entender.</p>
             </div>
           </>
         ) : (
           <>
             <div className="product-tabs__mockup product-tabs__mockup--admin admin-preview" aria-hidden="true"><div className="mockup-toolbar"><span /><span /><span /></div><div className="admin-preview__content"><span /><span /><span /><span /></div></div>
             <div className="product-tabs__copy profile-copy">
-              <h3>Feito para quem cuida da paróquia, não para quem entende de tecnologia.</h3>
-              <ul className="admin-feature-list"><li><strong>Palavras do dia a dia.</strong> Missa, aviso, pastoral. Nada&nbsp;de termos técnicos.</li><li><strong>Tudo em um só painel.</strong> Horários, avisos, pastorais e eventos organizados no mesmo lugar.</li></ul>
+              <h3>Feito para quem cuida da paróquia, não para quem entende de&nbsp;tecnologia.</h3>
+              <ul className="admin-feature-list"><li><strong>Palavras do dia a&nbsp;dia.</strong> Missa, aviso, pastoral. Nada&nbsp;de termos&nbsp;técnicos.</li><li><strong>Tudo em um só&nbsp;painel.</strong> Horários, avisos, pastorais e eventos organizados no mesmo&nbsp;lugar.</li></ul>
             </div>
           </>
         )}

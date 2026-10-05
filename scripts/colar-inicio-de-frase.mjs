@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * Regra de tipografia do site (Renato, 05/10/2026): quando uma frase começa no meio de um título ou parágrafo, a
+ * Regras de tipografia do site (Renato, 05/10/2026). (1) Quando uma frase começa no meio de um título ou parágrafo, a
  * primeira palavra dela nunca fica sozinha no fim da linha ("Que horas é a missa? A / resposta…"). Para isso, a
- * primeira palavra de cada frase nova é colada à segunda por um espaço que não quebra (U+00A0).
+ * primeira palavra de cada frase nova é colada à segunda por um espaço que não quebra (U+00A0). (2) Sem viúvas: a
+ * última palavra de um texto fica presa à penúltima, para nunca sobrar sozinha na última linha.
  *
  * O script percorre src/ e aplica a regra no texto que aparece na tela:
  *   - texto de JSX entre tags (>…<): usa &nbsp;
@@ -27,8 +28,12 @@ function files(dir) {
   });
 }
 
+// Viúva: a última palavra de um texto que termina em pontuação fica presa à anterior. Não mexe se a última
+// "palavra" já tem um espaço que não quebra (idempotente).
+const WIDOW = / ([^\s\\&<>{}"]+[.?!…:]["”’)]?)$/;
+
 function glue(text, nbsp) {
-  return text.replace(SENTENCE, (_, end, space, word) => `${end}${space}${word}${nbsp}`);
+  return text.replace(SENTENCE, (_, end, space, word) => `${end}${space}${word}${nbsp}`).replace(WIDOW, `${nbsp}$1`);
 }
 
 /** Troca o conteúdo das strings em aspas duplas (fora de comentário, template e atributo JSX). */
@@ -66,7 +71,7 @@ for (const path of files(ROOT)) {
   if (path.endsWith(".tsx")) {
     // Texto de JSX entre duas tags, sem expressões no meio.
     // Só depois de uma tag de verdade (<p>, </strong>, <>…), para não pegar ternário ou "=>" do código.
-    out = out.replace(/(<\/?[A-Za-z][\w.:-]*(?:\s[^<>]*)?>|<>)([^<>{}]*[.?!…] [^<>{}]*)(?=<)/g, (m, tag, text) => `${tag}${glue(text, "&nbsp;")}`);
+    out = out.replace(/(<\/?[A-Za-z][\w.:-]*(?:\s[^<>]*)?>|<>)([^<>{}]* [^<>{}]*[.?!…:]["”’)]?\s*)(?=<)/g, (m, tag, text) => `${tag}${glue(text, "&nbsp;")}`);
   }
   out = glueStrings(out);
   if (out !== source) {

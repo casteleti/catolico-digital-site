@@ -31,8 +31,8 @@ export function ContactForm() {
     return (
       <div className="form-success" role="status" aria-live="polite">
         <CheckCircle2 aria-hidden="true" size={30} />
-        <h3>Mensagem recebida. Obrigado!</h3>
-        <p>A equipe do Católico Digital responde pelo e-mail informado.</p>
+        <h3>Mensagem recebida.&nbsp;Obrigado!</h3>
+        <p>A equipe do Católico Digital responde pelo e-mail&nbsp;informado.</p>
       </div>
     );
   }
@@ -65,8 +65,8 @@ export function ContactForm() {
       <button className="button button--brand form-submit" type="submit" disabled={status === "loading"}>
         {status === "loading" ? <LoaderCircle className="spin" aria-hidden="true" size={18} /> : null} {status === "loading" ? "Enviando…" : "Enviar mensagem"}
       </button>
-      {status === "inactive" ? <p className="form-alert" role="alert">O envio pelo site ainda está sendo ativado. Sua&nbsp;mensagem não foi enviada.</p> : null}
-      {status === "error" ? <p className="form-alert" role="alert">Não foi possível enviar agora. Confira&nbsp;os campos e tente de novo em instantes.</p> : null}
+      {status === "inactive" ? <p className="form-alert" role="alert">O envio pelo site ainda está sendo ativado. Sua&nbsp;mensagem não foi&nbsp;enviada.</p> : null}
+      {status === "error" ? <p className="form-alert" role="alert">Não foi possível enviar agora. Confira&nbsp;os campos e tente de novo em&nbsp;instantes.</p> : null}
     </form>
   );
 }

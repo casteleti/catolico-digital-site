@@ -50,7 +50,7 @@ export default async function ModuloPage({ params }: Params) {
 
       <section className="section section--white" aria-labelledby="does-title">
         <Container className="module-layout">
-          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2>{m.lead ? <p>{m.pain}</p> : null}<p>Tudo o que está aqui existe no sistema. O&nbsp;que ainda está em construção aparece marcado como “em preparação”.</p></div>
+          <div className="section-heading section-heading--compact"><p className="eyebrow">O que faz hoje</p><h2 id="does-title">Sem promessa: o que o módulo {m.short} já faz.</h2>{m.lead ? <p>{m.pain}</p> : null}<p>Tudo o que está aqui existe no sistema. O&nbsp;que ainda está em construção aparece marcado como “em&nbsp;preparação”.</p></div>
           <ul className="does-list">
             {m.does.map((item) => (
               <li key={item}><Check aria-hidden="true" size={18} /><span>{item}</span></li>
@@ -73,7 +73,7 @@ export default async function ModuloPage({ params }: Params) {
             {m.roles.includes("fieis") ? (
               <div className="role-card role-card--static">
                 <span className="role-card__menu">Para os fiéis</span>
-                <p>É a parte que a comunidade vê: no celular, pelo link do WhatsApp, sem baixar nada.</p>
+                <p>É a parte que a comunidade vê: no celular, pelo link do WhatsApp, sem baixar&nbsp;nada.</p>
               </div>
             ) : null}
           </div>
@@ -100,7 +100,7 @@ export default async function ModuloPage({ params }: Params) {
 
       <section className="final-cta section section--night" aria-labelledby="module-cta">
         <div className="final-cta__pattern" aria-hidden="true" />
-        <Container className="narrow-center"><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="module-cta">Experimente na sua paróquia, em 5 minutos.</h2><p>Monte o site da sua paróquia em 5 minutos e ligue o que fizer sentido. {CTA.note}</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/modulos">Ver todos os módulos <span aria-hidden="true">→</span></Link></div></Container>
+        <Container className="narrow-center"><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="module-cta">Experimente na sua paróquia, em 5&nbsp;minutos.</h2><p>Monte o site da sua paróquia em 5 minutos e ligue o que fizer sentido. {CTA.note}</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/modulos">Ver todos os módulos <span aria-hidden="true">→</span></Link></div></Container>
       </section>
     </main>
   );

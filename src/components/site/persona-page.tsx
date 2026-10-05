@@ -49,7 +49,6 @@ export function PersonaPage({ persona }: { persona: Persona }) {
         <Container className="role-hero">
           <div>
             <p className="eyebrow eyebrow--light">{persona.eyebrow}</p>
-            <blockquote className="page-hero__quote">{persona.quote}</blockquote>
             <h1 id="persona-title">{persona.title}</h1>
             <p className="hero-copy hero-copy--light">{persona.lead}</p>
             <div className="hero__actions">

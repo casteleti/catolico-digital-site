@@ -24,11 +24,11 @@ const SIDEBAR_LABELS: Record<(typeof SIDEBAR)[number], string> = { book: "Catequ
 
 type PhoneScreen = { kicker: string; question: React.ReactNode; options: [string, string]; progress: number };
 const PHONE: PhoneScreen[] = [
-  { kicker: "Catequizando · 4 de 9", question: <>Pela idade, Ana entra em <b>Eucaristia 1</b>. Confere?</>, options: ["Sim, confere", "Prefiro escolher o ano"], progress: 44 },
-  { kicker: "Horário · 6 de 9", question: <>Sábado, <b>9h</b>, no Centro Catequético. Restam&nbsp;3 vagas.</>, options: ["Quero esta turma", "Ver outro horário"], progress: 66 },
-  { kicker: "Documentos · 8 de 9", question: <>Certidão de batismo: <b>tirar uma foto</b> agora?</>, options: ["Tirar foto", "Entrego na secretaria"], progress: 88 },
-  { kicker: "Batismo · pedido", question: <>Qual a <b>data</b> que a família prefere para o batismo?</>, options: ["Domingo, 14/03", "Outra data"], progress: 30 },
-  { kicker: "Dízimo", question: <>Chave PIX da paróquia: <b>copiar</b> ou ler o QR Code?</>, options: ["Copiar chave", "Mostrar QR Code"], progress: 100 },
+  { kicker: "Catequizando · 4 de 9", question: <>Pela idade, Ana entra em <b>Eucaristia 1</b>.&nbsp;Confere?</>, options: ["Sim, confere", "Prefiro escolher o ano"], progress: 44 },
+  { kicker: "Horário · 6 de 9", question: <>Sábado, <b>9h</b>, no Centro Catequético. Restam&nbsp;3&nbsp;vagas.</>, options: ["Quero esta turma", "Ver outro horário"], progress: 66 },
+  { kicker: "Documentos · 8 de 9", question: <>Certidão de batismo: <b>tirar uma foto</b>&nbsp;agora?</>, options: ["Tirar foto", "Entrego na secretaria"], progress: 88 },
+  { kicker: "Batismo · pedido", question: <>Qual a <b>data</b> que a família prefere para o&nbsp;batismo?</>, options: ["Domingo, 14/03", "Outra data"], progress: 30 },
+  { kicker: "Dízimo", question: <>Chave PIX da paróquia: <b>copiar</b> ou ler o QR&nbsp;Code?</>, options: ["Copiar chave", "Mostrar QR Code"], progress: 100 },
 ];
 
 type Alert = { icon: string; label: string; strong: string; kind?: "doc" };

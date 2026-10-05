@@ -37,10 +37,10 @@ export const NAVIGATION: NavItem[] = [
         // Título + uma linha curta (pedido de 05/10/2026). "Coordenadores" leva à página de quem coordena uma pastoral;
         // a página da coordenação da catequese continua no ar em /para/catequese.
         links: [
-          { label: "Para o Pároco", href: "/para/paroco", icon: "church", description: "A paróquia inteira à vista, com cada acesso registrado." },
-          { label: "Para a Secretária", href: "/para/secretaria", icon: "inbox", description: "Inscrições e pedidos chegam prontos, sem fila no balcão." },
-          { label: "Para os Coordenadores", href: "/para/pastorais", icon: "users", description: "A sua equipe e as suas turmas, com o seu próprio login." },
-          { label: "Para a PASCOM", href: "/para/pascom", icon: "megaphone", description: "Horários, avisos e notícias certos em todo lugar." },
+          { label: "Para o Pároco", href: "/para/paroco", icon: "church", description: "A paróquia inteira à vista, com cada acesso\u00A0registrado." },
+          { label: "Para a Secretária", href: "/para/secretaria", icon: "inbox", description: "Inscrições e pedidos chegam prontos, sem fila no\u00A0balcão." },
+          { label: "Para os Coordenadores", href: "/para/pastorais", icon: "users", description: "A sua equipe e as suas turmas, com o seu próprio\u00A0login." },
+          { label: "Para a PASCOM", href: "/para/pascom", icon: "megaphone", description: "Horários, avisos e notícias certos em todo\u00A0lugar." },
         ],
       },
     ],

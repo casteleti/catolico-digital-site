@@ -4,10 +4,10 @@ import { CalendarDays, Church, Newspaper, Settings2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const scenes = [
-  [Church, "Tudo começa com uma informação", "A homepage organiza o que a comunidade precisa encontrar primeiro."],
-  [CalendarDays, "A agenda ganha clareza", "Celebrações e eventos passam a ter um lugar simples de consultar."],
-  [Newspaper, "A comunicação continua viva", "Notícias e avisos deixam de depender de um único canal."],
-  [Settings2, "A paróquia segue no controle", "A atualização diária cabe na rotina de quem administra."],
+  [Church, "Tudo começa com uma informação", "A homepage organiza o que a comunidade precisa encontrar\u00A0primeiro."],
+  [CalendarDays, "A agenda ganha clareza", "Celebrações e eventos passam a ter um lugar simples de\u00A0consultar."],
+  [Newspaper, "A comunicação continua viva", "Notícias e avisos deixam de depender de um único\u00A0canal."],
+  [Settings2, "A paróquia segue no controle", "A atualização diária cabe na rotina de quem\u00A0administra."],
 ] as const;
 
 export function ProductScrollStory() {

@@ -15,6 +15,6 @@ export function PremiumLayers() {
   }, []);
 
   return <>
-    {product && createPortal(<section className="product-story-enhancement section section--night" aria-labelledby="story-title"><div className="container"><div className="section-heading section-heading--light"><p className="eyebrow eyebrow--light">Veja a solução acontecer</p><h2 id="story-title">Uma presença digital que se organiza enquanto você acompanha.</h2></div><ProductScrollStory /></div></section>, product)}
+    {product && createPortal(<section className="product-story-enhancement section section--night" aria-labelledby="story-title"><div className="container"><div className="section-heading section-heading--light"><p className="eyebrow eyebrow--light">Veja a solução acontecer</p><h2 id="story-title">Uma presença digital que se organiza enquanto você&nbsp;acompanha.</h2></div><ProductScrollStory /></div></section>, product)}
   </>;
 }

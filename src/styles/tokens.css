@@ -1,7 +1,7 @@
 :root {
   --brand-blue: #0a1f5c;
   --brand-purple: #735290;
-  --brand-rose: #a35069;
+  --brand-rose: #c41876;
   --brand-wine: #762a43;
   --brand-brown: #733f30;
   --surface-page: #f5f5f5;
@@ -9,8 +9,8 @@
   --text-primary: #222222;
   --text-secondary: #5c5c5c;
   --border-subtle: rgb(34 34 34 / 8%);
-  --action-rose: #a35069;
-  --action-rose-hover: #762a43;
+  --action-rose: #c41876;
+  --action-rose-hover: #a3105f;
   --text-hero: clamp(3.5rem, 4.5vw, 5rem);
   --text-hero-tablet: clamp(3rem, 5.6vw, 3.625rem);
   --text-hero-mobile: clamp(2.55rem, 11vw, 3.5rem);
@@ -35,15 +35,15 @@
   --color-brand-50: #f1f3f7;
 
   --color-purple: #735290; /* acento: espiritualidade, categorias */
-  --color-rose: #a35069; /* acento: humano, comunidade */
+  --color-rose: #c41876; /* acento: o pink da marca (desde 05/10/2026, antes #a35069) */
   --color-wine: #762a43; /* acento: solenidade, destaque editorial */
   --color-brown: #733f30;
   --color-pink: #c41876; /* o pink do "digital" no logo: vivo — SÓ em detalhes (fios, números, setas, hover), nunca em área grande */ /* acento: tradição, patrimônio (nunca CTA) */
 
-  --color-gold-700: #803e52; /* accent-700 (rosa escurecido) */
-  --color-gold-600: #a35069; /* accent-600 = --color-rose */
-  --color-gold-100: #f5e9ec; /* accent-100 */
-  --color-accent-onbrand: #d09daa; /* rosa claro: texto/linhas sobre --color-brand-800 (contraste 6,7:1) */
+  --color-gold-700: #a3125f; /* accent-700: pink escurecido, para texto sobre fundo claro (7,5:1) */
+  --color-gold-600: #c41876; /* accent-600 = --color-rose = pink da marca */
+  --color-gold-100: #fbe6f0; /* accent-100: pink bem claro */
+  --color-accent-onbrand: #f2639f; /* pink claro: texto/linhas sobre --color-brand-800 (contraste ≥ 4,5:1) */
 
   --color-ivory-50: #ffffff;
   --color-ivory-100: #f5f5f5;
@@ -87,9 +87,9 @@
 
   --shadow-card: 0 1rem 3rem rgb(10 31 92 / 8%);
   --shadow-float: 0 2rem 5rem rgb(10 31 92 / 18%);
-  --shadow-cta: 0 8px 22px rgb(163 80 105 / 22%);
+  --shadow-cta: 0 8px 22px rgb(196 24 118 / 24%);
   --container: 75rem;
-  --focus-ring: 0 0 0 3px rgb(163 80 105 / 55%);
+  --focus-ring: 0 0 0 3px rgb(196 24 118 / 55%);
   --motion-fast: 120ms;
   --motion-normal: 180ms;
   --motion-medium: 280ms;
