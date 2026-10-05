@@ -18,7 +18,7 @@ export function SiteFooter() {
         <div className="site-footer__top">
           <div className="site-footer__brand">
             <Link href="/" aria-label="Católico Digital — início">
-              <BrandMark on="azul" slogan={false} width={190} />
+              <BrandMark lazy on="azul" slogan={false} width={190} />
             </Link>
             <p className="site-footer__note">A paróquia cuida das pessoas. O&nbsp;Católico Digital ajuda a&nbsp;aproximá-las.</p>
             <a className="site-footer__social" href={INSTAGRAM.url} rel="noopener noreferrer" target="_blank">
