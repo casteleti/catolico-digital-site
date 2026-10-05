@@ -4,7 +4,7 @@ import type { Role } from "./modules";
 export type RolePage = {
   slug: Role;
   icon: string;
-  /** Como aparece no menu: "Para o pároco". */
+  /** Como aparece no menu: "Para o Pároco". */
   menu: string;
   title: string;
   /** A frase que a pessoa diria. */
@@ -23,7 +23,7 @@ export const ROLES: RolePage[] = [
     slug: "paroco",
     image: { name: "paroco-gestao-colaborativa", alt: "O pároco no notebook com duas pessoas da equipe, cada uma com o seu acesso ao painel.", width: 1200, height: 1200 },
     icon: "church",
-    menu: "Para o pároco",
+    menu: "Para o Pároco",
     title: "O site é da paróquia, não de quem cuida dele hoje.",
     quote: "“Cheguei na paróquia e ninguém sabe a senha do site.”",
     lead: "Padres são transferidos, secretárias mudam, voluntários trocam de pastoral. A\u00A0estrutura fica, cada pessoa tem o seu acesso e tudo o que muda deixa rastro.",
@@ -39,7 +39,7 @@ export const ROLES: RolePage[] = [
     slug: "secretaria",
     image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho pelo celular enquanto a secretária confere a inscrição no notebook.", width: 1200, height: 1200 },
     icon: "inbox",
-    menu: "Para a secretaria",
+    menu: "Para a Secretária",
     title: "Menos telefone, menos papel, menos\u00A0fila.",
     quote: "“Em fevereiro a fila da catequese dobra a esquina.”",
     lead: "As perguntas repetidas do telefone ficam respondidas no site. A\u00A0inscrição chega pelo celular dos pais, com os documentos. O\u00A0horário muda uma vez e sai certo em todo lugar.",
@@ -55,7 +55,7 @@ export const ROLES: RolePage[] = [
     slug: "catequese",
     image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho na catequese pelo celular enquanto a secretaria confere a inscrição.", width: 1200, height: 1200 },
     icon: "book",
-    menu: "Para a coordenação da catequese",
+    menu: "Para a Coordenação da Catequese",
     title: "Turmas, chamada e famílias num lugar só.",
     quote: "“Planilha de turma, caderno de chamada e um grupo de WhatsApp com duzentos pais.”",
     lead: "O caminho da catequese vem pronto e a paróquia ajusta: anos, idades, turmas e calendário pela Páscoa. O\u00A0catequista faz a chamada no celular e fala com cada família pelo WhatsApp.",
@@ -71,7 +71,7 @@ export const ROLES: RolePage[] = [
     slug: "pastorais",
     image: { name: "coordenadores-equipe", alt: "A coordenadora no notebook, com as pessoas da equipe ligadas ao grupo em volta dela.", width: 1200, height: 1200 },
     icon: "users",
-    menu: "Para quem coordena uma pastoral",
+    menu: "Para os Coordenadores",
     title: "Sua equipe organizada, com o seu próprio acesso.",
     quote: "“Minha equipe está numa lista de papel que só eu entendo.”",
     lead: "Cada grupo da paróquia tem a sua página no site e a sua equipe no painel. O\u00A0coordenador cuida da dele com um login só, sem depender da secretaria.",

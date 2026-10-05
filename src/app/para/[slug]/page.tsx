@@ -11,7 +11,8 @@ import { ROLES, roleBySlug } from "@/content/roles";
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return ROLES.map((r) => ({ slug: r.slug }));
+  // Pároco, Secretária, Coordenadores e PASCOM têm páginas próprias (src/app/para/<slug>); aqui fica só a catequese.
+  return ROLES.filter((r) => r.slug === "catequese").map((r) => ({ slug: r.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
