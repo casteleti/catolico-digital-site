@@ -31,7 +31,7 @@ export type ParishModule = {
   /** O que o módulo faz, de verdade, hoje. */
   does: string[];
   roles: Role[];
-  /** Módulo com página-história própria (as quatro grandes). */
+  /** Um dos quatro módulos de maior peso (Catequese, Sacramentos, Pastorais, Dízimo). */
   featured?: boolean;
 };
 

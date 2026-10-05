@@ -1,4 +1,4 @@
-import { Bell, BookOpen, Church, Clock3, Globe, HandHeart, HeartHandshake, Image as ImageIcon, Inbox, MapPin, Megaphone, Newspaper, ShieldCheck, Users } from "lucide-react";
+import { Bell, BookOpen, CalendarRange, Church, Clock3, Flame, Globe, HandHeart, HeartHandshake, Image as ImageIcon, Inbox, MapPin, Megaphone, Newspaper, ShieldCheck, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = {
@@ -16,6 +16,8 @@ const ICONS: Record<string, LucideIcon> = {
   globe: Globe,
   inbox: Inbox,
   megaphone: Megaphone,
+  "calendar-range": CalendarRange,
+  flame: Flame,
 };
 
 export function ModuleIcon({ name, size = 22 }: { name: string; size?: number }) {

@@ -24,11 +24,11 @@ export function ModulesTable({ compact = false }: { compact?: boolean }) {
               <th colSpan={4} scope="rowgroup"><span>{group.label}</span><em>{group.lead}</em></th>
             </tr>
             {modulesOf(group.key).map((m) => (
-              <tr className={m.featured ? "is-featured" : ""} key={m.slug}>
+              <tr key={m.slug}>
                 <th scope="row">
                   <Link href={`/modulos/${m.slug}`} className="modules-table__name">
                     <span className="modules-table__icon"><ModuleIcon name={m.icon} size={20} /></span>
-                    <span>{m.name}{m.featured ? <small>Página-história</small> : null}</span>
+                    <span>{m.name}</span>
                   </Link>
                 </th>
                 <td data-label="O que resolve">

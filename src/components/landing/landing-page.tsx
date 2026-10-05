@@ -7,62 +7,76 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { HeroShowcase } from "@/components/site/hero-showcase";
 import { LiturgyToday } from "@/components/site/liturgy-today";
 import { ModuleIcon } from "@/components/site/module-icon";
-import { ModulesTable } from "@/components/site/modules-table";
+import { AreasOverview } from "@/components/site/areas-overview";
 import { Container } from "@/components/ui/container";
 import { CTA, ONBOARDING_URL } from "@/content/links";
-import { MODULES } from "@/content/modules";
+import { AREAS } from "@/content/areas";
+
+const AREA_ITEMS = AREAS.flatMap((a) => a.items);
 import { ROLES } from "@/content/roles";
 
 /**
- * Os quatro verbos da vida paroquial: o que a comunidade faz com a paróquia, e como cada módulo-história
- * resolve. Cada um traz a pergunta que chega ao telefone da secretaria e a tela que a responde.
+ * Os cinco recursos da primeira dobra, na ordem em que o Renato pediu (05/10/2026). Cada um traz a pergunta que
+ * chega ao telefone da secretaria e a tela que a responde. Regra de honestidade: só o que existe hoje.
  */
 const verbs: Array<{
   verb: string;
-  module: string;
+  /** A dobra que explica este recurso na página da área. */
+  href: string;
   title: string;
   story: string;
   points: string[];
   ask: string;
-  screen: "enrollment" | "request" | "teams" | "pix";
+  screen: Screen;
 }> = [
   {
-    verb: "Inscrever",
-    module: "catequese",
-    title: "A matrícula da catequese cabe na tela do celular da mãe.",
-    story: "Uma pergunta por vez, à noite, depois do trabalho. Pela idade, o sistema sugere o ano; a turma mostra as vagas; a certidão vai por foto. Na secretaria, a inscrição chega pronta para confirmar.",
+    verb: "Sacramentos",
+    href: "/vida-paroquial#sacramentos",
+    title: "Imagine a facilidade de oferecer o formulário e todas as instruções de cada sacramento.",
+    story: "A página de cada sacramento diz o que levar, quando procurar e como se preparar. O pedido chega com os documentos, e a secretaria vê tudo numa caixa só, com a situação de cada um.",
+    points: ["Observação em destaque: “procure com seis meses de antecedência”", "Documentos por foto ou PDF, guardados em local privado", "Cada pedido com situação e histórico de quem abriu"],
+    ask: "O que preciso levar para o batismo do meu filho?",
+    screen: "request",
+  },
+  {
+    verb: "Catequese",
+    href: "/vida-paroquial#catequese",
+    title: "Inscrição online nas turmas de catequese, gestão dos catequistas e muito mais.",
+    story: "Os pais inscrevem pelo celular, uma pergunta por vez. Pela idade, o sistema sugere o ano; a turma mostra as vagas; a certidão vai por foto. Cada catequista entra com o próprio login, vê a sua turma e faz a chamada.",
     points: ["Rematrícula reconhecida pelo celular do responsável", "Lista de espera sozinha quando a turma lota", "Chamada no celular do catequista"],
     ask: "Tem vaga na catequese para minha filha de 9 anos?",
     screen: "enrollment",
   },
   {
-    verb: "Pedir",
-    module: "sacramentos",
-    title: "Quem procura um batismo ou um casamento encontra a resposta antes de ligar.",
-    story: "A página de cada sacramento diz o que levar, quando procurar e como se preparar. O pedido chega com os documentos, e a secretaria vê tudo numa caixa só, com a situação de cada um.",
-    points: ["Observação em destaque: “procure com seis meses de antecedência”", "Documentos por foto, guardados em local privado", "Cada pedido com situação e histórico de quem abriu"],
-    ask: "O que preciso levar para o batismo do meu filho?",
-    screen: "request",
+    verb: "Dízimo",
+    href: "/administracao#dizimo",
+    title: "Cadastre a chave PIX uma vez e ofereça essa facilidade a quem deseja contribuir.",
+    story: "A paróquia informa a chave, o QR Code, o nome de quem recebe e o banco. O fiel copia a chave ou lê o QR Code no fim da missa, e o dinheiro vai direto para a conta da paróquia.",
+    points: ["QR Code e “copia e cola”", "Sem intermediário e sem taxa", "Só a administração altera a chave, com registro"],
+    ask: "Qual é a chave PIX da paróquia?",
+    screen: "pix",
   },
   {
-    verb: "Servir",
-    module: "pastorais-e-ministerios",
-    title: "Cada coordenador cuida da própria equipe, com o próprio acesso.",
+    verb: "Agenda semanal",
+    href: "/comunicacao#agenda-semanal",
+    title: "A semana da paróquia sempre em dia, e cada aviso sai do ar na data certa.",
+    story: "A secretaria cadastra cada evento uma vez, do jeito que ele se repete, e o site monta a programação sozinho. O aviso da quermesse sai da página inicial no dia seguinte à festa, sem ninguém precisar lembrar.",
+    points: ["Eventos que se repetem: “toda terça, 20h”, “primeira quinta do mês”", "Avisos com data para sair do ar", "Novena, retiro, formação, festa do padroeiro"],
+    ask: "O que tem na paróquia esta semana?",
+    screen: "agenda",
+  },
+  {
+    verb: "Pastorais e Ministérios",
+    href: "/vida-paroquial#pastorais-e-ministerios",
+    title: "Cada pastoral com a sua equipe organizada, e cada coordenador com o próprio acesso.",
     story: "Cem grupos prontos para ativar. O coordenador do Canto cadastra os músicos; a coordenadora da MESCE, os ministros. Um login só, mesmo para quem coordena dois grupos e ainda dá catequese.",
     points: ["Página pública do grupo: o que faz e como participar", "Equipe com nome, função e contato", "Acesso restrito à própria equipe"],
     ask: "Como faço para entrar no Ministério de Música?",
     screen: "teams",
   },
-  {
-    verb: "Partilhar",
-    module: "dizimo",
-    title: "A chave PIX da paróquia a um toque, sem intermediário e sem taxa.",
-    story: "A paróquia cadastra a chave, o QR Code, o nome de quem recebe e o banco. Esse quadro aparece onde houver contribuição: dízimo, taxa da catequese, intenção de missa. O dinheiro vai direto para a conta da paróquia.",
-    points: ["QR Code e “copia e cola”", "Só a administração altera a chave, com registro", "Nenhum pagamento processado por nós"],
-    ask: "Qual é a chave PIX da paróquia?",
-    screen: "pix",
-  },
 ];
+
+type Screen = "enrollment" | "request" | "teams" | "pix" | "agenda";
 
 const securityCards: Array<[typeof Lock, string, string]> = [
   [Lock, "Dado de fé é dado sensível.", "Inscrição na catequese ou pedido de sacramento revela convicção religiosa. Só é guardado com autorização expressa, e o texto aceito fica registrado."],
@@ -75,7 +89,7 @@ const faq: Array<[string, string]> = [
   ["O Católico Digital é só um site?", "Não. O site é a parte que o fiel vê. Por trás dele, a vida da paróquia fica organizada num lugar só: horários, catequese, sacramentos, pastorais, dízimo e avisos. Quando algo muda, muda uma vez."],
   ["A secretaria precisa entender de tecnologia?", "Não. O painel fala a língua da paróquia: missa, aviso, turma, catequizando, pastoral. Foi feito para quem atende o telefone e cuida do balcão."],
   ["Como funciona a inscrição da catequese?", "Os pais inscrevem pelo celular, uma pergunta por tela. Pela data de nascimento o sistema sugere o ano, mostra os horários com vaga e entrega o número da inscrição. Os documentos vão por foto, pelo link da família. Quem não tem celular é inscrito pela secretaria no balcão."],
-  ["E o dízimo? Vocês processam pagamento?", "Não, e isso é de propósito. A paróquia cadastra a chave PIX, o QR Code, o nome de quem recebe e o banco, e esse quadro aparece onde houver contribuição. O dinheiro vai direto para a conta da paróquia, sem intermediário e sem taxa."],
+  ["E o dízimo? Vocês processam pagamento?", "Não, e isso é de propósito. A paróquia cadastra a chave PIX, o QR Code, o nome de quem recebe e o banco na página do dízimo. O dinheiro vai direto para a conta da paróquia, sem intermediário e sem taxa."],
   ["O catequista e o coordenador de pastoral precisam de outro sistema?", "Não. Cada um entra com o próprio login e vê só o que coordena: a turma, a equipe. Quem coordena duas coisas vê as duas no mesmo lugar."],
   ["Funciona com matriz e várias capelas?", "Sim. Cada comunidade tem endereço, horários e eventos próprios, na mesma estrutura. A paróquia pequena usa só a matriz."],
   ["Nossa paróquia já tem site. Dá para trocar?", "Sim. O Católico Digital toma o lugar do site atual e organiza o que hoje está espalhado. A transição é combinada com cada paróquia."],
@@ -85,7 +99,6 @@ const faq: Array<[string, string]> = [
 ];
 
 export function LandingPage() {
-  const featured = MODULES.filter((m) => m.featured);
   return (
     <main id="main-content">
       <ScrollProgress />
@@ -97,14 +110,13 @@ export function LandingPage() {
         <Container className="hero__grid">
           <div className="hero__content">
             <p className="eyebrow eyebrow--light">Plataforma para paróquias</p>
-            <h1 id="hero-title">A paróquia cuida das pessoas. <em className="hl">O Católico Digital ajuda a aproximá-las.</em></h1>
-            <p className="hero-copy hero-copy--light">Horários de missas, catequese, sacramentos e avisos em um só lugar. Sua equipe atualiza com facilidade, e os fiéis encontram o que precisam pelo celular.</p>
+            <h1 id="hero-title">Organize sua paróquia: <em className="hl">horários de missa, dízimo, inscrições nos sacramentos e gestão das pastorais.</em></h1>
+            <p className="hero-copy hero-copy--light">Uma estrutura criada por católicos que vivem o dia a dia de uma comunidade. Facilidade e produtividade para quem serve: pároco, secretaria e coordenadores.</p>
             <div className="hero__actions">
-              <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
-              <Link className="text-link text-link--light" href="#modulos">Ver os {MODULES.length} módulos <span aria-hidden="true">→</span></Link>
+              <a className="button button--gold" href={ONBOARDING_URL}><span>Quero montar o site em 5 minutos</span><span className="button__arrow" aria-hidden="true">→</span></a>
+              <Link className="text-link text-link--light" href="#modulos">Conhecer todos os recursos <span aria-hidden="true">→</span></Link>
             </div>
             <p className="hero-microcopy">{CTA.note}</p>
-            <LiturgyToday />
           </div>
 
           <HeroShowcase />
@@ -113,18 +125,17 @@ export function LandingPage() {
 
       <div className="marquee" aria-hidden="true">
         <div className="marquee__track">
-          {[...MODULES, ...MODULES].map((m, i) => (
-            <span className="marquee__item" key={`${m.slug}-${i}`}><ModuleIcon name={m.icon} size={16} /> {m.short}</span>
+          {[...AREA_ITEMS, ...AREA_ITEMS].map((m, i) => (
+            <span className="marquee__item" key={`${m.id}-${i}`}><ModuleIcon name={m.icon} size={16} /> {m.label}</span>
           ))}
         </div>
       </div>
 
       <section className="section section--ivory" id="verbos" aria-labelledby="verbs-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">O que a comunidade faz com a paróquia</p><h2 id="verbs-title">Inscrever, pedir, servir, partilhar. Agora sem fila, sem papel e sem ligar três vezes.</h2><p>As quatro coisas que mais ocupam a secretaria viram quatro páginas no site e quatro telas no painel. O fiel resolve pelo celular; a secretaria confirma com um toque.</p></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">Uma plataforma para integrar a comunidade</p><h2 id="verbs-title">Conheça os principais recursos que deixam a sua paróquia mais organizada e próxima dos fiéis.</h2><p>Muito mais que um site: uma plataforma para organizar e comunicar os eventos e os serviços da paróquia.</p></Reveal>
           <div className="verb-list">
             {verbs.map((v, i) => {
-              const m = MODULES.find((x) => x.slug === v.module)!;
               return (
                 <Reveal as="article" className={`verb-row ${i % 2 ? "verb-row--flip" : ""}`.trim()} key={v.verb}>
                   <div className="verb-row__copy">
@@ -132,7 +143,7 @@ export function LandingPage() {
                     <h3>{v.title}</h3>
                     <p>{v.story}</p>
                     <ul className="verb-row__points">{v.points.map((pt) => <li key={pt}><Check aria-hidden="true" size={16} /> {pt}</li>)}</ul>
-                    <Link className="text-link" href={`/modulos/${m.slug}`}>Ver o módulo {m.short} <span aria-hidden="true">→</span></Link>
+                    <Link className="text-link" href={v.href}>Saiba mais sobre {v.verb} <span aria-hidden="true">→</span></Link>
                   </div>
                   <div className="verb-row__visual" aria-hidden="true">
                     <div className="ask"><span className="ask__avatar">{v.verb[0]}</span><span className="ask__bubble">{v.ask}</span></div>
@@ -154,22 +165,9 @@ export function LandingPage() {
 
       <section className="section section--cool section--spots" id="modulos" aria-labelledby="modules-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">Os módulos</p><h2 id="modules-title">{MODULES.length} módulos, cada um feito para uma parte da vida da paróquia.</h2><p>A paróquia liga só o que usa. Quatro deles têm uma página inteira contando a história: Catequese, Sacramentos, Pastorais e Dízimo.</p></Reveal>
-          <div className="featured-modules">
-            {featured.map((m, i) => (
-              <Reveal delay={i * 90} key={m.slug}>
-                <Link className="featured-module" href={`/modulos/${m.slug}`}>
-                  <span className="featured-module__num">0{i + 1}</span>
-                  <span className="icon-card__icon"><ModuleIcon name={m.icon} /></span>
-                  <h3>{m.name}</h3>
-                  <p>{m.promise}</p>
-                  <span className="featured-module__go">Ler a história <span aria-hidden="true">→</span></span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={120}><ModulesTable compact /></Reveal>
-          <Reveal className="feature-callout feature-callout--stacked" delay={80}><div><h3>Use só o que fizer sentido.</h3><p>Cada módulo liga e desliga sem apagar nada. A paróquia pequena começa com missas, avisos e contato; a grande liga a catequese, as pastorais e as capelas.</p></div></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">Os recursos</p><h2 id="modules-title">Quatro áreas, dezesseis recursos para a vida da paróquia.</h2><p>Celebrações, vida paroquial, comunicação e administração. Cada área tem uma página que explica o que cada recurso faz, com exemplos de verdade.</p></Reveal>
+          <Reveal delay={120}><AreasOverview /></Reveal>
+          <Reveal className="feature-callout feature-callout--stacked" delay={80}><div><h3>Use só o que fizer sentido.</h3><p>Cada recurso liga e desliga sem apagar nada. A paróquia pequena começa com missas, avisos e contato; a grande liga a catequese, as pastorais e as capelas.</p></div></Reveal>
         </Container>
       </section>
 
@@ -272,14 +270,25 @@ export function LandingPage() {
 
       <section className="final-cta section section--night" id="chamada-final" aria-labelledby="final-title">
         <div className="final-cta__pattern" aria-hidden="true" />
-        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Sua paróquia já faz tudo isso. Só não num lugar só.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div></Reveal></Container>
+        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Sua paróquia já faz tudo isso. Só não num lugar só.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div><LiturgyToday /></Reveal></Container>
       </section>
     </main>
   );
 }
 
 /** Telas desenhadas em CSS para cada verbo (dados fictícios de uma paróquia de exemplo). */
-function VerbScreen({ kind }: { kind: "enrollment" | "request" | "teams" | "pix" }) {
+function VerbScreen({ kind }: { kind: Screen }) {
+  if (kind === "agenda") {
+    return (
+      <div className="vscreen">
+        <p className="vscreen__kicker">Esta semana · Paróquia São José</p>
+        <div className="vscreen__row"><ModuleIcon name="clock" size={16} /><span>Terça · Grupo de oração</span><b>20h</b></div>
+        <div className="vscreen__row"><ModuleIcon name="heart" size={16} /><span>Quinta · Adoração ao Santíssimo</span><b>19h30</b></div>
+        <div className="vscreen__row"><ModuleIcon name="bell" size={16} /><span>Domingo · Quermesse</span><b>16h</b></div>
+        <div className="vscreen__chips"><span className="is-on">Aviso sai do ar na segunda</span><span>Toda terça, 20h</span></div>
+      </div>
+    );
+  }
   if (kind === "enrollment") {
     return (
       <div className="vscreen">

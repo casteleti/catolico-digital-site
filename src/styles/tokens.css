@@ -37,7 +37,8 @@
   --color-purple: #735290; /* acento: espiritualidade, categorias */
   --color-rose: #a35069; /* acento: humano, comunidade */
   --color-wine: #762a43; /* acento: solenidade, destaque editorial */
-  --color-brown: #733f30; /* acento: tradição, patrimônio (nunca CTA) */
+  --color-brown: #733f30;
+  --color-pink: #c41876; /* o pink do "digital" no logo: vivo — SÓ em detalhes (fios, números, setas, hover), nunca em área grande */ /* acento: tradição, patrimônio (nunca CTA) */
 
   --color-gold-700: #803e52; /* accent-700 (rosa escurecido) */
   --color-gold-600: #a35069; /* accent-600 = --color-rose */

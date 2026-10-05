@@ -35,7 +35,7 @@ export default async function ModuloPage({ params }: Params) {
       <section className="hero hero--brand page-hero" aria-labelledby="module-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container>
-          <p className="eyebrow eyebrow--light"><Link href="/modulos">Módulos</Link> · {group.label}</p>
+          <p className="eyebrow eyebrow--light"><Link href="/modulos">Módulos</Link> · <Link href={`/${m.group}`}>{group.label}</Link></p>
           <div className="page-hero__title">
             <span className="page-hero__icon"><ModuleIcon name={m.icon} size={28} /></span>
             <h1 id="module-title">{m.headline ?? m.promise}</h1>
