@@ -63,7 +63,7 @@ export function AreaPage({ areaKey }: { areaKey: AreaKey }) {
         <div className="final-cta__pattern" aria-hidden="true" />
         <Container className="narrow-center">
           <p className="eyebrow eyebrow--light">Católico Digital</p>
-          <h2 id="area-cta">Veja {area.label.toLowerCase()} funcionando na sua paróquia, não numa de exemplo.</h2>
+          <h2 id="area-cta">{area.cta}</h2>
           <p>Monte o site da sua paróquia em 5 minutos e ligue o que fizer sentido. {CTA.note}</p>
           <div className="final-cta__actions">
             <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>

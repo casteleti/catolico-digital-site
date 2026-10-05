@@ -42,6 +42,8 @@ export type Area = {
   lead: string;
   headline: string;
   intro: string;
+  /** Título da chamada no fim da página da área. */
+  cta: string;
   items: AreaItem[];
 };
 
@@ -53,6 +55,7 @@ export const AREAS: Area[] = [
     headline: "Missas, orações e confissões com o horário certo, sempre.",
     intro:
       "O que o fiel mais procura é quando e onde. Cada\u00A0horário é cadastrado uma vez e aparece certo no site, inclusive nas solenidades e nos dias especiais.",
+    cta: "Os horários da sua paróquia, certos no celular de cada fiel.",
     items: [
       {
         id: "horarios-de-missas",
@@ -154,6 +157,7 @@ export const AREAS: Area[] = [
     headline: "Comunidades, pastorais, catequese e sacramentos num lugar só.",
     intro:
       "A vida da paróquia acontece em muitos grupos. Cada\u00A0um ganha o seu espaço no site, e cada responsável, o seu próprio acesso.",
+    cta: "Toda a vida da sua paróquia, organizada num lugar só.",
     items: [
       {
         id: "comunidades-e-capelas",
@@ -261,6 +265,7 @@ export const AREAS: Area[] = [
     headline: "A paróquia informada, sem depender do grupo de WhatsApp.",
     intro:
       "Agenda, reuniões, notícias e campanhas com data para entrar e para sair do ar. O\u00A0WhatsApp e o Instagram continuam espalhando; o site é onde a informação oficial mora.",
+    cta: "A comunidade bem informada, com cada aviso no lugar certo.",
     items: [
       {
         id: "agenda-semanal",
@@ -363,6 +368,7 @@ export const AREAS: Area[] = [
     headline: "O dízimo, a equipe, as inscrições e o site nas mãos da paróquia.",
     intro:
       "Ferramentas para quem cuida da paróquia por trás do balcão, sem precisar entender de tecnologia. Cada\u00A0pessoa com o seu acesso, e tudo registrado.",
+    cta: "Menos balcão e telefone. Mais\u00A0tempo para as pessoas.",
     items: [
       {
         id: "dizimo",
