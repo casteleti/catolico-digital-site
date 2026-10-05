@@ -162,7 +162,7 @@ function usePanelPlacement(open: boolean) {
 }
 
 /** Cor de cada área no painel (mesma ordem de AREAS; a mesma das páginas das áreas). */
-const GROUP_ACCENTS = ["var(--color-purple)", "var(--color-rose)", "var(--color-brand-700)", "var(--color-wine)"];
+const GROUP_ACCENTS = ["var(--area-1)", "var(--area-2)", "var(--area-3)", "var(--area-4)"];
 
 function MegaPanel({ item, open, onNavigate }: { item: Extract<NavItem, { kind: "menu" }>; open: boolean; onNavigate: () => void }) {
   const wide = item.groups.length > 1;

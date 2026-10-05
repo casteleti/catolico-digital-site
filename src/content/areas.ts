@@ -131,7 +131,7 @@ export const AREAS: Area[] = [
         icon: "heart",
         menu: "Quem quer se confessar sabe o dia, a hora e se precisa\u00A0marcar.",
         headline: "Quando tem confissão? Precisa\u00A0marcar?",
-        text: "Os horários de confissão ficam por dia, local e sacerdote. Quando\u00A0for preciso agendar, o aviso aparece junto, e a secretaria para de responder a mesma pergunta ao\u00A0telefone.",
+        text: "Os horários de confissão ficam por dia, local e sacerdote. Quando\u00A0for preciso agendar, o aviso aparece junto, e a secretaria para de responder a mesma pergunta no Direct e no\u00A0WhatsApp.",
         points: [
           "Dia, local e sacerdote em cada horário",
           "Aviso “exige agendamento” quando for o caso",
@@ -211,7 +211,7 @@ export const AREAS: Area[] = [
         id: "catequese",
         label: "Catequese",
         icon: "book",
-        menu: "A catequese da sua paróquia, sem fila em\u00A0fevereiro.",
+        menu: "A inscrição pelo celular, sem perder nenhum\u00A0documento.",
         headline: "Como, quando e onde inscrever meu filho na\u00A0catequese?",
         text: "Os pais inscrevem pelo celular, uma pergunta por tela. Pela\u00A0idade, o sistema sugere o ano e mostra os horários com vaga. As\u00A0turmas ficam numa grade da semana, e o catequista faz a chamada no\u00A0celular.",
         points: [
@@ -320,7 +320,7 @@ export const AREAS: Area[] = [
         icon: "newspaper",
         menu: "A notícia da paróquia, escrita pela paróquia, com data para\u00A0publicar.",
         headline: "A notícia da paróquia, escrita pela paróquia, com data para\u00A0publicar.",
-        text: "A PASCOM escreve com título, resumo, autor e categoria, e agenda a publicação. Cada\u00A0notícia ganha endereço próprio, bom para o Google e para compartilhar, em vez de sumir no grupo do WhatsApp em dois\u00A0dias.",
+        text: "A PASCOM escreve com título, resumo, autor e categoria, e agenda a publicação. Cada\u00A0notícia ganha endereço próprio, bom para o Google e para compartilhar, em vez de sumir no feed do Instagram ou no grupo do WhatsApp em dois\u00A0dias.",
         points: [
           "Rascunho, agendado, publicado, arquivado: nada some por engano",
           "Endereço próprio para cada notícia",
@@ -367,8 +367,8 @@ export const AREAS: Area[] = [
     lead: "Dízimo, coordenadores, inscrições e o\u00A0site.",
     headline: "O dízimo, a equipe, as inscrições e o site nas mãos da\u00A0paróquia.",
     intro:
-      "Ferramentas para quem cuida da paróquia por trás do balcão, sem precisar entender de tecnologia. Cada\u00A0pessoa com o seu acesso, e tudo\u00A0registrado.",
-    cta: "Menos balcão e telefone. Mais\u00A0tempo para as\u00A0pessoas.",
+      "Ferramentas para quem cuida da paróquia nos bastidores, sem precisar entender de tecnologia e sem depender de grupo de WhatsApp. Cada\u00A0pessoa com o seu acesso, e tudo\u00A0registrado.",
+    cta: "Menos áudio para ouvir. Mais\u00A0tempo para as\u00A0pessoas.",
     items: [
       {
         id: "dizimo",
@@ -418,7 +418,7 @@ export const AREAS: Area[] = [
         icon: "book",
         menu: "Os pais inscrevem pelo celular; a secretaria confere e\u00A0confirma.",
         headline: "As inscrições chegam prontas para a secretaria\u00A0conferir.",
-        text: "A inscrição feita pelos pais chega com os dados, a turma escolhida e os documentos por foto, pelo link que só a família tem. A\u00A0secretaria confere, pede para refazer o que veio ilegível ou anexa o papel entregue no\u00A0balcão.",
+        text: "A inscrição feita pelos pais chega com os dados, a turma escolhida e os documentos por foto, pelo link que só a família tem, e ficam junto da inscrição, em vez de perdidos numa conversa. A\u00A0secretaria confere, pede para refazer o que veio ilegível ou anexa o papel entregue no\u00A0balcão.",
         points: [
           "Documentos por foto, pelo link da família",
           "Inscrição no balcão para quem não tem celular",

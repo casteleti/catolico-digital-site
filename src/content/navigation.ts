@@ -38,7 +38,7 @@ export const NAVIGATION: NavItem[] = [
         // a página da coordenação da catequese continua no ar em /para/catequese.
         links: [
           { label: "Para o Pároco", href: "/para/paroco", icon: "church", description: "A paróquia inteira à vista, com cada acesso\u00A0registrado." },
-          { label: "Para a Secretária", href: "/para/secretaria", icon: "inbox", description: "Inscrições e pedidos chegam prontos, sem fila no\u00A0balcão." },
+          { label: "Para a Secretária", href: "/para/secretaria", icon: "inbox", description: "Inscrições e pedidos chegam prontos, sem caçar documento no\u00A0WhatsApp." },
           { label: "Para os Coordenadores", href: "/para/pastorais", icon: "users", description: "A sua equipe e as suas turmas, com o seu próprio\u00A0login." },
           { label: "Para a PASCOM", href: "/para/pascom", icon: "megaphone", description: "Horários, avisos e notícias certos em todo\u00A0lugar." },
         ],

@@ -26,4 +26,4 @@ export function AreasOverview() {
 }
 
 /** Cor de cada área (a mesma das colunas do menu). */
-export const AREA_ACCENTS = ["var(--color-purple)", "var(--color-rose)", "var(--color-brand-700)", "var(--color-wine)"];
+export const AREA_ACCENTS = ["var(--area-1)", "var(--area-2)", "var(--area-3)", "var(--area-4)"];

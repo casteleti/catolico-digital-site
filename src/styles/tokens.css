@@ -38,6 +38,12 @@
   --color-rose: #c41876; /* acento: o pink da marca (desde 05/10/2026, antes #a35069) */
   --color-wine: #762a43; /* acento: solenidade, destaque editorial */
   --color-brown: #733f30;
+  /* As quatro áreas (menu Módulos, cartões das áreas, menu Para quem), na ordem 01–04. Tons vivos, mas escuros o
+     bastante para o número e o título ao passar o mouse continuarem legíveis sobre o branco. */
+  --area-1: #c41876; /* pink da marca */
+  --area-2: #1f86d6; /* azul claro */
+  --area-3: #f0640f; /* laranja vivo */
+  --area-4: #0fa396; /* verde-água */
   --color-pink: #c41876; /* o pink do "digital" no logo: vivo — SÓ em detalhes (fios, números, setas, hover), nunca em área grande */ /* acento: tradição, patrimônio (nunca CTA) */
 
   --color-gold-700: #a3125f; /* accent-700: pink escurecido, para texto sobre fundo claro (7,5:1) */

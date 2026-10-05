@@ -74,7 +74,7 @@ export default function ParocoPage() {
           <div>
             <p className="eyebrow eyebrow--light">Para o Pároco</p>
             <h1 id="paroco-title">A paróquia inteira num painel só. E&nbsp;você no&nbsp;comando.</h1>
-            <p className="hero-copy hero-copy--light">Todos os coordenadores, os horários de missa, as inscrições e o site da paróquia num lugar. Você&nbsp;acompanha de perto e muda o que quiser, sem depender de ninguém para saber a&nbsp;senha.</p>
+            <p className="hero-copy hero-copy--light">Coordenadores, horários de missa, inscrições e o site da paróquia num lugar, em vez de espalhados em grupos de WhatsApp, posts e mensagens no Direct. Você&nbsp;enxerga a paróquia inteira e muda o que&nbsp;quiser.</p>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
               <Link className="text-link text-link--light" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link>
@@ -86,7 +86,7 @@ export default function ParocoPage() {
 
       <section className="section section--white" aria-labelledby="rotina-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">A rotina do padre</p><h2 id="rotina-title">Um dia comum na paróquia. Sem&nbsp;ligar para&nbsp;ninguém.</h2><p>Missas, reuniões, atendimento, visitas. O&nbsp;painel cabe nos intervalos e responde às perguntas que mais chegam ao&nbsp;pároco.</p></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">A rotina do padre</p><h2 id="rotina-title">Um dia na paróquia, sem depender de áudio e grupo de&nbsp;WhatsApp.</h2><p>Missas, reuniões, atendimento, visitas. O&nbsp;painel cabe nos intervalos e responde às perguntas que hoje chegam por áudio, Direct e&nbsp;grupo.</p></Reveal>
           <ol className="routine">
             {ROUTINE.map((step, i) => (
               <Reveal as="li" className="routine__step" delay={i * 80} key={step.when}>

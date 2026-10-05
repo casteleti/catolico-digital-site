@@ -9,25 +9,25 @@ import type { Persona } from "@/components/site/persona-page";
 export const SECRETARIA: Persona = {
   slug: "secretaria",
   eyebrow: "Para a Secretária",
-  quote: "“Em fevereiro a fila da catequese dobra a\u00A0esquina.”",
-  title: "Menos telefone, menos papel, menos\u00A0fila.",
-  lead: "As perguntas que mais chegam ao balcão ganham resposta no site, e as inscrições e os pedidos chegam prontos para você conferir. O\u00A0que muda, você muda uma\u00A0vez.",
+  quote: "“Mandei a certidão no seu WhatsApp, a senhora\u00A0viu?”",
+  title: "Menos áudio, menos Direct, menos documento\u00A0perdido.",
+  lead: "As perguntas que chegam por Direct, WhatsApp e comentário ganham resposta no site. As\u00A0inscrições e os pedidos chegam com os documentos num lugar só, e não espalhados em dez\u00A0conversas.",
   image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho pelo celular enquanto a secretária confere a inscrição no\u00A0notebook.", width: 1200, height: 1200 },
   routine: {
     eyebrow: "A rotina da secretaria",
-    title: "O dia no balcão, sem o telefone tocando a cada cinco\u00A0minutos.",
-    lead: "Atendimento, documentos, avisos, recados do padre. O\u00A0painel organiza o que chega e responde por você o que se\u00A0repete.",
+    title: "O dia da secretaria, sem caçar mensagem em dez\u00A0conversas.",
+    lead: "Áudios, Directs, prints e documentos chegando por todos os lados. O\u00A0painel junta o que é pedido e responde no site o que se\u00A0repete.",
     steps: [
-      { when: "Ao abrir a secretaria", title: "Vê o que\u00A0chegou.", text: "Inscrições da catequese e pedidos de sacramento num lugar só, cada um com a situação e os\u00A0documentos.", icon: "inbox" },
-      { when: "Quando o telefone toca", title: "Manda o\u00A0link.", text: "Horário de missa, de confissão, o que levar para o batismo: a resposta já está na página certa do\u00A0site.", icon: "bell" },
-      { when: "No meio da manhã", title: "Confere os\u00A0documentos.", text: "Certidão por foto ou PDF, enviada pelo link que só a família tem. O\u00A0que veio ilegível, você pede para\u00A0refazer.", icon: "book" },
-      { when: "No fim do expediente", title: "Atualiza o\u00A0mural.", text: "Aviso com data para sair do ar e evento da semana, sem precisar lembrar de tirar\u00A0depois.", icon: "clock" },
+      { when: "Ao abrir a secretaria", title: "Vê o que\u00A0chegou.", text: "Inscrições da catequese e pedidos de sacramento num lugar só, com a situação e os documentos de cada\u00A0um.", icon: "inbox" },
+      { when: "Quando chega a mesma pergunta", title: "Manda o\u00A0link.", text: "Horário de missa, de confissão, o que levar para o batismo: em vez de gravar mais um áudio, você manda o link da página\u00A0certa.", icon: "bell" },
+      { when: "No meio da manhã", title: "Confere os\u00A0documentos.", text: "A certidão chega por foto ou PDF, pelo link que só a família tem, e fica junto da inscrição. Nada\u00A0de procurar no histórico do\u00A0WhatsApp.", icon: "book" },
+      { when: "No fim do expediente", title: "Atualiza o\u00A0mural.", text: "Aviso com data para sair do ar e evento da semana no site; o Instagram e o grupo só apontam para\u00A0lá.", icon: "clock" },
     ],
   },
   spotlight: {
     label: "Inscrições e pedidos",
     title: "Cada inscrição e cada pedido chegam completos, com os\u00A0documentos.",
-    text: "A família preenche pelo celular, à noite, sem fila. A\u00A0inscrição chega com os dados, a turma escolhida e os documentos; o pedido de sacramento, com a autorização de dados. Você\u00A0confere, muda a situação e baixa o que\u00A0precisar.",
+    text: "A família preenche pelo celular, quando puder, sem mandar documento solto no WhatsApp. A\u00A0inscrição chega com os dados, a turma escolhida e os documentos; o pedido de sacramento, com a autorização de dados. Você\u00A0confere, muda a situação e baixa o que\u00A0precisar.",
     points: ["Documentos em local privado: só a equipe autorizada abre", "Inscrição no balcão para quem não tem celular", "Lista de espera quando a turma lota"],
     link: { href: "/administracao#inscricoes-da-catequese", label: "Ver Inscrições da Catequese" },
     ask: "Recebeu a certidão que mandei por\u00A0foto?",
@@ -64,29 +64,29 @@ export const SECRETARIA: Persona = {
     ],
   },
   closing: {
-    eyebrow: "Feito para quem atende o balcão",
+    eyebrow: "Feito para quem atende a paróquia",
     title: "Sem termos técnicos. Missa,\u00A0aviso, turma,\u00A0pastoral.",
     text: "O painel usa as palavras da paróquia e tem atalhos para o que você mais faz: mudar um horário, criar um aviso, ver as\u00A0inscrições.",
   },
-  cta: "Mais tempo para atender quem chega. Menos\u00A0tempo repetindo a mesma resposta ao\u00A0telefone.",
+  cta: "Mais tempo para atender quem chega. Menos\u00A0tempo ouvindo áudio e respondendo\u00A0Direct.",
 };
 
 export const COORDENADORES: Persona = {
   slug: "pastorais",
   eyebrow: "Para os Coordenadores",
-  quote: "“Minha equipe está numa lista de papel que só eu\u00A0entendo.”",
+  quote: "“A escala está num áudio de três semanas\u00A0atrás.”",
   title: "Sua equipe organizada, com o seu próprio\u00A0acesso.",
-  lead: "Pastoral, movimento, ministério ou turma de catequese: cada coordenador entra com o próprio login e cuida do que é dele, sem planilha, sem caderno e sem depender da\u00A0secretaria.",
+  lead: "Pastoral, movimento, ministério ou turma de catequese: cada coordenador entra com o próprio login e cuida do que é dele, em vez de depender de grupos de WhatsApp, contatos no celular e prints\u00A0perdidos.",
   image: { name: "coordenadores-equipe", alt: "A coordenadora no notebook, com as pessoas da equipe ligadas ao grupo em volta\u00A0dela.", width: 1200, height: 1200 },
   routine: {
     eyebrow: "A rotina de quem coordena",
-    title: "A semana do grupo, sem a lista de\u00A0papel.",
-    lead: "Encontros, escalas, gente nova chegando. O\u00A0painel guarda a equipe e deixa você só com o que\u00A0importa.",
+    title: "A semana do grupo, sem procurar nada no\u00A0WhatsApp.",
+    lead: "Encontros, escalas, gente nova chegando. A\u00A0equipe fica num lugar, com o contato de cada um, e não espalhada em grupos e\u00A0conversas.",
     steps: [
       { when: "Quando chega alguém novo", title: "Cadastra na\u00A0equipe.", text: "Nome, contato, função e desde quando serve, direto do\u00A0painel.", icon: "users" },
-      { when: "Antes do encontro", title: "Confere quem é\u00A0quem.", text: "A equipe sempre atualizada, com o telefone, a função e a data de nascimento de cada\u00A0pessoa.", icon: "clock" },
+      { when: "Antes do encontro", title: "Confere quem é\u00A0quem.", text: "A equipe sempre atualizada, com o telefone, a função e a data de nascimento de cada pessoa, sem rolar o grupo atrás do número de\u00A0alguém.", icon: "clock" },
       { when: "Na turma de catequese", title: "Faz a chamada no\u00A0celular.", text: "Em “Minhas turmas”, o catequista registra a presença e vê o WhatsApp de cada\u00A0família.", icon: "book" },
-      { when: "Quando passa a coordenação", title: "A lista\u00A0fica.", text: "Quem assume recebe o acesso e encontra a equipe inteira, sem recomeçar do\u00A0zero.", icon: "shield" },
+      { when: "Quando passa a coordenação", title: "A equipe\u00A0fica.", text: "Quem assume recebe o acesso e encontra todo mundo cadastrado, em vez de herdar só um grupo de\u00A0WhatsApp.", icon: "shield" },
     ],
   },
   spotlight: {
@@ -130,18 +130,18 @@ export const COORDENADORES: Persona = {
   },
   closing: {
     eyebrow: "Quando você passar a coordenação",
-    title: "A lista não vai embora com\u00A0você.",
-    text: "Hoje, quando o coordenador muda de cidade, a lista vai junto. Aqui\u00A0a equipe fica com a paróquia: quem assume encontra todo mundo cadastrado e segue o\u00A0trabalho.",
+    title: "A equipe não vai embora com o seu\u00A0celular.",
+    text: "Hoje, quando o coordenador muda de cidade, os contatos e os grupos vão junto com o celular dele. Aqui\u00A0a equipe fica com a paróquia: quem assume encontra todo mundo cadastrado e segue o\u00A0trabalho.",
   },
-  cta: "Mais tempo com a sua equipe. Menos\u00A0tempo procurando o telefone de cada\u00A0um.",
+  cta: "Mais tempo com a sua equipe. Menos\u00A0tempo rolando grupo de\u00A0WhatsApp.",
 };
 
 export const PASCOM: Persona = {
   slug: "pascom",
   eyebrow: "Para a PASCOM",
-  quote: "“Mudou o horário e o site ficou errado três\u00A0semanas.”",
+  quote: "“O horário só está num post do Instagram de duas semanas\u00A0atrás.”",
   title: "Informação digitada uma vez, certa no site\u00A0inteiro.",
-  lead: "Avisos com validade, agenda com recorrência, notícia com data para publicar e fotos leves. O\u00A0Instagram e o WhatsApp continuam espalhando; o site é onde a informação oficial\u00A0mora.",
+  lead: "Avisos com validade, agenda com recorrência, notícia com data para publicar e fotos leves. O\u00A0Instagram, o Facebook e o WhatsApp continuam espalhando; o site é onde a informação oficial mora, sem ficar enterrada no\u00A0feed.",
   image: { name: "pascom-selo", alt: "Selo da PASCOM: cruz sobre um globo conectado e o nome PASCOM\u00A0Brasil.", width: 1200, height: 1200 },
   routine: {
     eyebrow: "A rotina da comunicação",
@@ -188,7 +188,7 @@ export const PASCOM: Persona = {
   closing: {
     eyebrow: "WhatsApp e Instagram continuam",
     title: "As redes espalham. O\u00A0site é a\u00A0fonte.",
-    text: "Divulgue nas redes o link da página certa: o horário, o aviso, a inscrição. Quando\u00A0algo muda, o link continua\u00A0valendo.",
+    text: "Hoje o horário da missa vive num post que some no feed e num áudio que ninguém acha. Divulgue\u00A0nas redes o link da página certa: quando algo muda, o link continua\u00A0valendo.",
   },
   cta: "Mais tempo para comunicar. Menos\u00A0tempo corrigindo o que ficou\u00A0errado.",
 };

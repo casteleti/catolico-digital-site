@@ -57,7 +57,7 @@ export const ROLES: RolePage[] = [
     icon: "book",
     menu: "Para a Coordenação da Catequese",
     title: "Turmas, chamada e famílias num lugar\u00A0só.",
-    quote: "“Planilha de turma, caderno de chamada e um grupo de WhatsApp com duzentos\u00A0pais.”",
+    quote: "“Foto de certidão no WhatsApp, áudio pedindo vaga e um grupo com duzentos\u00A0pais.”",
     lead: "O caminho da catequese vem pronto e a paróquia ajusta: anos, idades, turmas e calendário pela Páscoa. O\u00A0catequista faz a chamada no celular e fala com cada família pelo\u00A0WhatsApp.",
     gains: [
       ["Turmas numa grade da semana", "Ano, dia, horário, local, vagas e catequistas. Lotou,\u00A0lista de\u00A0espera."],
@@ -73,7 +73,7 @@ export const ROLES: RolePage[] = [
     icon: "users",
     menu: "Para os Coordenadores",
     title: "Sua equipe organizada, com o seu próprio\u00A0acesso.",
-    quote: "“Minha equipe está numa lista de papel que só eu\u00A0entendo.”",
+    quote: "“A escala está num áudio de três semanas\u00A0atrás.”",
     lead: "Cada grupo da paróquia tem a sua página no site e a sua equipe no painel. O\u00A0coordenador cuida da dele com um login só, sem depender da\u00A0secretaria.",
     gains: [
       ["Ativar o grupo em um clique", "Catálogo com cerca de cem pastorais, movimentos, ministérios e\u00A0equipes."],
