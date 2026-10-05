@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand/brand-mark";
+import { CookiePreferencesButton } from "@/components/marketing/cookie-preferences-button";
 import { FooterSkyline } from "@/components/marketing/footer-skyline";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { Container } from "@/components/ui/container";
@@ -40,6 +41,7 @@ export function SiteFooter() {
               <Link href="/#duvidas">Dúvidas</Link>
               <Link href="/contato">Contato</Link>
               <Link href="/privacidade">Privacidade</Link>
+              <CookiePreferencesButton />
             </div>
           </nav>
         </div>

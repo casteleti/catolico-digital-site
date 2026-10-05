@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
-import { GoogleAnalytics } from "@/components/marketing/google-analytics";
-import { MetaPixel } from "@/components/marketing/meta-pixel";
+import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { WhatsAppButton } from "@/components/marketing/whatsapp-button";
 import { SiteHeader } from "@/components/marketing/site-header";
@@ -40,8 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SiteFooter />
         <WhatsAppButton />
-        <GoogleAnalytics />
-        <MetaPixel />
+        <CookieConsent />
       </body>
     </html>
   );

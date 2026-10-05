@@ -6,8 +6,15 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 
 | Ferramenta | ID | Status | Consentimento | Seção |
 |---|---|---|---|---|
-| Google Analytics 4 | `G-Y7FQ36B3FV` | Ativo em produção desde 2026-10-05 | Pendente | 1 |
-| Meta Pixel | `1062699391956918` | No código; ativo após o deploy | Pendente | 2 |
+| Google Analytics 4 | `G-Y7FQ36B3FV` | Ativo em produção desde 2026-10-05 | Só após aceite de "Medição" | 1 |
+| Meta Pixel | `1062699391956918` | Ativo em produção | Só após aceite de "Publicidade" | 2 |
+
+## Consentimento (vale para todas as tags)
+- **Componente:** `src/components/marketing/cookie-consent.tsx` (aviso e porteiro das tags), `src/lib/consent.ts` (leitura, gravação e versão) e `cookie-preferences-button.tsx` (link "Preferências de cookies" no rodapé).
+- **Como funciona:** a escolha fica no `localStorage` (`cd-consent`), sem cookie e sem servidor. Nenhuma tag de medição ou publicidade é carregada antes do aceite da categoria: GA4 em "Medição", Meta Pixel em "Publicidade". "Aceitar todos" e "Rejeitar não necessários" têm o mesmo destaque. Retirar o aceite apaga os cookies `_ga*`, `_gid`, `_gat*`, `_fbp`, `_fbc` e recarrega a página.
+- **Tag nova?** Entra no `CookieConsent` dentro da categoria certa e ganha uma linha em `/privacidade#cookies`. Se mudar o texto ou as categorias, subir `CONSENT_VERSION` em `src/lib/consent.ts`, o que faz todos verem o aviso de novo.
+- **Efeito no analytics:** quem rejeita ou ignora o aviso não é contado no GA4 nem no Meta. É o custo do consentimento prévio.
+- **Texto jurídico:** a seção de cookies em `/privacidade` é provisória e precisa de revisão jurídica, como o resto da página.
 
 ## 1. Google Analytics 4 (GA4)
 
@@ -42,16 +49,16 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 Só existe a medição padrão (`page_view` e demais eventos de medição otimizada, conforme o fluxo). Os eventos do plano (`generate_lead`, cliques de CTA etc., descritos em `09`) ainda não foram implementados.
 
 ### Consentimento e LGPD
-- **Situação atual:** a tag dispara na primeira visita, sem banner e sem consentimento. `/privacidade` não menciona analytics. Isso diverge do que pedem `09` e `12`.
+- **Situação atual (desde 2026-10-05):** a tag só carrega depois do aceite de "Medição". Ao carregar, declara `ad_storage`, `ad_user_data` e `ad_personalization` como `denied` (não usamos publicidade do Google) e `analytics_storage` como `granted`.
 - **Pendências:**
-  - [ ] Banner de consentimento com Consent Mode v2 (`ad_storage`, `analytics_storage`, `ad_user_data` e `ad_personalization` como `denied` por padrão).
-  - [ ] Texto sobre analytics e cookies em `/privacidade`.
   - [ ] Revisar retenção de dados e Google Signals no GA4.
+  - [ ] Revisão jurídica do texto de cookies em `/privacidade`.
 
 ### Histórico
 | Data | Mudança |
 |---|---|
 | 2026-10-05 | Tag instalada e publicada (`9b4104e`). |
+| 2026-10-05 | Carregamento condicionado ao aceite de cookies, com Consent Mode. |
 
 ## 2. Meta Pixel (Facebook/Instagram Ads)
 
@@ -77,15 +84,15 @@ Só existe a medição padrão (`page_view` e demais eventos de medição otimiz
 - **Não implementado:** `Lead` (envio do formulário de lançamento), `ViewContent`, `Contact` e demais eventos de conversão. O formulário de lançamento ainda é demonstrativo. Quando houver envio real, disparar `fbq('track', 'Lead')` só depois da confirmação do servidor. Nunca enviar e-mail, telefone, nome ou mensagem nos parâmetros do evento.
 
 ### Consentimento e LGPD
-- **Situação atual:** o pixel dispara na primeira visita, sem banner e sem consentimento. `/privacidade` não menciona o Meta Pixel. É um pixel de publicidade, o que torna o consentimento mais necessário do que no analytics.
+- **Situação atual (desde 2026-10-05):** o script só é carregado depois do aceite de "Publicidade". O fallback `<noscript>` foi removido, porque não dá para pedir consentimento sem JavaScript.
 - **Pendências:**
-  - [ ] Carregar o pixel só depois do aceite (`fbq('consent', 'revoke')` por padrão e `fbq('consent', 'grant')` no aceite, ou não carregar o script antes).
-  - [ ] Texto sobre o Meta Pixel e cookies de publicidade em `/privacidade`.
+  - [ ] Revisão jurídica do texto de cookies em `/privacidade`.
 
 ### Histórico
 | Data | Mudança |
 |---|---|
-| 2026-10-05 | Pixel adicionado ao código (PageView). Aguardando commit e deploy. |
+| 2026-10-05 | Pixel adicionado ao código (PageView) e publicado. |
+| 2026-10-05 | Carregamento condicionado ao aceite de cookies. |
 
 ## Modelo para novas ferramentas
 
