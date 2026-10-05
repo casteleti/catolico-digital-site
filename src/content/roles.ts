@@ -40,7 +40,7 @@ export const ROLES: RolePage[] = [
     image: { name: "secretaria-cadastro-catequese", alt: "Uma mãe inscreve o filho pelo celular enquanto a secretária confere a inscrição no notebook.", width: 1200, height: 1200 },
     icon: "inbox",
     menu: "Para a secretaria",
-    title: "Menos telefone, menos papel, menos fila.",
+    title: "Menos telefone, menos papel, menos\u00A0fila.",
     quote: "“Em fevereiro a fila da catequese dobra a esquina.”",
     lead: "As perguntas repetidas do telefone ficam respondidas no site. A\u00A0inscrição chega pelo celular dos pais, com os documentos. O\u00A0horário muda uma vez e sai certo em todo lugar.",
     gains: [
