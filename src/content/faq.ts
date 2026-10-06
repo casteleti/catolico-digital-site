@@ -1,0 +1,13 @@
+/** Dúvidas frequentes da Home. Alimentam o acordeão e o JSON-LD FAQPage (src/app/page.tsx). */
+export const faq: Array<[string, string]> = [
+  ["O Católico Digital é só um\u00A0site?", "Não. O\u00A0site é a parte que o fiel vê. Por\u00A0trás dele, a vida da paróquia fica organizada num lugar só: horários, catequese, sacramentos, pastorais, dízimo e avisos. Quando\u00A0algo muda, muda uma\u00A0vez."],
+  ["A secretaria precisa entender de\u00A0tecnologia?", "Não. O\u00A0painel fala a língua da paróquia: missa, aviso, turma, catequizando, pastoral. Foi\u00A0feito para quem atende a comunidade todos os dias, no WhatsApp, no Direct e na\u00A0secretaria."],
+  ["Como funciona a inscrição da\u00A0catequese?", "Os pais inscrevem pelo celular, uma pergunta por tela. Pela\u00A0data de nascimento o sistema sugere o ano, mostra os horários com vaga e entrega o número da inscrição. Os\u00A0documentos vão por foto, pelo link da família. Quem\u00A0não tem celular é inscrito pela secretaria no\u00A0balcão."],
+  ["E o dízimo? Vocês\u00A0processam\u00A0pagamento?", "Não, e isso é de propósito. A\u00A0paróquia cadastra a chave PIX, o QR Code, o nome de quem recebe e o banco na página do dízimo. O\u00A0dinheiro vai direto para a conta da paróquia, sem intermediário e sem\u00A0taxa."],
+  ["O catequista e o coordenador de pastoral precisam de outro\u00A0sistema?", "Não. Cada\u00A0um entra com o próprio login e vê só o que coordena: a turma, a equipe. Quem\u00A0coordena duas coisas vê as duas no mesmo\u00A0lugar."],
+  ["Funciona com matriz e várias\u00A0capelas?", "Sim. Cada\u00A0comunidade tem endereço, horários e eventos próprios, na mesma estrutura. A\u00A0paróquia pequena usa só a\u00A0matriz."],
+  ["Nossa paróquia já tem site. Dá\u00A0para\u00A0trocar?", "Sim. O\u00A0Católico Digital toma o lugar do site atual e organiza o que hoje está espalhado. A\u00A0transição é combinada com cada\u00A0paróquia."],
+  ["O Católico Digital substitui o Instagram e o\u00A0WhatsApp?", "Não. Eles\u00A0continuam espalhando a mensagem. O\u00A0Católico Digital é onde a informação oficial mora, e para onde esses canais\u00A0apontam."],
+  ["Podemos usar o nosso\u00A0domínio?", "A estrutura prevê domínio próprio. Os\u00A0detalhes são definidos na\u00A0implantação."],
+  ["Quanto\u00A0custa?", "Os valores são apresentados na conversa com cada paróquia, de acordo com a estrutura e os módulos que fizerem\u00A0sentido."],
+];

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Illustration } from "@/components/site/illustration";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { ModuleIcon } from "@/components/site/module-icon";
 import { Container } from "@/components/ui/container";
 import { CTA, ONBOARDING_URL } from "@/content/links";
@@ -32,6 +33,7 @@ export default async function ParaPage({ params }: Params) {
 
   return (
     <main id="main-content">
+      <JsonLd data={breadcrumbLd([{ name: role.menu, path: `/para/${role.slug}` }])} />
       <section className="hero hero--brand page-hero" aria-labelledby="role-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container className="role-hero">

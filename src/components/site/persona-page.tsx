@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { AreaScreen } from "@/components/site/area-screen";
 import { Illustration } from "@/components/site/illustration";
 import { ModuleIcon } from "@/components/site/module-icon";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import type { AreaScreen as Screen } from "@/content/areas";
 import { CTA, ONBOARDING_URL } from "@/content/links";
@@ -44,6 +45,7 @@ export function PersonaPage({ persona }: { persona: Persona }) {
   const s = persona.spotlight;
   return (
     <main id="main-content" className="persona">
+      <JsonLd data={breadcrumbLd([{ name: ROLES.find((r) => r.slug === persona.slug)?.menu ?? "Para quem", path: `/para/${persona.slug}` }])} />
       <section className="hero hero--brand page-hero" aria-labelledby="persona-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container className="role-hero">

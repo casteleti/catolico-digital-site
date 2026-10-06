@@ -32,6 +32,12 @@ pnpm exec eslint
 pnpm run build
 ```
 
+## SEO e medição
+
+- `src/app/robots.ts` e `src/app/sitemap.ts` geram `/robots.txt` e `/sitemap.xml`. Página pública nova (rota estática) entra na lista do `sitemap.ts`; módulos e papéis entram sozinhos por `src/content`.
+- JSON-LD: Organization, WebSite e SoftwareApplication no `layout.tsx`; FAQPage na Home (perguntas em `src/content/faq.ts`, as mesmas do acordeão); BreadcrumbList nas páginas internas (`src/components/seo/json-ld.tsx`).
+- Google Analytics 4: defina `NEXT_PUBLIC_GA_ID` (ex.: `G-XXXXXXXXXX`) no ambiente **de build** (Coolify). Sem a variável vale o ID padrão de `google-analytics.tsx`. A tag só carrega em produção e depois do aceite de "medição" no aviso de cookies.
+
 ## Estrutura
 
 - `src/app`: rotas Next.js e endpoint de health check

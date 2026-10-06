@@ -6,6 +6,7 @@ import { AreaScreen } from "@/components/site/area-screen";
 import { Illustration } from "@/components/site/illustration";
 import { ModuleIcon } from "@/components/site/module-icon";
 import { Container } from "@/components/ui/container";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { CTA, ONBOARDING_URL } from "@/content/links";
 import { ROLES } from "@/content/roles";
 
@@ -68,6 +69,7 @@ export default function ParocoPage() {
 
   return (
     <main id="main-content" className="paroco">
+      <JsonLd data={breadcrumbLd([{ name: "Para o Pároco", path: "/para/paroco" }])} />
       <section className="hero hero--brand page-hero" aria-labelledby="paroco-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container className="role-hero">

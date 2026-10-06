@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { AreaScreen } from "@/components/site/area-screen";
 import { AREA_ACCENTS } from "@/components/site/areas-overview";
 import { ModuleIcon } from "@/components/site/module-icon";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { AREAS, areaByKey, areaHref, type AreaKey } from "@/content/areas";
 import { CTA, ONBOARDING_URL } from "@/content/links";
@@ -22,6 +23,7 @@ export function AreaPage({ areaKey }: { areaKey: AreaKey }) {
   const others = AREAS.filter((a) => a.key !== areaKey);
   return (
     <main id="main-content" style={{ "--col-accent": AREA_ACCENTS[index] } as React.CSSProperties}>
+      <JsonLd data={breadcrumbLd([{ name: "Módulos", path: "/modulos" }, { name: area.label, path: areaHref(area.key) }])} />
       <section className="hero hero--brand page-hero area-hero" aria-labelledby="area-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container>

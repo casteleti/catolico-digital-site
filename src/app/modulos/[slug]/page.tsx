@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ModuleIcon } from "@/components/site/module-icon";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { CTA, ONBOARDING_URL } from "@/content/links";
 import { MODULE_GROUPS, MODULES, moduleBySlug, modulesOf, ROLE_LABELS } from "@/content/modules";
@@ -32,6 +33,7 @@ export default async function ModuloPage({ params }: Params) {
 
   return (
     <main id="main-content">
+      <JsonLd data={breadcrumbLd([{ name: "Módulos", path: "/modulos" }, { name: m.name, path: `/modulos/${m.slug}` }])} />
       <section className="hero hero--brand page-hero" aria-labelledby="module-title">
         <div className="hero-pattern" aria-hidden="true" />
         <Container>
