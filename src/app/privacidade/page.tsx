@@ -17,7 +17,7 @@ export default function PrivacidadePage() {
         <p>O site só carrega ferramentas de medição e publicidade depois do seu&nbsp;aceite. Você&nbsp;escolhe no aviso que aparece na primeira visita e pode mudar quando quiser, em &ldquo;Preferências de cookies&rdquo; no&nbsp;rodapé.</p>
         <ul>
           <li><strong>Necessários:</strong> guardam a sua escolha sobre cookies neste navegador. Estão&nbsp;sempre&nbsp;ativos.</li>
-          <li><strong>Medição (Google Analytics&nbsp;4):</strong> mostra quais páginas são mais vistas e de onde vêm as visitas, para melhorarmos o&nbsp;site.</li>
+          <li><strong>Medição (Google Analytics&nbsp;4):</strong> mostra quais páginas são mais vistas e de onde vêm as visitas, para melhorarmos o&nbsp;site. Guarda&nbsp;também, por 90&nbsp;dias, de qual anúncio ou link você chegou (campanha, página de entrada e site de&nbsp;origem), sem dados&nbsp;pessoais.</li>
           <li><strong>Publicidade (Meta&nbsp;Pixel):</strong> mede o resultado dos nossos anúncios no Facebook e no&nbsp;Instagram.</li>
         </ul>
         <p>Se você rejeitar, ou retirar o aceite depois, essas ferramentas deixam de ser carregadas e os cookies delas são&nbsp;apagados.</p>

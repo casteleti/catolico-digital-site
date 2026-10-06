@@ -106,3 +106,38 @@ Só existe a medição padrão (`page_view` e demais eventos de medição otimiz
 ### Consentimento e LGPD
 ### Histórico
 ```
+
+## 3. Origem do tráfego (UTMs e identificadores de clique)
+
+Primeira etapa da mensuração para Google Ads: preservar de onde a visita veio até o cadastro em `app.catolico.digital`. Não é uma tag de terceiros e não envia nada a ninguém; só grava cookies de primeira parte.
+
+### Implementação
+- **Código:** `src/lib/attribution.ts` (captura, gravação e leitura) e `src/components/marketing/attribution-capture.tsx` (liga ao consentimento), renderizado em `src/app/layout.tsx`.
+- **Cookies:** `cd_ft` (first touch: a primeira visita, nunca sobrescrito) e `cd_lt` (last touch: a última visita com parâmetro de campanha; começa igual ao first touch e visita direta não o troca).
+- **Escopo:** `Domain=.catolico.digital; Path=/; SameSite=Lax; Secure`, 90 dias. Não é `HttpOnly` (o JavaScript do site grava e o do app pode ler). Fora de `*.catolico.digital` (localhost, prévia) vale só para o host atual. Como o `Domain` cobre o subdomínio, o navegador também envia o cookie nas requisições ao servidor de `app.catolico.digital`.
+- **Consentimento:** só grava com o aceite de "Medição". Sem resposta ainda, a visita fica na `sessionStorage` da aba (`cd-attr-pending`) e vira cookie se o aceite vier; com rejeição, é descartada. Retirar o aceite apaga `cd_ft` e `cd_lt` (`clearTrackingCookies` em `src/lib/consent.ts`).
+- **Quem não aceita não tem origem registrada.** Quem clica no CTA antes de responder ao aviso, e depois aceita só na plataforma, também perde a origem (o consentimento é por origem de navegador: `catolico.digital` e `app.catolico.digital` não o compartilham).
+
+### Formato
+Valor = JSON com `encodeURIComponent`. Campos (todos opcionais, exceto `ts`):
+
+| Campo | Conteúdo | Limite |
+|---|---|---|
+| `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` | parâmetros da URL de entrada | 100 caracteres |
+| `gclid`, `gbraid`, `wbraid` | identificadores de clique do Google Ads | 200 |
+| `lp` | caminho da página de entrada, sem query | 120 |
+| `ref` | origem + caminho do referrer, sem query, só de fora de `catolico.digital` | 200 |
+| `ts` | data e hora da visita (ISO 8601, UTC) | |
+
+Sem e-mail, nome, telefone ou qualquer dado pessoal. Nenhum banco de dados é usado nesta etapa.
+
+### Como ler (console do navegador, em qualquer host de `*.catolico.digital`)
+```js
+Object.fromEntries(["cd_ft", "cd_lt"].map((n) => [n, JSON.parse(decodeURIComponent((document.cookie.split("; ").find((c) => c.startsWith(n + "=")) ?? "=%22null%22").split("=")[1]))]))
+```
+No código do site, `readAttribution()` devolve `{ first, last }`. A plataforma precisa ler o cookie `cd_ft`/`cd_lt` com o mesmo formato quando for gravar a origem no cadastro (etapa seguinte).
+
+### Histórico
+| Data | Mudança |
+|---|---|
+| 2026-10-06 | Captura e persistência de UTMs e `gclid`/`gbraid`/`wbraid`; correção do apagamento de cookies em `.catolico.digital` ao retirar o consentimento. |

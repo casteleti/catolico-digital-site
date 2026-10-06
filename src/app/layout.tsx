@@ -3,6 +3,7 @@ import { Caveat, Fraunces, Inter } from "next/font/google";
 import { headers } from "next/headers";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { AttributionCapture } from "@/components/marketing/attribution-capture";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { WhatsAppButton } from "@/components/marketing/whatsapp-button";
@@ -89,6 +90,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <WhatsAppButton />
         <CookieConsent nonce={nonce} />
+        <AttributionCapture />
       </body>
     </html>
   );

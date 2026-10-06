@@ -53,13 +53,14 @@ export function subscribeConsent(onChange: () => void) {
   };
 }
 
-/** Apaga os cookies que o GA4 e o Meta Pixel já tenham criado (ao retirar o consentimento). */
+/** Apaga os cookies que o GA4, o Meta Pixel e a origem do tráfego (`cd_ft`, `cd_lt`) já tenham criado (ao retirar o consentimento). */
 export function clearTrackingCookies() {
   const hostParts = window.location.hostname.split(".");
-  const domains = ["", window.location.hostname, ...hostParts.slice(1).map((_, i) => `.${hostParts.slice(i + 1).join(".")}`)];
+  // Inclui o próprio host com ponto (`.catolico.digital`): é o domínio em que o GA4 e a origem do tráfego gravam.
+  const domains = ["", window.location.hostname, `.${window.location.hostname}`, ...hostParts.slice(1).map((_, i) => `.${hostParts.slice(i + 1).join(".")}`)];
   for (const entry of document.cookie.split(";")) {
     const name = entry.split("=")[0]?.trim();
-    if (!name || !/^(_ga|_gid|_gat|_fbp|_fbc)/.test(name)) continue;
+    if (!name || !/^(_ga|_gid|_gat|_fbp|_fbc|cd_ft$|cd_lt$)/.test(name)) continue;
     for (const domain of domains) {
       document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain ? `; domain=${domain}` : ""}`;
     }
