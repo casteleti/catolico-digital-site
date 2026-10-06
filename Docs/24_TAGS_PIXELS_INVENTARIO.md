@@ -6,14 +6,15 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 
 | Ferramenta | ID | Status | Consentimento | Seção |
 |---|---|---|---|---|
-| Google Analytics 4 | `G-Y7FQ36B3FV` | Ativo em produção desde 2026-10-05 | Só após aceite de "Medição" | 1 |
+| Google Analytics 4 | `G-Y7FQ36B3FV` | Ativo no site desde 2026-10-05 e, a partir do Passo 2, na plataforma (`/comecar`) | Só após aceite de "Medição" | 1 |
 | Meta Pixel | `1062699391956918` | Ativo em produção | Só após aceite de "Publicidade" | 2 |
 
 ## Consentimento (vale para todas as tags)
 - **Componente:** `src/components/marketing/cookie-consent.tsx` (aviso e porteiro das tags), `src/lib/consent.ts` (leitura, gravação e versão) e `cookie-preferences-button.tsx` (link "Preferências de cookies" no rodapé).
-- **Como funciona:** a escolha fica no `localStorage` (`cd-consent`), sem cookie e sem servidor. Nenhuma tag de medição ou publicidade é carregada antes do aceite da categoria: GA4 em "Medição", Meta Pixel em "Publicidade". "Aceitar todos" e "Rejeitar não necessários" têm o mesmo destaque. Retirar o aceite apaga os cookies `_ga*`, `_gid`, `_gat*`, `_fbp`, `_fbc` e recarrega a página.
+- **Como funciona:** a escolha fica no cookie `cd_consent` (`Domain=.catolico.digital; Path=/; Secure; SameSite=Lax`, 180 dias), de primeira parte e sem servidor. O site e `app.catolico.digital` leem a MESMA decisão. Decisões antigas, em `localStorage` (`cd-consent`), continuam valendo e migram para o cookie (`migrateLegacyConsent`). Se o navegador bloquear cookies, a escolha cai para `localStorage` e vale só neste host. O aviso relê a escolha quando a aba volta a ter foco, para pegar uma mudança feita no outro subdomínio. Nenhuma tag de medição ou publicidade é carregada antes do aceite da categoria: GA4 em "Medição", Meta Pixel em "Publicidade". "Aceitar todos" e "Rejeitar não necessários" têm o mesmo destaque. Retirar o aceite apaga os cookies `_ga*`, `_gid`, `_gat*`, `_fbp`, `_fbc` e recarrega a página.
 - **CSP:** os domínios liberados para GA4 e Meta estão em `src/proxy.ts`. Tag nova precisa de domínio novo lá, senão o navegador bloqueia (ver `Docs/25`, seção Segurança).
 - **Tag nova?** Entra no `CookieConsent` dentro da categoria certa e ganha uma linha em `/privacidade#cookies`. Se mudar o texto ou as categorias, subir `CONSENT_VERSION` em `src/lib/consent.ts`, o que faz todos verem o aviso de novo.
+- **Plataforma:** o mesmo formato é lido e gravado por `catolico-digital` (`src/lib/tracking-consent.ts`, aviso em `src/ui/tracking/cookie-banner.tsx`). Mudou o formato ou `CONSENT_VERSION` aqui? Mude lá também.
 - **Efeito no analytics:** quem rejeita ou ignora o aviso não é contado no GA4 nem no Meta. É o custo do consentimento prévio.
 - **Texto jurídico:** a seção de cookies em `/privacidade` é provisória e precisa de revisão jurídica, como o resto da página.
 
@@ -55,11 +56,24 @@ Só existe a medição padrão (`page_view` e demais eventos de medição otimiz
   - [ ] Revisar retenção de dados e Google Signals no GA4.
   - [ ] Revisão jurídica do texto de cookies em `/privacidade`.
 
+### GA4 na plataforma (`app.catolico.digital`, Passo 2)
+- **Mesma propriedade** (`G-Y7FQ36B3FV`) e mesmo código de inicialização (`src/lib/ga-snippet.ts` nos dois repositórios). O cookie `_ga` é gravado em `.catolico.digital` (domínio automático do GA4), então o visitante é UM só do site até a plataforma, com o mesmo `client_id`, e a sessão continua ao trocar de subdomínio.
+- **Onde carrega na plataforma:** só em `/comecar` (quiz e prévia), por `src/app/comecar/layout.tsx`. Não carrega no painel (`/admin`, há dados pessoais) nem nos sites das paróquias (`<slug>.catolico.digital`, cada paróquia é a controladora dos dados).
+- **Sem `page_view` duplicado:** o `config` roda uma vez por página (`window.__cdGaStarted`) e as trocas de página sem recarregar ficam com a medição otimizada do GA4 ("Mudanças de página com base em eventos do histórico do navegador", que precisa continuar ligada no fluxo). Não enviar `page_view` manual. O quiz troca de etapa sem mudar a URL, então não gera `page_view` por etapa.
+- **Referências indesejadas (GA4 > Admin > Fluxos de dados > Configurar definições da tag):** conferir que `catolico.digital` está na lista, para a passagem do site para a plataforma não aparecer como tráfego de referência.
+
+### Consent Mode (site e plataforma)
+- **Antes da escolha:** nada é carregado (nem `gtag.js`, nem `dataLayer`). Não há "modo avançado" com pings sem cookies.
+- **Depois de aceitar "Medição":** a tag carrega e declara `analytics_storage: granted`; `ad_storage`, `ad_user_data` e `ad_personalization` ficam `denied` (ainda não há Google Ads).
+- **Depois de rejeitar:** a tag nunca carrega.
+- **Ao mudar de preferência:** aceitar a Medição passa a carregar a tag; retirar o aceite apaga `_ga*`, `_fbp`, `cd_ft`, `cd_lt` (em todo `.catolico.digital`) e recarrega a página sem a tag. A categoria "Publicidade" ainda não controla nenhum sinal do Google; quando houver Google Ads, ela passa a decidir os três `ad_*`.
+
 ### Histórico
 | Data | Mudança |
 |---|---|
 | 2026-10-05 | Tag instalada e publicada (`9b4104e`). |
 | 2026-10-05 | Carregamento condicionado ao aceite de cookies, com Consent Mode. |
+| 2026-10-06 | Consentimento passa a ser o cookie `cd_consent` em `.catolico.digital` (compartilhado com a plataforma); GA4 também em `/comecar` na plataforma; código de inicialização com guarda contra dupla execução. |
 
 ## 2. Meta Pixel (Facebook/Instagram Ads)
 

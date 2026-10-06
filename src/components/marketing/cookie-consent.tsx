@@ -8,6 +8,7 @@ import {
   CONSENT_OPEN_EVENT,
   CONSENT_SERVER_SNAPSHOT,
   clearTrackingCookies,
+  migrateLegacyConsent,
   parseConsent,
   readConsentRaw,
   saveConsent,
@@ -27,6 +28,10 @@ export function CookieConsent({ nonce }: { nonce?: string }) {
   const [configuring, setConfiguring] = useState(false);
   const [draft, setDraft] = useState<Consent>({ analytics: false, marketing: false });
   const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    migrateLegacyConsent();
+  }, []);
 
   useEffect(() => {
     const open = () => {

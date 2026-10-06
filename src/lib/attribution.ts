@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site";
+import { isSiteHost, readCookieValue, writeCookieValue } from "@/lib/cookies";
 import type { Consent } from "@/lib/consent";
 
 /**
@@ -29,12 +29,6 @@ const clean = (value: string | null | undefined, field: string) =>
   (value ?? "").replace(/[\u0000-\u001F\u007F]/g, "").trim().slice(0, FIELD_LIMIT[field] ?? DEFAULT_LIMIT);
 
 export const hasCampaign = (touch: Touch | undefined) => Boolean(touch && CAMPAIGN_FIELDS.some((field) => touch[field]));
-
-const SITE_HOST = new URL(SITE_URL).hostname;
-const isSiteHost = (host: string) => host === SITE_HOST || host.endsWith(`.${SITE_HOST}`);
-
-/** `.catolico.digital` em produção; fora dele (localhost, prévia) o cookie fica só no host atual. */
-const cookieDomain = () => (isSiteHost(window.location.hostname) ? `.${SITE_HOST}` : "");
 
 /** A visita atual, lida da URL e do referrer. Calculada uma vez por carregamento de página. */
 let currentVisit: Touch | null = null;
@@ -71,8 +65,8 @@ function parseTouch(value: unknown): Touch | null {
 
 function readCookie(name: string): Touch | null {
   try {
-    const entry = document.cookie.split("; ").find((part) => part.startsWith(`${name}=`));
-    return entry ? parseTouch(JSON.parse(decodeURIComponent(entry.slice(name.length + 1)))) : null;
+    const raw = readCookieValue(name);
+    return raw ? parseTouch(JSON.parse(raw)) : null;
   } catch {
     return null;
   }
@@ -84,10 +78,9 @@ export function readAttribution(): { first: Touch | null; last: Touch | null } {
 }
 
 function writeCookie(name: string, touch: Touch) {
-  let value = encodeURIComponent(JSON.stringify(touch));
-  if (value.length > 3500) value = encodeURIComponent(JSON.stringify({ ...touch, ref: undefined, lp: undefined })); // limite de ~4 KB do cookie
-  const domain = cookieDomain();
-  document.cookie = `${name}=${value}; Path=/; Max-Age=${MAX_AGE}; SameSite=Lax${domain ? `; Domain=${domain}` : ""}${window.location.protocol === "https:" ? "; Secure" : ""}`;
+  let value = JSON.stringify(touch);
+  if (encodeURIComponent(value).length > 3500) value = JSON.stringify({ ...touch, ref: undefined, lp: undefined }); // limite de ~4 KB do cookie
+  writeCookieValue(name, value, MAX_AGE);
 }
 
 function readPending(): Pending {

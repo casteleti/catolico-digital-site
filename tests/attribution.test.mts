@@ -1,71 +1,12 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
+import { jar, location, resetBrowser, session, state, visible } from "./browser-sim.mts";
 
 /**
  * Testes de `src/lib/attribution.ts` (e do apagamento em `src/lib/consent.ts`) com um navegador simulado:
  * cookie jar com as regras do RFC 6265 (Domain, Path, Secure, expiração, sufixo público), `sessionStorage` e
  * `localStorage`. Rodar: `pnpm test`. Não substitui um teste no navegador real.
  */
-type Cookie = { name: string; value: string; domain: string; hostOnly: boolean; path: string; secure: boolean; expires: number };
-
-const PUBLIC_SUFFIXES = new Set(["digital", "com", "org", "com.br"]);
-let jar: Cookie[] = [];
-const session = new Map<string, string>();
-const local = new Map<string, string>();
-const location = { hostname: "catolico.digital", protocol: "https:", pathname: "/", search: "" };
-let referrer = "";
-let cookieWrites = 0;
-
-const domainMatch = (host: string, domain: string) => host === domain || host.endsWith(`.${domain}`);
-
-function setCookie(raw: string) {
-  const [pair, ...attrs] = raw.split(";").map((part) => part.trim());
-  const eq = pair!.indexOf("=");
-  const cookie: Cookie = { name: pair!.slice(0, eq), value: pair!.slice(eq + 1), domain: location.hostname, hostOnly: true, path: "/", secure: false, expires: Infinity };
-  for (const attr of attrs) {
-    const [key = "", value = ""] = attr.split("=");
-    const k = key.toLowerCase();
-    if (k === "domain") {
-      const domain = value.replace(/^\./, "").toLowerCase();
-      if (PUBLIC_SUFFIXES.has(domain) || !domainMatch(location.hostname, domain)) return; // o navegador rejeita
-      cookie.domain = domain;
-      cookie.hostOnly = false;
-    } else if (k === "path") cookie.path = value;
-    else if (k === "secure") cookie.secure = true;
-    else if (k === "max-age") cookie.expires = Date.now() + Number(value) * 1000;
-    else if (k === "expires") cookie.expires = Date.parse(value);
-  }
-  if (cookie.secure && location.protocol !== "https:") return;
-  cookieWrites++;
-  jar = jar.filter((c) => !(c.name === cookie.name && c.domain === cookie.domain && c.path === cookie.path && c.hostOnly === cookie.hostOnly));
-  if (cookie.expires > Date.now()) jar.push(cookie);
-}
-
-const visible = () =>
-  jar.filter((c) => c.expires > Date.now() && (c.hostOnly ? location.hostname === c.domain : domainMatch(location.hostname, c.domain)) && (!c.secure || location.protocol === "https:"));
-
-Object.assign(globalThis, {
-  window: {
-    location,
-    sessionStorage: { getItem: (k: string) => session.get(k) ?? null, setItem: (k: string, v: string) => void session.set(k, v), removeItem: (k: string) => void session.delete(k) },
-    localStorage: { getItem: (k: string) => local.get(k) ?? null, setItem: (k: string, v: string) => void local.set(k, v), removeItem: (k: string) => void local.delete(k) },
-    dispatchEvent: () => true,
-    addEventListener: () => {},
-    removeEventListener: () => {},
-  },
-  document: {
-    get referrer() {
-      return referrer;
-    },
-    get cookie() {
-      return visible().map((c) => `${c.name}=${c.value}`).join("; ");
-    },
-    set cookie(raw: string) {
-      setCookie(raw);
-    },
-  },
-});
-
 type Touch = Record<string, string | undefined>;
 type Api = typeof import("../src/lib/attribution.ts");
 let load = 0;
@@ -75,7 +16,7 @@ async function page(search: string, opts: { ref?: string; host?: string; path?: 
   location.hostname = opts.host ?? "catolico.digital";
   location.pathname = opts.path ?? "/";
   location.search = search;
-  referrer = opts.ref ?? "";
+  state.referrer = opts.ref ?? "";
   const api = (await import(`../src/lib/attribution.ts?carga=${load++}`)) as Api;
   return api;
 }
@@ -84,12 +25,7 @@ const ACCEPT = { analytics: true, marketing: false };
 const REJECT = { analytics: false, marketing: false };
 const cd = () => visible().filter((c) => c.name.startsWith("cd_")).map((c) => c.name).sort();
 
-beforeEach(() => {
-  jar = [];
-  session.clear();
-  local.clear();
-  cookieWrites = 0;
-});
+beforeEach(resetBrowser);
 
 describe("first/last touch", () => {
   it("1. primeira visita direta cria cd_ft e cd_lt, ambos sem campanha", async () => {
@@ -189,7 +125,7 @@ describe("consentimento", () => {
     const api = await page("?utm_source=a&gclid=G1");
     api.syncAttribution(null);
     assert.equal(jar.length, 0);
-    assert.equal(cookieWrites, 0);
+    assert.equal(state.cookieWrites, 0);
     assert.ok(session.get("cd-attr-pending"));
   });
 
@@ -279,9 +215,9 @@ describe("robustez", () => {
   it("12. syncAttribution repetido na mesma página é idempotente (sem regravar sem necessidade)", async () => {
     const api = await page("");
     api.syncAttribution(ACCEPT);
-    const writes = cookieWrites;
+    const writes = state.cookieWrites;
     for (let i = 0; i < 5; i++) api.syncAttribution(ACCEPT);
-    assert.equal(cookieWrites, writes); // visita direta: nada novo a gravar
+    assert.equal(state.cookieWrites, writes); // visita direta: nada novo a gravar
   });
 
   it("12b. cookie corrompido não quebra: é ignorado e refeito", async () => {

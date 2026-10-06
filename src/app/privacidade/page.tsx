@@ -14,7 +14,7 @@ export default function PrivacidadePage() {
         <h1>Política de Privacidade</h1>
         <p>Esta página receberá a política final revisada juridicamente antes do lançamento. O&nbsp;formulário e os serviços do Católico Digital devem coletar somente os dados necessários para cada&nbsp;finalidade.</p>
         <h2 id="cookies">Cookies e medição</h2>
-        <p>O site só carrega ferramentas de medição e publicidade depois do seu&nbsp;aceite. Você&nbsp;escolhe no aviso que aparece na primeira visita e pode mudar quando quiser, em &ldquo;Preferências de cookies&rdquo; no&nbsp;rodapé.</p>
+        <p>O site só carrega ferramentas de medição e publicidade depois do seu&nbsp;aceite. Você&nbsp;escolhe no aviso que aparece na primeira visita e pode mudar quando quiser, em &ldquo;Preferências de cookies&rdquo; no&nbsp;rodapé. A&nbsp;escolha vale também para a plataforma, em app.catolico.digital, e fica guardada por 180&nbsp;dias.</p>
         <ul>
           <li><strong>Necessários:</strong> guardam a sua escolha sobre cookies neste navegador. Estão&nbsp;sempre&nbsp;ativos.</li>
           <li><strong>Medição (Google Analytics&nbsp;4):</strong> mostra quais páginas são mais vistas e de onde vêm as visitas, para melhorarmos o&nbsp;site. Guarda&nbsp;também, por 90&nbsp;dias, de qual anúncio ou link você chegou (campanha, página de entrada e site de&nbsp;origem), sem dados&nbsp;pessoais.</li>
