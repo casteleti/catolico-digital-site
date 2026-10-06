@@ -1108,3 +1108,12 @@ p, li, blockquote, .icon-card p, .routine__step p { text-wrap: pretty; }
 .legal-page li + li { margin-top: .5rem; }
 .legal-page li strong { color: var(--color-white); }
 @media (max-width: 22.5rem) { #faq-title { font-size: 1.75rem; } } /* 320 px: "costumam perguntar." (colado por nbsp) não cabia em 32 px e alargava a página */
+
+/* ---------- Foto de fundo do banner da Home (05/10/2026): só no computador ----------
+ * No celular e no tablet o banner segue com o fundo azul de sempre (a foto não seria vista e pesaria). */
+@media (min-width: 1024px) {
+  .landing-hero { background-color: var(--color-brand-800); background-image: linear-gradient(90deg, rgb(8 27 82 / 35%) 0%, rgb(8 27 82 / 15%) 45%, transparent 70%), image-set(url("/ilustracoes/bg-fullbanner-home-1600.webp") 1x, url("/ilustracoes/bg-fullbanner-home-2400.webp") 2x); background-position: center, var(--hero-photo-x) center; background-repeat: no-repeat; background-size: cover, cover;
+    /* Desliza a foto para a esquerda até o rosto do padre (≈29% da largura da foto) ficar antes do começo do texto
+       — o texto começa em max(20px, (100vw − 1200px) / 2) e a foto, com 846 px de altura, tem max(100vw, 1792px). */
+    --hero-photo-x: calc(max(40px, (100vw - 1200px) / 2 - 90px) - .29 * max(100vw, 1792px)); }
+}
