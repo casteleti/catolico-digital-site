@@ -4,8 +4,6 @@ const THIRTY_DAYS = 60 * 60 * 24 * 30;
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  // CSS (Tailwind, ~22 KB comprimido) vai no HTML em vez de <link> bloqueante: elimina o "render-blocking CSS".
-  experimental: { inlineCss: true },
   poweredByHeader: false,
   async headers() {
     // Arquivos de public/ não têm hash no nome: cache longo, com revalidação em segundo plano.
