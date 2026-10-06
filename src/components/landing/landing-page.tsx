@@ -152,7 +152,12 @@ export function LandingPage() {
       <section className="section section--white" id="como-e-diferente" aria-labelledby="idea-title">
         <Container>
           <div className="idea-intro"><Reveal className="section-heading idea-intro__copy"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das&nbsp;páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde&nbsp;aparece.</p></Reveal><Reveal className="idea-intro__art" delay={100}><Illustration alt="Uma informação da paróquia é atualizada uma vez e aparece certa em quatro páginas do site." height={900} name="sincronizacao-clara" width={1200} /></Reveal></div>
-          <Reveal delay={120}><ScheduleUpdateDemo /><p className="schedule-update-demo__caption">Você não precisa pensar em quais páginas mexer. Só&nbsp;no que&nbsp;mudou.</p></Reveal>
+          <Reveal delay={120}><ScheduleUpdateDemo /></Reveal>
+          <Reveal className="idea-cta" delay={160}>
+            <p className="idea-cta__lead">Agora imagine isso com os horários da sua&nbsp;paróquia.</p>
+            <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
+            <p className="idea-cta__note">{CTA.note}</p>
+          </Reveal>
         </Container>
       </section>
 
@@ -213,7 +218,7 @@ export function LandingPage() {
 
       <section className="final-cta section section--night" id="chamada-final" aria-labelledby="final-title">
         <div className="final-cta__pattern" aria-hidden="true" />
-        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Sua paróquia já faz tudo isso. Só&nbsp;não num lugar&nbsp;só.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem&nbsp;procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div><LiturgyToday /></Reveal></Container>
+        <Container className="narrow-center"><Reveal><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="final-title">Esta plataforma é para ampliar e organizar a comunicação da sua&nbsp;paróquia.</h2><p>Horários, catequese, sacramentos, pastorais e dízimo organizados, atualizados pela própria paróquia e ao alcance de quem&nbsp;procura.</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link></div><LiturgyToday /></Reveal></Container>
       </section>
     </main>
   );

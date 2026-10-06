@@ -345,7 +345,9 @@ h3, .faq-trigger, .button, .site-nav { font-family: var(--font-sans); }
 .button__arrow { display: inline-block; transition: transform 240ms var(--ease-emphasized); }
 .button--gold:hover .button__arrow { transform: translateX(3px); }
 .button--brand { border-radius: 12px; background: var(--brand-blue); }
-.button--brand:hover { background: var(--color-brand-900); }
+.button--brand { transition: background-color var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
+.button--brand:hover, .button--brand:focus-visible { background: var(--color-pink); box-shadow: 0 7px 16px rgb(196 24 118 / 28%); transform: translateY(-1px); }
+.button--brand:active { transform: translateY(0); }
 .nav-cta { border-radius: 12px; }
 .product-preview--composed .device-window { border-color: rgb(255 255 255 / 68%); border-radius: 20px; box-shadow: 0 32px 80px rgb(4 15 50 / 28%); }
 .icon-card, .feature-card { border-color: var(--border-subtle); box-shadow: 0 8px 30px rgb(34 34 34 / 5%); }
@@ -391,12 +393,11 @@ h3, .faq-trigger, .button, .site-nav { font-family: var(--font-sans); }
 .schedule-update-demo__editor h3 { margin-bottom: .4rem; font-family: var(--font-display); font-size: var(--text-2xl); }
 .schedule-update-demo__current { margin-bottom: 1.25rem; color: var(--color-brand-800); font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.04em; }
 .schedule-update-demo__editor .button { border-radius: 12px; }
-.schedule-update-demo__pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: center; gap: .75rem; }
+.schedule-update-demo__pages { display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: .75rem; }
 .schedule-update-demo__page { min-width: 0; padding: 1rem; border: 1px solid var(--color-brand-100); border-radius: var(--radius-md); background: var(--color-white); transition: border-color var(--motion-normal) var(--ease-standard), background-color var(--motion-normal) var(--ease-standard); }
 .schedule-update-demo__page h3 { margin-bottom: .4rem; color: var(--color-brand-800); font-size: .9375rem; }
 .schedule-update-demo__page p { margin: 0; color: var(--color-ink-700); font-size: var(--text-sm); line-height: 1.5; overflow-wrap: anywhere; }
 .schedule-update-demo__page.is-updated { animation: schedule-updated 700ms var(--ease-emphasized) both; }
-.schedule-update-demo__page:last-of-type { grid-column: 1 / -1; }
 @media (max-width: 760px) { .schedule-update-demo { grid-template-columns: minmax(0, 1fr); } } /* depois da regra-base: antes ela vencia a media query e a demo estourava a largura no celular */
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @keyframes schedule-updated { 50% { border-color: var(--color-gold-600); background: var(--color-gold-100); } }
@@ -1117,3 +1118,38 @@ p, li, blockquote, .icon-card p, .routine__step p { text-wrap: pretty; }
        — o texto começa em max(20px, (100vw − 1200px) / 2) e a foto, com 846 px de altura, tem max(100vw, 1792px). */
     --hero-photo-x: calc(max(40px, (100vw - 1200px) / 2 - 90px) - .29 * max(100vw, 1792px)); }
 }
+
+/* ---------- Anotação à mão "Clique para testar" (05/10/2026) ----------
+ * Fora do box, à esquerda, com seta de giz apontando para o botão. Some depois do primeiro clique. Em telas sem
+ * espaço à esquerda, fica embaixo do box, apontando para cima. */
+.schedule-update-demo__editor { position: relative; }
+.try-hint { position: absolute; z-index: 1; right: calc(100% + .5rem); bottom: 1.6rem; width: 12.5rem; color: var(--color-pink); pointer-events: none; transition: opacity 500ms var(--ease-standard), transform 500ms var(--ease-standard); }
+.try-hint__text { display: block; margin: 0 0 -.4rem .2rem; font-family: var(--font-hand), "Comic Sans MS", cursive; font-size: 1.75rem; font-weight: 700; line-height: 1; transform: rotate(-6deg); transform-origin: left bottom; }
+.try-hint__arrow { display: block; width: 100%; height: auto; }
+.try-hint__line { stroke-dasharray: 220; stroke-dashoffset: 220; animation: try-hint-draw 900ms var(--ease-enter) 400ms forwards; }
+.try-hint__head { stroke-dasharray: 60; stroke-dashoffset: 60; animation: try-hint-draw 300ms var(--ease-enter) 1250ms forwards; }
+.try-hint.is-done { opacity: 0; transform: translateX(-.75rem); }
+@keyframes try-hint-draw { to { stroke-dashoffset: 0; } }
+@keyframes try-hint-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+.try-hint:not(.is-done) .try-hint__arrow { animation: try-hint-nudge 1.8s ease-in-out 1.8s infinite; }
+@media (max-width: 1679px) {
+  .schedule-update-demo__editor { margin-bottom: 9.5rem; }
+  .try-hint { top: calc(100% + .25rem); right: auto; bottom: auto; left: 2rem; width: 11rem; display: flex; flex-direction: column-reverse; }
+  .try-hint__arrow { transform: scaleY(-1) rotate(-8deg); }
+  .try-hint:not(.is-done) .try-hint__arrow { animation: none; }
+  .try-hint__text { margin: -.2rem 0 0 4.5rem; font-size: 1.5rem; transform: rotate(-3deg); }
+}
+@media (prefers-reduced-motion: reduce) { .try-hint__line, .try-hint__head { animation: none; stroke-dashoffset: 0; } .try-hint:not(.is-done) .try-hint__arrow { animation: none; } }
+
+/* ---------- Chamada logo abaixo da demonstração do horário (05/10/2026) ---------- */
+.idea-cta { display: grid; justify-items: center; gap: 1rem; margin-top: var(--space-6); text-align: center; }
+.idea-cta__lead { margin: 0; color: var(--color-brand-900); font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.25; }
+.idea-cta__note { margin: 0; color: var(--color-ink-500); font-size: var(--text-sm); }
+
+/* ---------- Chamada final: respiro entre título, texto e botão (05/10/2026) ----------
+ * A regra antiga (".narrow-center > p:last-of-type") não alcançava a Home, onde o texto fica dentro de um Reveal e o
+ * último <p> é o calendário litúrgico. Esta vale para todas as páginas. */
+.final-cta h2 + p, .final-cta .narrow-center > h2 + p:last-of-type { max-width: 42rem; margin: 0 auto 2.5rem; color: rgb(255 255 255 / 84%); font-size: clamp(1.0625rem, 1.25vw, 1.25rem); line-height: 1.6; text-wrap: balance; }
+.final-cta h2 { margin-bottom: 1.5rem; }
+.final-cta__actions { gap: 1.5rem; }
+.final-cta .area-others { margin-top: var(--space-10); }
