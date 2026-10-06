@@ -2,28 +2,42 @@
 
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import Link from "next/link";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { CONTACT_ROLES, CONTACT_SUBJECTS } from "@/content/contact";
+import { trackLeadOnce } from "@/lib/track";
 
 type Status = "idle" | "loading" | "success" | "inactive" | "error";
 
 /** Formulário de contato. O assunto começa em "Quero conversar sobre a Plataforma". */
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  /** Um identificador por formulário: repetir o envio (duplo clique, nova tentativa) nunca vira dois contatos. */
+  const submissionId = useRef<string>("");
+  const sending = useRef(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sending.current) return; // duplo clique ou Enter repetido
+    sending.current = true;
+    submissionId.current ||= globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const form = new FormData(event.currentTarget);
     setStatus("loading");
     try {
       const response = await fetch("/api/contato", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...Object.fromEntries(form), consent: form.get("consent") === "on" }),
+        body: JSON.stringify({ ...Object.fromEntries(form), consent: form.get("consent") === "on", submission_id: submissionId.current }),
       });
+      if (response.ok) {
+        // O evento só sai depois que o servidor confirma a entrega (`lead_created`); robô e contatos não comerciais vêm sem `ga_event`.
+        const result = (await response.json().catch(() => null)) as { lead_created?: boolean; ga_event?: Parameters<typeof trackLeadOnce>[0] } | null;
+        if (result?.lead_created === true) trackLeadOnce(result.ga_event);
+      }
       setStatus(response.ok ? "success" : response.status === 503 ? "inactive" : "error");
     } catch {
       setStatus("error");
+    } finally {
+      sending.current = false;
     }
   }
 

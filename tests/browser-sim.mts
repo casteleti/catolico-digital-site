@@ -81,6 +81,7 @@ export function resetBrowser() {
   session.clear();
   local.clear();
   listeners.clear();
+  delete (globalThis as unknown as { window: { dataLayer?: unknown } }).window.dataLayer;
   state.cookieWrites = 0;
   state.referrer = "";
   location.hostname = "catolico.digital";

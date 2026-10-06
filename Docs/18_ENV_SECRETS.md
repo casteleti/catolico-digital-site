@@ -10,7 +10,17 @@ Toda variável deve ser classificada:
 ## 2. Exemplo
 ```bash
 NODE_ENV=production
-APP_URL=https://catolicodigital.com.br
+APP_URL=https://catolico.digital
+CONTACT_WEBHOOK_URL=   # canal da equipe do formulário /api/contato (n8n, Make, Zapier, Slack). Secreto, runtime. Vazio = rota responde 503.
+# Alternativa ao webhook: e-mail por SMTP para a equipe (mesmas credenciais Mailgun da plataforma, domínio mail.catolico.digital).
+# Todas só no Coolify (runtime). Sem webhook e sem e-mail completo, /api/contato responde 503. Detalhes: src/lib/contact-mail.ts
+CONTACT_TO=ricardo@daksa.com.br,renato@daksa.com.br
+MAIL_FROM=Católico.digital <no-reply@mail.catolico.digital>
+SMTP_HOST=smtp.mailgun.org
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=
+SMTP_PASSWORD=
 
 DATABASE_URL=
 

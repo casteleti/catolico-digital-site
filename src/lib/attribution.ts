@@ -72,6 +72,22 @@ function readCookie(name: string): Touch | null {
   }
 }
 
+/**
+ * Lê a origem do cabeçalho `Cookie` de uma requisição (no servidor). Os cookies `cd_ft`/`cd_lt` viajam para
+ * `catolico.digital` sozinhos; só existem para quem aceitou "Medição". Valores inválidos viram `null`.
+ */
+export function attributionFromCookieHeader(header: string | null): { first: Touch | null; last: Touch | null } {
+  const read = (name: string): Touch | null => {
+    try {
+      const entry = (header ?? "").split(";").map((part) => part.trim()).find((part) => part.startsWith(`${name}=`));
+      return entry ? parseTouch(JSON.parse(decodeURIComponent(entry.slice(name.length + 1)))) : null;
+    } catch {
+      return null;
+    }
+  };
+  return { first: read(FIRST_TOUCH_COOKIE), last: read(LAST_TOUCH_COOKIE) };
+}
+
 /** Lê a origem guardada (para uso futuro no cadastro). `null` = nenhuma ou sem consentimento. */
 export function readAttribution(): { first: Touch | null; last: Touch | null } {
   return { first: readCookie(FIRST_TOUCH_COOKIE), last: readCookie(LAST_TOUCH_COOKIE) };

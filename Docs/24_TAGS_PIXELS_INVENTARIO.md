@@ -29,13 +29,13 @@ Registro único de todas as tags e pixels instalados no site. Cada ferramenta no
 
 ### Pontos de atenção
 - **Desempenho:** as tags carregam com `lazyOnload` desde 2026-10-05, para reduzir o impacto no PageSpeed. Medição e motivo em `Docs/25` (seção Performance).
-- **Divergência de URL:** o fluxo está cadastrado com `catolicodigital.org`, mas o site responde em `catolico.digital`. O `.org` não responde (sem HTTP nem redirect). O ideal é trocar a URL do fluxo em Admin > Fluxos de dados. Enquanto isso, a ferramenta de detecção do Google não encontra a tag se for testada no `.org`. A coleta de dados em si não depende dessa URL.
+- **Divergência de URL (só no painel do GA4, não existe no código):** o fluxo está cadastrado com `catolicodigital.org`, mas o site responde em `catolico.digital`. O `.org` não responde (sem HTTP nem redirect). O ideal é trocar a URL do fluxo em Admin > Fluxos de dados. Enquanto isso, a ferramenta de detecção do Google não encontra a tag se for testada no `.org`. A coleta de dados em si não depende dessa URL.
 - **Divergência de ID:** ao copiar os dados do fluxo, o ID apareceu como `G-Y7FQ36B3F`, sem o `V` final. O ID correto é `G-Y7FQ36B3FV`, o mesmo do snippet do Google e do código. Confirmar no GA4 se houver dúvida.
 
 ### Implementação
 - **Componente:** `src/components/marketing/google-analytics.tsx`
 - **Onde é renderizado:** `src/app/layout.tsx`, no fim do `<body>`, valendo para todas as páginas.
-- **Método:** `next/script` com `strategy="afterInteractive"`. São dois scripts: o `gtag.js` do Google e um inline com `dataLayer`, `gtag('js', ...)` e `gtag('config', ID)`.
+- **Método:** `next/script` com `strategy="lazyOnload"` no site (na plataforma, `afterInteractive`; a diferença não afeta a medição). São dois scripts: o `gtag.js` do Google e um inline (`src/lib/ga-snippet.ts`) com `dataLayer`, `gtag('consent', ...)`, `gtag('js', ...)` e `gtag('config', ID)`.
 - **Só em produção:** o componente retorna `null` quando `NODE_ENV !== "production"`, então `next dev` não gera dados.
 - **Variável de ambiente:** `NEXT_PUBLIC_GA_ID` (opcional). Se não existir, usa `G-Y7FQ36B3FV`. Por ser `NEXT_PUBLIC_`, precisa estar definida no momento do build (no Coolify, marcar como variável de build).
 - **Commit:** `9b4104e` (`feat(site): adiciona tag do Google Analytics (GA4) em produção`).
@@ -155,3 +155,22 @@ No código do site, `readAttribution()` devolve `{ first, last }`. A plataforma 
 | Data | Mudança |
 |---|---|
 | 2026-10-06 | Captura e persistência de UTMs e `gclid`/`gbraid`/`wbraid`; correção do apagamento de cookies em `.catolico.digital` ao retirar o consentimento. |
+
+## 4. Evento `generate_lead` (formulário de contato)
+
+Primeira conversão real do site, enquanto não existe cadastro de paróquia nem pagamento.
+
+- **Código:** `src/app/api/contato/route.ts` (decide e confirma), `src/lib/lead.ts` (regras, evento e deduplicação), `src/lib/track.ts` (envio ao GA4 no navegador), `src/components/site/contact-form.tsx`, tipos de assunto em `src/content/contact.ts`.
+- **Quando conta:** só depois de o servidor validar os dados, descartar robô e o canal da equipe (webhook ou e-mail) aceitar a mensagem. A resposta traz `lead_created: true` e, nos contatos comerciais, `ga_event`. Clique e submit na página não disparam nada.
+- **Só contato comercial vira `generate_lead`:** "Quero conversar sobre a Plataforma", "Quero ver uma demonstração" e "Valores e planos" (`lead_type: commercial`). "Já uso e preciso de ajuda" (`support`), "Parcerias com dioceses e movimentos" (`partnership`) e "Outro assunto" (`other`) enviam a mensagem normalmente, mas não geram evento. Assunto novo precisa de tipo em `CONTACT_LEAD_TYPES` (senão não compila).
+- **Robô (campo-isca):** a resposta parece sucesso (200 `{ ok: true, lead_created: false }`), mas sem `ga_event` e sem enviar nada ao canal.
+- **Duplicidade:** a página manda um `submission_id` por formulário; o servidor devolve o mesmo `lead_id` sem reenviar (duplo clique, nova tentativa, resposta perdida; memória do servidor, 10 minutos). No navegador, `trackLeadOnce` envia o evento uma vez por `lead_id` (memória e `sessionStorage`). Falha de envio não gasta o id: a nova tentativa funciona.
+- **Parâmetros do evento (GA4):** `lead_id`, `form_name` (`contato`), `lead_type`, `utm_source`, `utm_medium`, `utm_campaign` (do last touch, se houver). Nada de nome, e-mail, telefone, paróquia, mensagem nem `gclid`. A página só repassa essa lista.
+- **Só com o aceite de "Medição":** sem ele, o evento não é enviado (o lead segue normal).
+- **Atribuição para a equipe:** o servidor lê `cd_ft` e `cd_lt` do cabeçalho `Cookie` da própria requisição e inclui no webhook (`attribution.first` e `attribution.last`: UTMs, `gclid`/`gbraid`/`wbraid`, `lp`, `ref`, `ts`) ou no corpo do e-mail. Quem não aceitou "Medição" chega sem atribuição. O `lead_id` também vai ao canal, para ligar o lead ao GA4 e, no futuro, à importação de conversão offline.
+- **No GA4 (manual):** Admin > Eventos (ou Principais eventos), marcar `generate_lead` como evento principal depois que o primeiro aparecer.
+- **Limites:** a deduplicação do servidor é em memória (reinício ou várias instâncias a perdem; a do navegador continua). O evento sai do navegador, então bloqueadores de anúncio e quem não aceita cookies não são contados. Medição pelo servidor (Measurement Protocol) fica para uma etapa futura.
+
+| Data | Mudança |
+|---|---|
+| 2026-10-06 | `generate_lead` confirmado pelo servidor, com atribuição, deduplicação e tipos de contato. |
