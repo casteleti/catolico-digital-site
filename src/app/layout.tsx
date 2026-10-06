@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "./" },
   icons: {
     icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/brand/icone-32.png", type: "image/png", sizes: "32x32" },
     ],
   },

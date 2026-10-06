@@ -53,3 +53,12 @@ Acrescentar um item na seção certa, com a data, o que aconteceu e a regra para
 - **Regra de CSS:** uma regra dentro de `@media` precisa vir **depois** da regra-base do mesmo seletor, porque a especificidade é igual e vence a última. Em grids, usar `minmax(0, 1fr)` em vez de `1fr`, que deixa o conteúdo alargar a coluna.
 - **Texto colado por `&nbsp;`** não quebra linha. Em títulos grandes, conferir em 320 px.
 - **Como checar:** em larguras 320, 360, 390 e 430 px, `document.documentElement.scrollWidth` deve ser igual à largura da tela em todas as rotas. Sem isso, elementos `position: fixed` (aviso de cookies, botão do WhatsApp) saem desalinhados.
+
+## SEO Site Checkup (06/10/2026): o que foi feito e o que ficou pendente
+- **CSS bloqueante:** `experimental.inlineCss: true` em `next.config.ts` troca os dois `<link rel="stylesheet">` por `<style>` no HTML (CSS ~22 KB comprimido, Tailwind). Custo: o HTML de cada página carrega o CSS (sem cache separado). Se o HTML crescer demais, voltar ao `<link>` e aceitar o aviso do teste.
+- **TTFB:** de fora, 0,55–0,70 s até em `/robots.txt` e `/api/health/live`; localmente ~55 ms. É rota/proxy (Coolify/Traefik) ou distância do servidor, não código. A solução é CDN (abaixo). O commit de SEO não mexeu em CSS, fontes ou scripts.
+- **CDN pendente (decisão de infraestrutura):** o site roda em VPS próprio (Coolify), sem CDN. Recomendação: Cloudflare na frente do domínio (proxy ligado, SSL "Full (strict)"). Como as páginas são dinâmicas (`no-store`, por causa da CSP com nonce), o ganho vem dos assets (`/_next/static`, `/brand`) e da conexão TLS próxima do usuário. Antes de ligar, rever HSTS/CSP (ver "Segurança").
+- **GA4 não aparece no HTML por escolha:** carrega só após o aceite de cookies, conforme a Política de Privacidade. O teste do SEO Site Checkup não aceita cookies, então o falha. Mudar isso exige decidir o modelo de consentimento (Consent Mode v2) e reescrever a política. Não alterar sem essa decisão.
+- **SPF pendente:** depende do provedor de e-mail do domínio (`MAIL_PROVIDER` ainda vazio). Exemplos: Google Workspace `v=spf1 include:_spf.google.com ~all`; Resend `v=spf1 include:amazonses.com ~all`. Um único registro TXT por domínio, juntando os `include:` de todos os provedores que enviam.
+- **Favicon:** `src/app/icon.svg` (marca embutida) referenciado em `metadata.icons`; o `metadata.icons` explícito sobrescreve o arquivo por convenção, então todo ícone novo precisa entrar lá.
+- **Backlinks:** ação de divulgação externa, fora do código. `Disallow: /api/` no robots é intencional.
