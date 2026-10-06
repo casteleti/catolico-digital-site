@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand/brand-mark";
+import { CookiePreferencesButton } from "@/components/marketing/cookie-preferences-button";
 import { FooterSkyline } from "@/components/marketing/footer-skyline";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { Container } from "@/components/ui/container";
@@ -18,7 +19,7 @@ export function SiteFooter() {
         <div className="site-footer__top">
           <div className="site-footer__brand">
             <Link href="/" aria-label="Católico Digital — início">
-              <BrandMark on="azul" slogan={false} width={190} />
+              <BrandMark lazy on="azul" slogan={false} width={190} />
             </Link>
             <p className="site-footer__note">A paróquia cuida das pessoas. O&nbsp;Católico Digital ajuda a&nbsp;aproximá-las.</p>
             <a className="site-footer__social" href={INSTAGRAM.url} rel="noopener noreferrer" target="_blank">
@@ -40,6 +41,7 @@ export function SiteFooter() {
               <Link href="/#duvidas">Dúvidas</Link>
               <Link href="/contato">Contato</Link>
               <Link href="/privacidade">Privacidade</Link>
+              <CookiePreferencesButton />
             </div>
           </nav>
         </div>

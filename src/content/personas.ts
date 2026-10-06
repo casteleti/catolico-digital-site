@@ -75,7 +75,7 @@ export const COORDENADORES: Persona = {
   slug: "pastorais",
   eyebrow: "Para os Coordenadores",
   quote: "“A escala está num áudio de três semanas\u00A0atrás.”",
-  title: "Sua equipe organizada, com o seu próprio\u00A0acesso.",
+  title: "Sua pastoral organizada, com o seu próprio\u00A0acesso.",
   lead: "Pastoral, movimento, ministério ou turma de catequese: cada coordenador entra com o próprio login e cuida do que é dele, em vez de depender de grupos de WhatsApp, contatos no celular e prints\u00A0perdidos.",
   image: { name: "coordenadores-equipe", alt: "A coordenadora no notebook, com as pessoas da equipe ligadas ao grupo em volta\u00A0dela.", width: 1200, height: 1200 },
   routine: {

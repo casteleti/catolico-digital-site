@@ -2,12 +2,12 @@ import Script from "next/script";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "1062699391956918";
 
-export function MetaPixel() {
+export function MetaPixel({ nonce }: { nonce?: string }) {
   if (process.env.NODE_ENV !== "production") return null;
 
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
+      <Script nonce={nonce} id="meta-pixel" strategy="lazyOnload">
         {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -19,16 +19,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '${PIXEL_ID}');
 fbq('track', 'PageView');`}
       </Script>
-      <noscript>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          alt=""
-          src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
-        />
-      </noscript>
     </>
   );
 }

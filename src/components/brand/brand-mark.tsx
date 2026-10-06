@@ -12,11 +12,13 @@ type Props = {
   /** Só o símbolo. */
   compact?: boolean;
   className?: string;
+  /** Marca fora da primeira tela (ex.: rodapé): não é pré-carregada nem disputa banda com o conteúdo inicial. */
+  lazy?: boolean;
 };
 
 const RATIO = { slogan: 192 / 900, plain: 163 / 800, icon: 1 } as const;
 
-export function BrandMark({ width = 168, on = "claro", slogan = true, compact = false, className = "" }: Props) {
+export function BrandMark({ width = 168, on = "claro", slogan = true, compact = false, className = "", lazy = false }: Props) {
   const asset = compact || width < 110 ? "icone" : slogan && width >= 260 ? "horizontal-slogan" : "horizontal";
   const ratio = asset === "icone" ? RATIO.icon : asset === "horizontal-slogan" ? RATIO.slogan : RATIO.plain;
   const size = compact ? Math.min(width, 48) : width;
@@ -28,6 +30,7 @@ export function BrandMark({ width = 168, on = "claro", slogan = true, compact = 
         className="brand-mark__logo"
         decoding="async"
         height={Math.round(size * ratio)}
+        loading={lazy ? "lazy" : undefined}
         src={`/brand/${asset}-${on}.webp`}
         style={{ width: size }}
         width={size}
