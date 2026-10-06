@@ -62,3 +62,9 @@ Acrescentar um item na seção certa, com a data, o que aconteceu e a regra para
 - **SPF pendente:** depende do provedor de e-mail do domínio (`MAIL_PROVIDER` ainda vazio). Exemplos: Google Workspace `v=spf1 include:_spf.google.com ~all`; Resend `v=spf1 include:amazonses.com ~all`. Um único registro TXT por domínio, juntando os `include:` de todos os provedores que enviam.
 - **Favicon:** `src/app/icon.svg` (marca embutida) referenciado em `metadata.icons`; o `metadata.icons` explícito sobrescreve o arquivo por convenção, então todo ícone novo precisa entrar lá.
 - **Backlinks:** ação de divulgação externa, fora do código. `Disallow: /api/` no robots é intencional.
+
+## Servidor e TTFB (06/10/2026)
+- **"TTFB" de `curl` inclui DNS+TCP+TLS.** De fora medi ~0,6 s, mas ~0,4 s disso é conexão (RTT ~190 ms). O tempo do servidor (`time_starttransfer - time_appconnect`) é ~0,19 s em `/robots.txt` e `/api/health/live` e ~0,22 s na home: está normal. Medir assim, não só o total.
+- **503 no prefetch (`_rsc=`)** apareceram durante três deploys seguidos em ~75 min (rolling update). Evitar vários pushes seguidos e auditar só depois do deploy terminar.
+- **Healthcheck do Coolify** usa `curl` dentro do container e a imagem alpine não o tinha (`curl: not found`, e mesmo assim "healthy"). O `Dockerfile` agora instala `curl`.
+- **Limites no Coolify:** CPU 0,5 e memória 512 MB, num servidor de 8 cores/15 GB. Sem métricas ligadas, não há prova de throttling. Se o TTFB real subir sob carga, aumentar para 1 CPU e 1 GB.
