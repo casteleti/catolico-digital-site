@@ -103,7 +103,7 @@ export function LandingPage() {
         <Container className="hero__grid">
           <div className="hero__content">
             <p className="eyebrow eyebrow--light">Plataforma para paróquias</p>
-            <h1 id="hero-title">Organize sua paróquia: <em className="hl">horários de missa, dízimo, inscrições nos sacramentos e gestão das&nbsp;pastorais.</em></h1>
+            <h1 id="hero-title">Organize sua paróquia: <em className="hl">horários de missa, dízimo, sacramentos e gestão das&nbsp;pastorais.</em></h1>
             <p className="hero-copy hero-copy--light">Uma estrutura criada por católicos que vivem o dia a dia de uma comunidade. Facilidade&nbsp;e produtividade para quem serve: pároco, secretaria e&nbsp;coordenadores.</p>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>Quero montar o site em 5 minutos</span><span className="button__arrow" aria-hidden="true">→</span></a>
@@ -166,7 +166,7 @@ export function LandingPage() {
 
       <section className="purpose-band section section--white" id="proposito" aria-labelledby="purpose-title">
         <Container className="purpose-band__inner">
-          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar não é perder a&nbsp;proximidade.</h2><p>O Católico Digital organiza o que pode ser organizado: informação, inscrição, comunicação. O&nbsp;encontro, o acolhimento e a catequese continuam sendo das&nbsp;pessoas.</p></Reveal>
+          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar é evangelizar para muito mais&nbsp;pessoas.</h2><p>Imagine um site moderno, feito para ser encontrado no Google, compartilhado nas redes sociais e entendido pelas inteligências artificiais. Um&nbsp;lugar onde todo mundo acha as informações da paróquia, tira dúvidas, faz inscrições e muito&nbsp;mais.</p></Reveal>
           <Reveal className="purpose-band__aside" delay={150}><span className="rosette rosette--large" aria-hidden="true" /><blockquote>A tecnologia fica nos bastidores. A&nbsp;comunidade continua no&nbsp;centro.</blockquote></Reveal>
         </Container>
       </section>
@@ -176,12 +176,12 @@ export function LandingPage() {
         <Container className="onboarding-band">
           <Reveal>
             <p className="eyebrow eyebrow--light">Experimente agora</p>
-            <h2 id="start-title">Monte o site da sua paróquia em 5 minutos. E&nbsp;veja no celular, na&nbsp;hora.</h2>
-            <p className="onboarding-band__lead">São nove perguntas sobre a paróquia, nada de tecnologia. A&nbsp;cada resposta, o site aparece ao lado. Quando&nbsp;gostar, você guarda com o seu e-mail; nada vai ao ar sem você&nbsp;mandar.</p>
+            <h2 id="start-title">Monte o site da sua paróquia em 5&nbsp;minutos.</h2>
+            <p className="onboarding-band__lead">Responda algumas perguntas sobre sua paróquia e assista em tempo real à criação do site. Publique&nbsp;só se&nbsp;gostar.</p>
             <ul className="onboarding-band__checks">
-              <li><Check aria-hidden="true" size={18} /> Não precisa criar conta nem senha para começar</li>
-              <li><Check aria-hidden="true" size={18} /> Pode pular o que não souber e voltar depois</li>
-              <li><Check aria-hidden="true" size={18} /> Catequese, sacramentos e pastorais já vêm pré-montados</li>
+              <li><Check aria-hidden="true" size={18} /> Não precisa criar conta para experimentar</li>
+              <li><Check aria-hidden="true" size={18} /> Teste sem cadastrar cartão de crédito</li>
+              <li><Check aria-hidden="true" size={18} /> Utilize apenas os recursos que você quiser</li>
             </ul>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
