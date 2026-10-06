@@ -31,7 +31,9 @@ export function BrandMark({ width = 168, on = "claro", slogan = true, compact = 
         decoding="async"
         height={Math.round(size * ratio)}
         loading={lazy ? "lazy" : undefined}
+        sizes={asset === "horizontal" ? `${size}px` : undefined}
         src={`/brand/${asset}-${on}.webp`}
+        srcSet={asset === "horizontal" ? `/brand/${asset}-${on}-400.webp 400w, /brand/${asset}-${on}.webp 800w` : undefined}
         style={{ width: size }}
         width={size}
       />
