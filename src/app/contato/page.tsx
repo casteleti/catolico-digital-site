@@ -25,7 +25,7 @@ export default function ContatoPage() {
           <ContactForm />
           <aside className="contact-aside">
             <p className="eyebrow">Prefere ver na&nbsp;prática?</p>
-            <h2>Monte o site da sua paróquia em 5&nbsp;minutos.</h2>
+            <h2>Monte o site da sua paróquia em cerca de 5&nbsp;minutos.</h2>
             <p>{CTA.note}</p>
             <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
             <div className="contact-aside__social">

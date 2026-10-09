@@ -37,7 +37,7 @@ export function SiteFooter() {
             </div>
             <div>
               <p className="site-footer__title">Católico Digital</p>
-              <Link href="/#como-e-diferente">Como funciona</Link>
+              <Link href="/#como-comecar">Como funciona</Link>
               <Link href="/#duvidas">Dúvidas</Link>
               <Link href="/contato">Contato</Link>
               <Link href="/privacidade">Privacidade</Link>

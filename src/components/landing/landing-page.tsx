@@ -11,10 +11,25 @@ import { LiturgyToday } from "@/components/site/liturgy-today";
 import { ModuleIcon } from "@/components/site/module-icon";
 import { AreasOverview } from "@/components/site/areas-overview";
 import { Container } from "@/components/ui/container";
-import { CTA, ONBOARDING_URL } from "@/content/links";
-import { AREAS } from "@/content/areas";
+import { CTA, DEMO_URL, ONBOARDING_URL } from "@/content/links";
+import { NAVIGATION } from "@/content/navigation";
 
-const AREA_ITEMS = AREAS.flatMap((a) => a.items);
+const AUDIENCE = NAVIGATION.flatMap((item) => (item.kind === "menu" && item.label === "Para quem" ? item.groups.flatMap((g) => g.links) : []));
+
+/** Os três passos reais do onboarding (app.catolico.digital/comecar). */
+const STEPS: Array<[string, string]> = [
+  ["Responda nove perguntas", "Nome, cidade, padroeiro, horários de missa e contato. O\u00A0que você não souber, pode\u00A0pular."],
+  ["Veja o site ficar pronto", "A cada resposta, a prévia do site aparece ao lado e você confere como o fiel vai\u00A0ver."],
+  ["Publique quando quiser", "Nada vai ao ar sem você mandar. Depois,\u00A0a secretaria atualiza tudo por um painel\u00A0simples."],
+];
+
+/** O que a paróquia precisa saber antes de testar. Só o que o sistema faz hoje; valores de manutenção ainda são pendência comercial (não afirmar que publicar é grátis). */
+const BEFORE_YOU_START: Array<{ q: string; a: string; link?: { href: string; label: string } }> = [
+  { q: "O que preciso ter à\u00A0mão?", a: "O nome da paróquia, a cidade, o padroeiro e os horários de missa ajudam. O\u00A0que você não souber, pode pular e completar\u00A0depois." },
+  { q: "O que significa\u00A0publicar?", a: "Enquanto você não publica, o site não está aberto ao público. Ao\u00A0publicar, qualquer pessoa pode acessá-lo e ele pode aparecer no Google. Só\u00A0o administrador da paróquia\u00A0publica." },
+  { q: "Quanto\u00A0custa?", a: "Montar o site e ver como ele fica não custa nada. Os\u00A0valores para mantê-lo no ar ainda estão sendo definidos e serão combinados com cada\u00A0paróquia.", link: { href: "/contato", label: "Perguntar à equipe" } },
+  { q: "Qual será o endereço do\u00A0site?", a: "O site nasce em um endereço no catolico.digital, como paroquiasaojose.catolico.digital. Domínio\u00A0próprio da paróquia: os\u00A0detalhes são combinados com a\u00A0equipe." },
+];
 
 /**
  * Os cinco recursos da primeira dobra, na ordem em que o Renato pediu (05/10/2026). Cada um traz a pergunta que
@@ -33,7 +48,7 @@ const verbs: Array<{
   {
     verb: "Sacramentos",
     href: "/vida-paroquial#sacramentos",
-    title: "Imagine a facilidade de oferecer o formulário e todas as instruções de cada\u00A0sacramento.",
+    title: "O formulário e as instruções de cada sacramento, num lugar só para a\u00A0família.",
     story: "A página de cada sacramento diz o que levar, quando procurar e como se preparar. O\u00A0pedido chega com os documentos, e a secretaria vê tudo numa caixa só, com a situação de cada\u00A0um.",
     points: ["Observação em destaque: “procure com seis meses de antecedência”", "Documentos por foto ou PDF, guardados em local privado", "Cada pedido com situação e histórico de quem abriu"],
     ask: "O que preciso levar para o batismo do meu\u00A0filho?",
@@ -42,7 +57,7 @@ const verbs: Array<{
   {
     verb: "Catequese",
     href: "/vida-paroquial#catequese",
-    title: "Inscrição online nas turmas de catequese, gestão dos catequistas e muito\u00A0mais.",
+    title: "Inscrição online nas turmas, vagas à vista e a chamada no celular do\u00A0catequista.",
     story: "Os pais inscrevem pelo celular, uma pergunta por vez. Pela\u00A0idade, o sistema sugere o ano; a turma mostra as vagas; a certidão vai por foto. Cada\u00A0catequista entra com o próprio login, vê a sua turma e faz a\u00A0chamada.",
     points: ["Rematrícula reconhecida pelo celular do responsável", "Lista de espera sozinha quando a turma lota", "Chamada no celular do catequista"],
     ask: "Tem vaga na catequese para minha filha de 9\u00A0anos?",
@@ -90,11 +105,11 @@ export function LandingPage() {
         <div className="hero-glow hero-glow--blue" aria-hidden="true" />
         <Container className="hero__grid">
           <div className="hero__content">
-            <p className="eyebrow eyebrow--light">Plataforma para paróquias</p>
-            <h1 id="hero-title">Organize sua paróquia: <em className="hl">horários de missa, dízimo, sacramentos e gestão das&nbsp;pastorais.</em></h1>
-            <p className="hero-copy hero-copy--light">Uma estrutura criada por católicos que vivem o dia a dia de uma comunidade. Facilidade&nbsp;e produtividade para quem serve: pároco, secretaria e&nbsp;coordenadores.</p>
+            <p className="eyebrow eyebrow--light">Site e painel para paróquias</p>
+            <h1 id="hero-title">O site da sua paróquia, com um painel simples para manter <em className="hl">horários de missa, dízimo, sacramentos e pastorais em&nbsp;dia.</em></h1>
+            <p className="hero-copy hero-copy--light">Você responde algumas perguntas e vê o site pronto. Depois,&nbsp;a secretaria cadastra cada informação uma vez, e ela aparece certa em todo lugar. Feito&nbsp;para pároco, secretaria e&nbsp;coordenadores.</p>
             <div className="hero__actions">
-              <a className="button button--gold" href={ONBOARDING_URL}><span>Quero montar o site em 5 minutos</span><span className="button__arrow" aria-hidden="true">→</span></a>
+              <a className="button button--gold" href={ONBOARDING_URL}><span>Quero montar o site da minha paróquia</span><span className="button__arrow" aria-hidden="true">→</span></a>
               <Link className="text-link text-link--light" href="#modulos">Conhecer todos os recursos <span aria-hidden="true">→</span></Link>
             </div>
             <p className="hero-microcopy">{CTA.note}</p>
@@ -104,17 +119,32 @@ export function LandingPage() {
         </Container>
       </section>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee__track">
-          {[...AREA_ITEMS, ...AREA_ITEMS].map((m, i) => (
-            <span className="marquee__item" key={`${m.id}-${i}`}><ModuleIcon name={m.icon} size={16} /> {m.label}</span>
-          ))}
-        </div>
-      </div>
+      <section className="section section--ivory steps-strip" id="como-comecar" aria-labelledby="steps-title">
+        <Container>
+          <Reveal className="steps-strip__head"><p className="eyebrow">Como começar</p><h2 id="steps-title">Três passos, sem precisar de&nbsp;técnico.</h2></Reveal>
+          <ol className="steps-strip__list">
+            {STEPS.map(([title, text], i) => (
+              <Reveal as="li" className="steps-strip__item" delay={i * 80} key={title}><b aria-hidden="true">{i + 1}</b><div><h3>{title}</h3><p>{text}</p></div></Reveal>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      <section className="section section--white" id="como-e-diferente" aria-labelledby="idea-title">
+        <Container>
+          <div className="idea-intro"><Reveal className="section-heading idea-intro__copy"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das&nbsp;páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde&nbsp;aparece.</p></Reveal><Reveal className="idea-intro__art" delay={100}><Illustration alt="Uma informação da paróquia é atualizada uma vez e aparece certa em quatro páginas do site." height={900} name="sincronizacao-clara" width={1200} /></Reveal></div>
+          <Reveal delay={120}><ScheduleUpdateDemo /></Reveal>
+          <Reveal className="idea-cta" delay={160}>
+            <p className="idea-cta__lead">Agora imagine isso com os horários da sua&nbsp;paróquia.</p>
+            <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
+            <p className="idea-cta__note">{CTA.note}</p>
+          </Reveal>
+        </Container>
+      </section>
 
       <section className="section section--ivory" id="verbos" aria-labelledby="verbs-title">
         <Container>
-          <Reveal className="section-heading"><p className="eyebrow">Uma plataforma para integrar a comunidade</p><h2 id="verbs-title">Conheça os principais recursos que deixam a sua paróquia mais organizada e próxima dos&nbsp;fiéis.</h2><p>Muito mais que um site: uma plataforma para organizar e comunicar os eventos e os serviços da&nbsp;paróquia.</p></Reveal>
+          <Reveal className="section-heading"><p className="eyebrow">Uma plataforma para integrar a comunidade</p><h2 id="verbs-title">Conheça os principais recursos que deixam a sua paróquia mais organizada e próxima dos&nbsp;fiéis.</h2><p>Muito mais que um site: uma plataforma para organizar e comunicar os eventos e os serviços da&nbsp;paróquia. As&nbsp;telas abaixo são exemplos com dados&nbsp;fictícios.</p></Reveal>
           <div className="verb-list">
             {verbs.map((v, i) => {
               return (
@@ -137,18 +167,6 @@ export function LandingPage() {
         </Container>
       </section>
 
-      <section className="section section--white" id="como-e-diferente" aria-labelledby="idea-title">
-        <Container>
-          <div className="idea-intro"><Reveal className="section-heading idea-intro__copy"><p className="eyebrow">A ideia por trás de tudo</p><h2 id="idea-title">Você atualiza a informação. O&nbsp;site cuida das&nbsp;páginas.</h2><p>Num site comum, o horário da missa aparece escrito em vários lugares e cada um precisa ser alterado à mão. Aqui,&nbsp;cada informação da paróquia é cadastrada uma vez. Quando&nbsp;muda, muda em todo lugar onde&nbsp;aparece.</p></Reveal><Reveal className="idea-intro__art" delay={100}><Illustration alt="Uma informação da paróquia é atualizada uma vez e aparece certa em quatro páginas do site." height={900} name="sincronizacao-clara" width={1200} /></Reveal></div>
-          <Reveal delay={120}><ScheduleUpdateDemo /></Reveal>
-          <Reveal className="idea-cta" delay={160}>
-            <p className="idea-cta__lead">Agora imagine isso com os horários da sua&nbsp;paróquia.</p>
-            <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
-            <p className="idea-cta__note">{CTA.note}</p>
-          </Reveal>
-        </Container>
-      </section>
-
       <section className="section section--cool section--spots" id="modulos" aria-labelledby="modules-title">
         <Container>
           <Reveal className="section-heading"><p className="eyebrow">Os recursos</p><h2 id="modules-title">Quatro áreas, dezesseis recursos para a vida da&nbsp;paróquia.</h2><p>Celebrações, vida paroquial, comunicação e administração. Cada&nbsp;área tem uma página que explica o que cada recurso faz, com exemplos de&nbsp;verdade.</p></Reveal>
@@ -157,10 +175,42 @@ export function LandingPage() {
         </Container>
       </section>
 
-      <section className="purpose-band section section--white" id="proposito" aria-labelledby="purpose-title">
+      <section className="section section--white" id="para-quem" aria-labelledby="who-title">
+        <Container>
+          <Reveal className="section-heading"><p className="eyebrow">Para quem</p><h2 id="who-title">Cada pessoa da paróquia, com o próprio&nbsp;acesso.</h2><p>O pároco acompanha a paróquia inteira; a secretaria recebe pedidos e inscrições; coordenadores e PASCOM cuidam do que é&nbsp;deles.</p></Reveal>
+          <ul className="who-grid">
+            {AUDIENCE.map((link, i) => (
+              <Reveal as="li" delay={i * 60} key={link.href}>
+                <Link className="who-card" href={link.href}>
+                  <span className="who-card__icon"><ModuleIcon name={link.icon ?? "users"} size={20} /></span>
+                  <strong>{link.label}</strong>
+                  <span>{link.description}</span>
+                  <i aria-hidden="true">Ver a página →</i>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="purpose-band section section--ivory" id="proposito" aria-labelledby="purpose-title">
         <Container className="purpose-band__inner">
-          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar é evangelizar para muito mais&nbsp;pessoas.</h2><p>Imagine um site moderno, feito para ser encontrado no Google, compartilhado nas redes sociais e entendido pelas inteligências artificiais. Um&nbsp;lugar onde todo mundo acha as informações da paróquia, tira dúvidas, faz inscrições e muito&nbsp;mais.</p></Reveal>
+          <Reveal><p className="eyebrow">Tecnologia a serviço da comunidade</p><h2 id="purpose-title">Digitalizar é evangelizar para muito mais&nbsp;pessoas.</h2><p>Um site feito para ser encontrado no Google e compartilhado nas redes sociais. Um&nbsp;lugar onde todo mundo acha as informações da paróquia, tira dúvidas e faz&nbsp;inscrições.</p></Reveal>
           <Reveal className="purpose-band__aside" delay={150}><span className="rosette rosette--large" aria-hidden="true" /><blockquote>A tecnologia fica nos bastidores. A&nbsp;comunidade continua no&nbsp;centro.</blockquote></Reveal>
+        </Container>
+      </section>
+
+      <section className="section section--white" id="condicoes" aria-labelledby="conditions-title">
+        <Container>
+          <Reveal className="section-heading"><p className="eyebrow">Antes de começar</p><h2 id="conditions-title">O que você precisa saber antes de&nbsp;testar.</h2></Reveal>
+          <dl className="conditions-grid">
+            {BEFORE_YOU_START.map((item, i) => (
+              <Reveal className="conditions-card" delay={(i % 3) * 60} key={item.q}>
+                <dt>{item.q}</dt>
+                <dd>{item.a}{item.link ? <> <Link className="text-link" href={item.link.href}>{item.link.label} <span aria-hidden="true">→</span></Link></> : null}</dd>
+              </Reveal>
+            ))}
+          </dl>
         </Container>
       </section>
 
@@ -169,7 +219,7 @@ export function LandingPage() {
         <Container className="onboarding-band">
           <Reveal>
             <p className="eyebrow eyebrow--light">Experimente agora</p>
-            <h2 id="start-title">Monte o site da sua paróquia em 5&nbsp;minutos.</h2>
+            <h2 id="start-title">Monte o site da sua paróquia em cerca de 5&nbsp;minutos.</h2>
             <p className="onboarding-band__lead">Responda algumas perguntas sobre sua paróquia e assista em tempo real à criação do site. Publique&nbsp;só se&nbsp;gostar.</p>
             <ul className="onboarding-band__checks">
               <li><Check aria-hidden="true" size={18} /> Não precisa criar conta para experimentar</li>
@@ -178,6 +228,7 @@ export function LandingPage() {
             </ul>
             <div className="hero__actions">
               <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
+              <a className="text-link text-link--light" href={DEMO_URL} rel="noopener">{CTA.demo} <span aria-hidden="true">→</span></a>
               <Link className="text-link text-link--light" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link>
             </div>
           </Reveal>

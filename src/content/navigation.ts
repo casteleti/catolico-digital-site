@@ -45,7 +45,7 @@ export const NAVIGATION: NavItem[] = [
       },
     ],
   },
-  { kind: "link", label: "Como funciona", href: "/#como-e-diferente" },
+  { kind: "link", label: "Como funciona", href: "/#como-comecar" },
   { kind: "link", label: "Dúvidas", href: "/#duvidas" },
   { kind: "link", label: "Contato", href: "/contato" },
 ];

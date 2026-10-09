@@ -206,7 +206,7 @@ export default function ParocoPage() {
         <Container className="narrow-center">
           <p className="eyebrow eyebrow--light">Católico Digital</p>
           <h2 id="paroco-cta">Mais tempo para a paróquia. Menos&nbsp;tempo lendo mensagens de&nbsp;WhatsApp.</h2>
-          <p>Monte o site da sua paróquia em 5 minutos e veja o painel funcionando com os dados de vocês. {CTA.note}</p>
+          <p>Monte o site da sua paróquia em cerca de 5 minutos e veja o painel funcionando com os dados de vocês. {CTA.note}</p>
           <div className="final-cta__actions">
             <a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a>
             <Link className="text-link text-link--light final-cta__secondary" href="/contato">{CTA.talk} <span aria-hidden="true">→</span></Link>

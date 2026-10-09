@@ -11,9 +11,14 @@ export const CTA = {
   /** Botão principal do herói e das páginas internas. */
   primary: "Montar o site da minha paróquia",
   /** A promessa curta que acompanha o botão. */
-  note: "Leva 5 minutos. Sem\u00A0conta, sem senha, sem cartão. Nada\u00A0vai ao ar sem você\u00A0mandar.",
+  note: "Leva cerca de 5 minutos. Para\u00A0experimentar, não precisa de conta nem de cartão. Nada\u00A0vai ao ar sem você\u00A0mandar.",
   talk: "Prefiro conversar antes",
+  /** Leva a um site de paróquia fictícia, já pronto (nasce da mesma plataforma). */
+  demo: "Ver um site de exemplo",
 } as const;
+
+/** Site de exemplo (paróquia fictícia, sem indexação): mostra o resultado antes de a pessoa montar o dela. */
+export const DEMO_URL = process.env.NEXT_PUBLIC_DEMO_URL ?? "https://rosario.catolico.digital";
 
 /** Instagram oficial do Católico Digital (rodapé e Contato). */
 export const INSTAGRAM = { url: "https://www.instagram.com/catolicodigitalorg/", handle: "@catolicodigitalorg" } as const;

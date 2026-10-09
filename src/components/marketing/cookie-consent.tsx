@@ -66,11 +66,12 @@ export function CookieConsent({ nonce }: { nonce?: string }) {
       {consent?.marketing ? <MetaPixel nonce={nonce} /> : null}
       {visible ? (
         <section className="cookie-banner" aria-labelledby="cookie-title">
-          <h2 id="cookie-title" ref={titleRef} tabIndex={-1}>Cookies e privacidade</h2>
-          <p>
-            Usamos cookies de medição para entender como o site é usado e, se você permitir, de publicidade para avaliar nossos anúncios.
-            Sem o seu aceite, nada disso é carregado. Veja a <Link href="/privacidade">Política de&nbsp;Privacidade</Link>.
-          </p>
+          <div className="cookie-banner__text">
+            <p>
+              <strong id="cookie-title" ref={titleRef} tabIndex={-1}>Cookies e&nbsp;privacidade.</strong> Usamos cookies de medição e, com o seu aceite, de publicidade. Veja a <Link href="/privacidade">Política de&nbsp;Privacidade</Link>.
+              {configuring ? null : <> <button type="button" className="cookie-banner__link" onClick={() => setConfiguring(true)}>Configurar</button></>}
+            </p>
+          </div>
           {configuring ? (
             <div className="cookie-banner__options">
               <label>
@@ -91,9 +92,7 @@ export function CookieConsent({ nonce }: { nonce?: string }) {
             <button type="button" className="cookie-banner__btn cookie-banner__btn--solid" onClick={() => choose({ analytics: false, marketing: false })}>Rejeitar não necessários</button>
             {configuring ? (
               <button type="button" className="cookie-banner__btn" onClick={() => choose(draft)}>Salvar preferências</button>
-            ) : (
-              <button type="button" className="cookie-banner__btn" onClick={() => setConfiguring(true)}>Configurar</button>
-            )}
+            ) : null}
           </div>
         </section>
       ) : null}

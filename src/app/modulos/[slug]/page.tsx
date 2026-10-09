@@ -102,7 +102,7 @@ export default async function ModuloPage({ params }: Params) {
 
       <section className="final-cta section section--night" aria-labelledby="module-cta">
         <div className="final-cta__pattern" aria-hidden="true" />
-        <Container className="narrow-center"><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="module-cta">Experimente na sua paróquia, em 5&nbsp;minutos.</h2><p>Monte o site da sua paróquia em 5 minutos e ligue o que fizer sentido. {CTA.note}</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/modulos">Ver todos os módulos <span aria-hidden="true">→</span></Link></div></Container>
+        <Container className="narrow-center"><p className="eyebrow eyebrow--light">Católico Digital</p><h2 id="module-cta">Experimente na sua paróquia, em cerca de 5&nbsp;minutos.</h2><p>Monte o site da sua paróquia em cerca de 5 minutos e ligue o que fizer sentido. {CTA.note}</p><div className="final-cta__actions"><a className="button button--gold" href={ONBOARDING_URL}><span>{CTA.primary}</span><span className="button__arrow" aria-hidden="true">→</span></a><Link className="text-link text-link--light final-cta__secondary" href="/modulos">Ver todos os módulos <span aria-hidden="true">→</span></Link></div></Container>
       </section>
     </main>
   );

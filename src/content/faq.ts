@@ -9,5 +9,8 @@ export const faq: Array<[string, string]> = [
   ["Nossa paróquia já tem site. Dá\u00A0para\u00A0trocar?", "Sim. O\u00A0Católico Digital toma o lugar do site atual e organiza o que hoje está espalhado. A\u00A0transição é combinada com cada\u00A0paróquia."],
   ["O Católico Digital substitui o Instagram e o\u00A0WhatsApp?", "Não. Eles\u00A0continuam espalhando a mensagem. O\u00A0Católico Digital é onde a informação oficial mora, e para onde esses canais\u00A0apontam."],
   ["Podemos usar o nosso\u00A0domínio?", "A estrutura prevê domínio próprio. Os\u00A0detalhes são definidos na\u00A0implantação."],
-  ["Quanto\u00A0custa?", "Os valores são apresentados na conversa com cada paróquia, de acordo com a estrutura e os módulos que fizerem\u00A0sentido."],
+  ["Quanto\u00A0custa?", "Montar o site e ver como ele fica não custa nada e não pede cartão. Os\u00A0valores para manter o site no ar são combinados com cada paróquia, de acordo com a estrutura e os módulos que fizerem\u00A0sentido."],
+  ["Posso testar sem\u00A0compromisso?", "Pode. Você\u00A0responde às perguntas, vê o site da sua paróquia pronto e só então decide se quer criar o acesso. Nada\u00A0vai ao ar sem você\u00A0mandar."],
+  ["E os dados dos fiéis? Como\u00A0ficam\u00A0protegidos?", "Cada\u00A0paróquia só enxerga os próprios dados. O\u00A0fiel marca o consentimento ao se inscrever, os documentos ficam em armazenamento privado e cada abertura de uma inscrição fica\u00A0registrada."],
+  ["E se eu não gostar do\u00A0resultado?", "Você\u00A0só publica se quiser, e enquanto o site está em preparação ele não está aberto ao público. O\u00A0que a paróquia exclui vai para uma lixeira, de onde pode ser\u00A0restaurado."],
 ];

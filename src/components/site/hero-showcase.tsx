@@ -62,6 +62,8 @@ export function HeroShowcase() {
   const [restart, setRestart] = useState(0);
   const [running, setRunning] = useState(true);
   const [still, setStill] = useState(false);
+  /** Pausa escolhida pelo visitante (WCAG 2.2.2): vale mesmo sem "reduzir movimento" ligado. */
+  const [paused, setPaused] = useState(false);
   const tabsRef = useRef<HTMLDivElement>(null);
   const [pill, setPill] = useState<{ x: number; w: number } | null>(null);
 
@@ -79,13 +81,13 @@ export function HeroShowcase() {
   }, []);
 
   useEffect(() => {
-    if (!running || still) return;
+    if (!running || still || paused) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % SCENES.length);
       setStep((s) => s + 1);
     }, STEP_MS);
     return () => window.clearInterval(id);
-  }, [running, still, restart]);
+  }, [running, still, paused, restart]);
 
   // A pílula mede o tópico ativo e desliza até ele (também quando a tela muda de tamanho).
   useLayoutEffect(() => {
@@ -107,10 +109,10 @@ export function HeroShowcase() {
   const scene = SCENES[index]!;
 
   return (
-    <div className="hero-showcase">
+    <div className="hero-showcase" data-paused={paused || undefined}>
       <div className="hero-tabs" ref={tabsRef} role="group" aria-label="O que a plataforma organiza">
         <span aria-hidden="true" className="hero-tabs__pill" style={pill ? { width: pill.w, transform: `translateX(${pill.x}px)` } : { opacity: 0 }}>
-          {still ? null : <i className="hero-tabs__timer" key={step} style={{ animationDuration: `${STEP_MS}ms` }} />}
+          {still || paused ? null : <i className="hero-tabs__timer" key={step} style={{ animationDuration: `${STEP_MS}ms` }} />}
         </span>
         {SCENES.map((s, i) => (
           <button aria-pressed={i === index} className={i === index ? "is-on" : undefined} key={s.tab} onClick={() => pick(i)} type="button">{s.tab}</button>
@@ -159,6 +161,15 @@ export function HeroShowcase() {
           <ModuleIcon name={scene.bottom.icon} size={15} />
           <span>{scene.bottom.label}<strong><Check aria-hidden="true" size={12} /> {scene.bottom.strong}</strong></span>
         </div>
+      </div>
+
+      <div className="hero-showcase__foot">
+        <p className="hero-showcase__note">Exemplo ilustrativo, com dados&nbsp;fictícios.</p>
+        {still ? null : (
+          <button aria-pressed={paused} className="hero-showcase__pause" onClick={() => setPaused((value) => !value)} type="button">
+            {paused ? "Retomar a animação" : "Pausar a animação"}
+          </button>
+        )}
       </div>
     </div>
   );
